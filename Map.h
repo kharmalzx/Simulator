@@ -9,7 +9,6 @@ public:
 
 	vector<vector<MapCell>> mapCells;
 	vector<Shelf> shelfList;
-	vector<Commodity> commodityList;
 	vector<MapCell> exitArea;
 	vector<MapCell> entranceArea;
 

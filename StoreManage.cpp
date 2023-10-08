@@ -9,6 +9,9 @@ StoreManage::StoreManage(QObject* parent, MapPanel * mapp, AStarPathfinding* as)
     this->astar = as;
     customerPool = new QThreadPool(this);
     customerPool->setMaxThreadCount(10);
+
+    shelfList.resize(map->shelfList.size());
+    for (int i = 0; i < shelfList.size(); i++) { shelfList[i] = &map->shelfList[i]; }
 }
 
 
@@ -31,7 +34,6 @@ void StoreManage::createCustomer(QVector<QPair<int, int>> aim)
     Customer* customer = new Customer(this,aim);
     customer->setAStarKit(astar);
     customer->setMapPanel(mapPanel);
-    customer->setConnectConfig();
 	customerList.push_back(customer);
 
 }

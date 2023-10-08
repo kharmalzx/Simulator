@@ -19,10 +19,13 @@ public:
 	T get(DataType, int groupID);
 	
 protected: 
-	class AIParams {
+	class CustomerAIParams {
 
 	};
 	
+	class ClerkAIParams {
+
+	};
 
 };
 

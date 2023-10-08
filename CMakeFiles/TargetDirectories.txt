@@ -1,0 +1,9 @@
+D:/vs projects/Simulator/CMakeFiles/Simulator.dir
+D:/vs projects/Simulator/CMakeFiles/PACKAGE.dir
+D:/vs projects/Simulator/CMakeFiles/INSTALL.dir
+D:/vs projects/Simulator/CMakeFiles/ALL_BUILD.dir
+D:/vs projects/Simulator/CMakeFiles/ZERO_CHECK.dir
+D:/vs projects/Simulator/include/QXlsx/CMakeFiles/QXlsx.dir
+D:/vs projects/Simulator/include/QXlsx/CMakeFiles/PACKAGE.dir
+D:/vs projects/Simulator/include/QXlsx/CMakeFiles/INSTALL.dir
+D:/vs projects/Simulator/include/QXlsx/CMakeFiles/ALL_BUILD.dir

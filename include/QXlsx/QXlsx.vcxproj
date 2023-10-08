@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{481E98A8-288F-310B-BCFE-CE981D18D8D4}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>QXlsx</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\vs projects\Simulator\lib\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">QXlsx.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">QXlsxQt6</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\vs projects\Simulator\lib\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">QXlsx.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">QXlsxQt6</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\vs projects\Simulator\lib\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">QXlsx.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">QXlsxQt6</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\vs projects\Simulator\lib\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">QXlsx.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">QXlsxQt6</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\vs projects\Simulator\include\QXlsx;D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\include_Debug;D:\vs projects\Simulator\include\QXlsx\header;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/QT/6.5.1/msvc2019_64/include/QtCore" /external:I "D:/QT/6.5.1/msvc2019_64/include" /external:I "D:/QT/6.5.1/msvc2019_64/mkspecs/win32-msvc" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtGui/6.5.1" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtGui/6.5.1/QtGui" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtCore/6.5.1" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtCore/6.5.1/QtCore" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtGui" -Zc:__cplusplus -utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;QT_NO_KEYWORDS;QT_NO_CAST_TO_ASCII;QT_NO_CAST_FROM_ASCII;QT_NO_URL_CAST_FROM_STRING;QT_NO_CAST_FROM_BYTEARRAY;QT_USE_QSTRINGBUILDER;QT_NO_SIGNALS_SLOTS_KEYWORDS;QT_USE_FAST_OPERATOR_PLUS;QT_DISABLE_DEPRECATED_BEFORE=0x060200;QT_CORE_LIB;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;UNICODE;_UNICODE;QT_GUI_LIB;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;QT_NO_KEYWORDS;QT_NO_CAST_TO_ASCII;QT_NO_CAST_FROM_ASCII;QT_NO_URL_CAST_FROM_STRING;QT_NO_CAST_FROM_BYTEARRAY;QT_USE_QSTRINGBUILDER;QT_NO_SIGNALS_SLOTS_KEYWORDS;QT_USE_FAST_OPERATOR_PLUS;QT_DISABLE_DEPRECATED_BEFORE=0x060200;QT_CORE_LIB;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;UNICODE;_UNICODE;QT_GUI_LIB;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\vs projects\Simulator\include\QXlsx;D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\include_Debug;D:\vs projects\Simulator\include\QXlsx\header;D:\QT\6.5.1\msvc2019_64\include\QtCore;D:\QT\6.5.1\msvc2019_64\include;D:\QT\6.5.1\msvc2019_64\mkspecs\win32-msvc;D:\QT\6.5.1\msvc2019_64\include\QtGui\6.5.1;D:\QT\6.5.1\msvc2019_64\include\QtGui\6.5.1\QtGui;D:\QT\6.5.1\msvc2019_64\include\QtCore\6.5.1;D:\QT\6.5.1\msvc2019_64\include\QtCore\6.5.1\QtCore;D:\QT\6.5.1\msvc2019_64\include\QtGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\vs projects\Simulator\include\QXlsx;D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\include_Debug;D:\vs projects\Simulator\include\QXlsx\header;D:\QT\6.5.1\msvc2019_64\include\QtCore;D:\QT\6.5.1\msvc2019_64\include;D:\QT\6.5.1\msvc2019_64\mkspecs\win32-msvc;D:\QT\6.5.1\msvc2019_64\include\QtGui\6.5.1;D:\QT\6.5.1\msvc2019_64\include\QtGui\6.5.1\QtGui;D:\QT\6.5.1\msvc2019_64\include\QtCore\6.5.1;D:\QT\6.5.1\msvc2019_64\include\QtCore\6.5.1\QtCore;D:\QT\6.5.1\msvc2019_64\include\QtGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message>Automatic MOC and UIC for target QXlsx</Message>
+      <Command>setlocal
+cd "D:\vs projects\Simulator\include\QXlsx"
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen "D:/vs projects/Simulator/include/QXlsx/CMakeFiles/QXlsx_autogen.dir/AutogenInfo.json" Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\vs projects\Simulator\include\QXlsx;D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\include_Release;D:\vs projects\Simulator\include\QXlsx\header;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/QT/6.5.1/msvc2019_64/include/QtCore" /external:I "D:/QT/6.5.1/msvc2019_64/include" /external:I "D:/QT/6.5.1/msvc2019_64/mkspecs/win32-msvc" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtGui/6.5.1" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtGui/6.5.1/QtGui" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtCore/6.5.1" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtCore/6.5.1/QtCore" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtGui" -Zc:__cplusplus -utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ConformanceMode>true</ConformanceMode>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;QT_NO_KEYWORDS;QT_NO_CAST_TO_ASCII;QT_NO_CAST_FROM_ASCII;QT_NO_URL_CAST_FROM_STRING;QT_NO_CAST_FROM_BYTEARRAY;QT_USE_QSTRINGBUILDER;QT_NO_SIGNALS_SLOTS_KEYWORDS;QT_USE_FAST_OPERATOR_PLUS;QT_DISABLE_DEPRECATED_BEFORE=0x060200;QT_CORE_LIB;QT_NO_DEBUG;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;UNICODE;_UNICODE;QT_GUI_LIB;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;QT_NO_KEYWORDS;QT_NO_CAST_TO_ASCII;QT_NO_CAST_FROM_ASCII;QT_NO_URL_CAST_FROM_STRING;QT_NO_CAST_FROM_BYTEARRAY;QT_USE_QSTRINGBUILDER;QT_NO_SIGNALS_SLOTS_KEYWORDS;QT_USE_FAST_OPERATOR_PLUS;QT_DISABLE_DEPRECATED_BEFORE=0x060200;QT_CORE_LIB;QT_NO_DEBUG;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;UNICODE;_UNICODE;QT_GUI_LIB;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\vs projects\Simulator\include\QXlsx;D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\include_Release;D:\vs projects\Simulator\include\QXlsx\header;D:\QT\6.5.1\msvc2019_64\include\QtCore;D:\QT\6.5.1\msvc2019_64\include;D:\QT\6.5.1\msvc2019_64\mkspecs\win32-msvc;D:\QT\6.5.1\msvc2019_64\include\QtGui\6.5.1;D:\QT\6.5.1\msvc2019_64\include\QtGui\6.5.1\QtGui;D:\QT\6.5.1\msvc2019_64\include\QtCore\6.5.1;D:\QT\6.5.1\msvc2019_64\include\QtCore\6.5.1\QtCore;D:\QT\6.5.1\msvc2019_64\include\QtGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\vs projects\Simulator\include\QXlsx;D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\include_Release;D:\vs projects\Simulator\include\QXlsx\header;D:\QT\6.5.1\msvc2019_64\include\QtCore;D:\QT\6.5.1\msvc2019_64\include;D:\QT\6.5.1\msvc2019_64\mkspecs\win32-msvc;D:\QT\6.5.1\msvc2019_64\include\QtGui\6.5.1;D:\QT\6.5.1\msvc2019_64\include\QtGui\6.5.1\QtGui;D:\QT\6.5.1\msvc2019_64\include\QtCore\6.5.1;D:\QT\6.5.1\msvc2019_64\include\QtCore\6.5.1\QtCore;D:\QT\6.5.1\msvc2019_64\include\QtGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message>Automatic MOC and UIC for target QXlsx</Message>
+      <Command>setlocal
+cd "D:\vs projects\Simulator\include\QXlsx"
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen "D:/vs projects/Simulator/include/QXlsx/CMakeFiles/QXlsx_autogen.dir/AutogenInfo.json" Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\vs projects\Simulator\include\QXlsx;D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\include_MinSizeRel;D:\vs projects\Simulator\include\QXlsx\header;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/QT/6.5.1/msvc2019_64/include/QtCore" /external:I "D:/QT/6.5.1/msvc2019_64/include" /external:I "D:/QT/6.5.1/msvc2019_64/mkspecs/win32-msvc" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtGui/6.5.1" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtGui/6.5.1/QtGui" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtCore/6.5.1" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtCore/6.5.1/QtCore" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtGui" -Zc:__cplusplus -utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ConformanceMode>true</ConformanceMode>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;QT_NO_KEYWORDS;QT_NO_CAST_TO_ASCII;QT_NO_CAST_FROM_ASCII;QT_NO_URL_CAST_FROM_STRING;QT_NO_CAST_FROM_BYTEARRAY;QT_USE_QSTRINGBUILDER;QT_NO_SIGNALS_SLOTS_KEYWORDS;QT_USE_FAST_OPERATOR_PLUS;QT_DISABLE_DEPRECATED_BEFORE=0x060200;QT_CORE_LIB;QT_NO_DEBUG;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;UNICODE;_UNICODE;QT_GUI_LIB;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;QT_NO_KEYWORDS;QT_NO_CAST_TO_ASCII;QT_NO_CAST_FROM_ASCII;QT_NO_URL_CAST_FROM_STRING;QT_NO_CAST_FROM_BYTEARRAY;QT_USE_QSTRINGBUILDER;QT_NO_SIGNALS_SLOTS_KEYWORDS;QT_USE_FAST_OPERATOR_PLUS;QT_DISABLE_DEPRECATED_BEFORE=0x060200;QT_CORE_LIB;QT_NO_DEBUG;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;UNICODE;_UNICODE;QT_GUI_LIB;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\vs projects\Simulator\include\QXlsx;D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\include_MinSizeRel;D:\vs projects\Simulator\include\QXlsx\header;D:\QT\6.5.1\msvc2019_64\include\QtCore;D:\QT\6.5.1\msvc2019_64\include;D:\QT\6.5.1\msvc2019_64\mkspecs\win32-msvc;D:\QT\6.5.1\msvc2019_64\include\QtGui\6.5.1;D:\QT\6.5.1\msvc2019_64\include\QtGui\6.5.1\QtGui;D:\QT\6.5.1\msvc2019_64\include\QtCore\6.5.1;D:\QT\6.5.1\msvc2019_64\include\QtCore\6.5.1\QtCore;D:\QT\6.5.1\msvc2019_64\include\QtGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\vs projects\Simulator\include\QXlsx;D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\include_MinSizeRel;D:\vs projects\Simulator\include\QXlsx\header;D:\QT\6.5.1\msvc2019_64\include\QtCore;D:\QT\6.5.1\msvc2019_64\include;D:\QT\6.5.1\msvc2019_64\mkspecs\win32-msvc;D:\QT\6.5.1\msvc2019_64\include\QtGui\6.5.1;D:\QT\6.5.1\msvc2019_64\include\QtGui\6.5.1\QtGui;D:\QT\6.5.1\msvc2019_64\include\QtCore\6.5.1;D:\QT\6.5.1\msvc2019_64\include\QtCore\6.5.1\QtCore;D:\QT\6.5.1\msvc2019_64\include\QtGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message>Automatic MOC and UIC for target QXlsx</Message>
+      <Command>setlocal
+cd "D:\vs projects\Simulator\include\QXlsx"
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen "D:/vs projects/Simulator/include/QXlsx/CMakeFiles/QXlsx_autogen.dir/AutogenInfo.json" MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\vs projects\Simulator\include\QXlsx;D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\include_RelWithDebInfo;D:\vs projects\Simulator\include\QXlsx\header;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/QT/6.5.1/msvc2019_64/include/QtCore" /external:I "D:/QT/6.5.1/msvc2019_64/include" /external:I "D:/QT/6.5.1/msvc2019_64/mkspecs/win32-msvc" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtGui/6.5.1" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtGui/6.5.1/QtGui" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtCore/6.5.1" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtCore/6.5.1/QtCore" /external:I "D:/QT/6.5.1/msvc2019_64/include/QtGui" -Zc:__cplusplus -utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;QT_NO_KEYWORDS;QT_NO_CAST_TO_ASCII;QT_NO_CAST_FROM_ASCII;QT_NO_URL_CAST_FROM_STRING;QT_NO_CAST_FROM_BYTEARRAY;QT_USE_QSTRINGBUILDER;QT_NO_SIGNALS_SLOTS_KEYWORDS;QT_USE_FAST_OPERATOR_PLUS;QT_DISABLE_DEPRECATED_BEFORE=0x060200;QT_CORE_LIB;QT_NO_DEBUG;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;UNICODE;_UNICODE;QT_GUI_LIB;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;QT_NO_KEYWORDS;QT_NO_CAST_TO_ASCII;QT_NO_CAST_FROM_ASCII;QT_NO_URL_CAST_FROM_STRING;QT_NO_CAST_FROM_BYTEARRAY;QT_USE_QSTRINGBUILDER;QT_NO_SIGNALS_SLOTS_KEYWORDS;QT_USE_FAST_OPERATOR_PLUS;QT_DISABLE_DEPRECATED_BEFORE=0x060200;QT_CORE_LIB;QT_NO_DEBUG;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;UNICODE;_UNICODE;QT_GUI_LIB;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\vs projects\Simulator\include\QXlsx;D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\include_RelWithDebInfo;D:\vs projects\Simulator\include\QXlsx\header;D:\QT\6.5.1\msvc2019_64\include\QtCore;D:\QT\6.5.1\msvc2019_64\include;D:\QT\6.5.1\msvc2019_64\mkspecs\win32-msvc;D:\QT\6.5.1\msvc2019_64\include\QtGui\6.5.1;D:\QT\6.5.1\msvc2019_64\include\QtGui\6.5.1\QtGui;D:\QT\6.5.1\msvc2019_64\include\QtCore\6.5.1;D:\QT\6.5.1\msvc2019_64\include\QtCore\6.5.1\QtCore;D:\QT\6.5.1\msvc2019_64\include\QtGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\vs projects\Simulator\include\QXlsx;D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\include_RelWithDebInfo;D:\vs projects\Simulator\include\QXlsx\header;D:\QT\6.5.1\msvc2019_64\include\QtCore;D:\QT\6.5.1\msvc2019_64\include;D:\QT\6.5.1\msvc2019_64\mkspecs\win32-msvc;D:\QT\6.5.1\msvc2019_64\include\QtGui\6.5.1;D:\QT\6.5.1\msvc2019_64\include\QtGui\6.5.1\QtGui;D:\QT\6.5.1\msvc2019_64\include\QtCore\6.5.1;D:\QT\6.5.1\msvc2019_64\include\QtCore\6.5.1\QtCore;D:\QT\6.5.1\msvc2019_64\include\QtGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message>Automatic MOC and UIC for target QXlsx</Message>
+      <Command>setlocal
+cd "D:\vs projects\Simulator\include\QXlsx"
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen "D:/vs projects/Simulator/include/QXlsx/CMakeFiles/QXlsx_autogen.dir/AutogenInfo.json" RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\vs projects\Simulator\include\QXlsx\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/vs projects/Simulator/include/QXlsx/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SD:/vs projects/Simulator" "-BD:/vs projects/Simulator" --check-stamp-file "D:/vs projects/Simulator/include/QXlsx/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.24\Templates\CPackConfig.cmake.in;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6Config.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6ConfigExtras.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6ConfigVersion.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6ConfigVersionImpl.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6Dependencies.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6Targets.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6VersionlessTargets.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtFeature.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtFeatureCommon.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicAppleHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicCMakeHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicCMakeVersionHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicDependencyHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicFinalizerHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicFindPackageHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicPluginHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicTargetHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicTestHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicToolHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicWalkLibsHelpers.cmake;D:\vs projects\Simulator\include\QXlsx\cmake\modules\CPackConfig.cmake;D:\vs projects\Simulator\include\QXlsx\cmake\modules\qxlsx-config-version.cmake.in;D:\vs projects\Simulator\include\QXlsx\cmake\modules\qxlsx-config.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\vs projects\Simulator\include\QXlsx\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/vs projects/Simulator/include/QXlsx/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SD:/vs projects/Simulator" "-BD:/vs projects/Simulator" --check-stamp-file "D:/vs projects/Simulator/include/QXlsx/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.24\Templates\CPackConfig.cmake.in;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6Config.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6ConfigExtras.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6ConfigVersion.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6ConfigVersionImpl.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6Dependencies.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6Targets.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6VersionlessTargets.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtFeature.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtFeatureCommon.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicAppleHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicCMakeHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicCMakeVersionHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicDependencyHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicFinalizerHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicFindPackageHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicPluginHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicTargetHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicTestHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicToolHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicWalkLibsHelpers.cmake;D:\vs projects\Simulator\include\QXlsx\cmake\modules\CPackConfig.cmake;D:\vs projects\Simulator\include\QXlsx\cmake\modules\qxlsx-config-version.cmake.in;D:\vs projects\Simulator\include\QXlsx\cmake\modules\qxlsx-config.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\vs projects\Simulator\include\QXlsx\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/vs projects/Simulator/include/QXlsx/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SD:/vs projects/Simulator" "-BD:/vs projects/Simulator" --check-stamp-file "D:/vs projects/Simulator/include/QXlsx/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.24\Templates\CPackConfig.cmake.in;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6Config.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6ConfigExtras.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6ConfigVersion.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6ConfigVersionImpl.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6Dependencies.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6Targets.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6VersionlessTargets.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtFeature.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtFeatureCommon.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicAppleHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicCMakeHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicCMakeVersionHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicDependencyHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicFinalizerHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicFindPackageHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicPluginHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicTargetHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicTestHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicToolHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicWalkLibsHelpers.cmake;D:\vs projects\Simulator\include\QXlsx\cmake\modules\CPackConfig.cmake;D:\vs projects\Simulator\include\QXlsx\cmake\modules\qxlsx-config-version.cmake.in;D:\vs projects\Simulator\include\QXlsx\cmake\modules\qxlsx-config.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\vs projects\Simulator\include\QXlsx\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/vs projects/Simulator/include/QXlsx/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SD:/vs projects/Simulator" "-BD:/vs projects/Simulator" --check-stamp-file "D:/vs projects/Simulator/include/QXlsx/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.24\Templates\CPackConfig.cmake.in;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6Config.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6ConfigExtras.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6ConfigVersion.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6ConfigVersionImpl.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6Dependencies.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6Targets.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\Qt6VersionlessTargets.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtFeature.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtFeatureCommon.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicAppleHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicCMakeHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicCMakeVersionHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicDependencyHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicFinalizerHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicFindPackageHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicPluginHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicTargetHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicTestHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicToolHelpers.cmake;D:\QT\6.5.1\msvc2019_64\lib\cmake\Qt6\QtPublicWalkLibsHelpers.cmake;D:\vs projects\Simulator\include\QXlsx\cmake\modules\CPackConfig.cmake;D:\vs projects\Simulator\include\QXlsx\cmake\modules\qxlsx-config-version.cmake.in;D:\vs projects\Simulator\include\QXlsx\cmake\modules\qxlsx-config.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\vs projects\Simulator\include\QXlsx\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\mocs_compilation_Debug.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxcellrange.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxcontenttypes.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxdrawinganchor.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxrichstring.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxworkbook.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxabstractooxmlfile.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxcellreference.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxdatavalidation.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxdrawing.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxsharedstrings.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxworksheet.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxabstractsheet.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxchart.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxdatetype.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxformat.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxsimpleooxmlfile.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxzipreader.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxcell.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxchartsheet.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxdocpropsapp.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxmediafile.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxstyles.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxzipwriter.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxcellformula.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxcolor.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxdocpropscore.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxnumformatparser.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxtheme.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxcelllocation.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxconditionalformatting.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxdocument.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxrelationships.cpp" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxutility.cpp" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxabstractooxmlfile_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxchartsheet_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxdocpropsapp_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxformat_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxsharedstrings_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxworkbook_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxabstractsheet_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxcolor_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxdocpropscore_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxmediafile_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxsimpleooxmlfile_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxworksheet_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxcellformula_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxconditionalformatting_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxdocument_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxnumformatparser_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxstyles_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxzipreader_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxcell_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxcontenttypes_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxdrawinganchor_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxrelationships_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxtheme_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxzipwriter_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxchart_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxdatavalidation_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxdrawing_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxrichstring_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxutility_p.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxabstractooxmlfile.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxabstractsheet.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxcellformula.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxcell.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxcelllocation.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxcellrange.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxcellreference.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxchart.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxchartsheet.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxconditionalformatting.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxdatavalidation.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxdatetype.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxdocument.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxformat.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxglobal.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxrichstring.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxworkbook.h" />
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxworksheet.h" />
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\mocs_compilation_Release.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\mocs_compilation_MinSizeRel.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\mocs_compilation_RelWithDebInfo.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\vs projects\Simulator\ZERO_CHECK.vcxproj">
+      <Project>{DD3AB136-220F-3F43-8CB3-B9EA3B72CAB4}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

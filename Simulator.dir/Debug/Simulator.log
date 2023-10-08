@@ -1,0 +1,15 @@
+﻿  Automatic MOC and UIC for target Simulator
+  Customer.cpp
+D:\vs projects\Simulator\Customer.cpp(1,1): warning C4828: 文件包含在偏移 0x58f 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+D:\vs projects\Simulator\Customer.cpp(1,1): warning C4828: 文件包含在偏移 0x590 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+D:\vs projects\Simulator\MapCell.h(1,1): warning C4828: 文件包含在偏移 0x15a 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+D:\vs projects\Simulator\MapCell.h(1,1): warning C4828: 文件包含在偏移 0x15d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+D:\vs projects\Simulator\MapCell.h(1,1): warning C4828: 文件包含在偏移 0x15e 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+D:\vs projects\Simulator\MapCell.h(1,1): warning C4828: 文件包含在偏移 0x164 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  StoreManage.cpp
+D:\vs projects\Simulator\MapCell.h(1,1): warning C4828: 文件包含在偏移 0x15a 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+D:\vs projects\Simulator\MapCell.h(1,1): warning C4828: 文件包含在偏移 0x15d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+D:\vs projects\Simulator\MapCell.h(1,1): warning C4828: 文件包含在偏移 0x15e 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+D:\vs projects\Simulator\MapCell.h(1,1): warning C4828: 文件包含在偏移 0x164 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  正在生成代码...
+  Simulator.vcxproj -> D:\vs projects\Simulator\bin\Debug\Simulator.exe

@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\mocs_compilation_Debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxcellrange.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxcontenttypes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxdrawinganchor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxrichstring.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxworkbook.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxabstractooxmlfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxcellreference.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxdatavalidation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxdrawing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxsharedstrings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxworksheet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxabstractsheet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxchart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxdatetype.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxformat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxsimpleooxmlfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxzipreader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxcell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxchartsheet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxdocpropsapp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxmediafile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxstyles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxzipwriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxcellformula.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxcolor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxdocpropscore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxnumformatparser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxtheme.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxcelllocation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxconditionalformatting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxdocument.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxrelationships.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\source\xlsxutility.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\mocs_compilation_Release.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\mocs_compilation_MinSizeRel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\include\QXlsx\QXlsx_autogen\mocs_compilation_RelWithDebInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxabstractooxmlfile_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxchartsheet_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxdocpropsapp_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxformat_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxsharedstrings_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxworkbook_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxabstractsheet_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxcolor_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxdocpropscore_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxmediafile_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxsimpleooxmlfile_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxworksheet_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxcellformula_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxconditionalformatting_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxdocument_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxnumformatparser_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxstyles_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxzipreader_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxcell_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxcontenttypes_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxdrawinganchor_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxrelationships_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxtheme_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxzipwriter_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxchart_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxdatavalidation_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxdrawing_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxrichstring_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxutility_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxabstractooxmlfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxabstractsheet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxcellformula.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxcell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxcelllocation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxcellrange.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxcellreference.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxchart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxchartsheet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxconditionalformatting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxdatavalidation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxdatetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxdocument.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxformat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxglobal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxrichstring.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxworkbook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\include\QXlsx\header\xlsxworksheet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\vs projects\Simulator\include\QXlsx\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{F6B35499-4DCE-3A8C-B737-B57AF8DC3A11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{7027B185-A2A3-3DDB-8A1A-2BFD8C8EEB7F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

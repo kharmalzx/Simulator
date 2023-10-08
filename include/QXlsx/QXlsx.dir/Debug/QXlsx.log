@@ -1,0 +1,43 @@
+﻿  Automatic MOC and UIC for target QXlsx
+  Building Custom Rule D:/vs projects/Simulator/include/QXlsx/CMakeLists.txt
+  mocs_compilation_Debug.cpp
+  xlsxcellrange.cpp
+  xlsxcontenttypes.cpp
+  xlsxdrawinganchor.cpp
+  xlsxrichstring.cpp
+D:\vs projects\Simulator\include\QXlsx\source\xlsxrichstring.cpp(318,16): warning C4267: “return”: 从“size_t”转换到“uint”，可能丢失数据
+  xlsxworkbook.cpp
+  xlsxabstractooxmlfile.cpp
+  xlsxcellreference.cpp
+  xlsxdatavalidation.cpp
+  xlsxdrawing.cpp
+  xlsxsharedstrings.cpp
+  xlsxworksheet.cpp
+  xlsxabstractsheet.cpp
+  xlsxchart.cpp
+  xlsxdatetype.cpp
+  xlsxformat.cpp
+  xlsxsimpleooxmlfile.cpp
+  xlsxzipreader.cpp
+  xlsxcell.cpp
+  xlsxchartsheet.cpp
+  正在生成代码...
+  正在编译...
+  xlsxdocpropsapp.cpp
+  xlsxmediafile.cpp
+  xlsxstyles.cpp
+  xlsxzipwriter.cpp
+  xlsxcellformula.cpp
+  xlsxcolor.cpp
+  xlsxdocpropscore.cpp
+  xlsxnumformatparser.cpp
+  xlsxtheme.cpp
+  xlsxcelllocation.cpp
+  xlsxconditionalformatting.cpp
+  xlsxdocument.cpp
+D:\vs projects\Simulator\include\QXlsx\source\xlsxdocument.cpp(116,22): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+D:\vs projects\Simulator\include\QXlsx\source\xlsxdocument.cpp(138,21): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+  xlsxrelationships.cpp
+  xlsxutility.cpp
+  正在生成代码...
+  QXlsx.vcxproj -> D:\vs projects\Simulator\lib\Debug\QXlsxQt6.lib

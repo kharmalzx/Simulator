@@ -7,7 +7,7 @@ class StoreManage : public QObject
 	Q_OBJECT
 public:
 
-	vector<Customer*> customerList;
+	
 
 	StoreManage(QObject* parent, MapPanel* mapPanel,AStarPathfinding* astar);
 
@@ -17,6 +17,11 @@ public:
 	void addCustomer(Customer* c);
 	void startSimulation();
 
+	//店铺信息管理
+	QVector<Shelf*> shelfList;
+	QVector<Customer*> customerList;
+	QVector<Cashier*> cashierList;
+	
 
 private:
 
@@ -26,7 +31,7 @@ private:
 	Map* map;
 
 	QThreadPool* customerPool;
-	QVector<Shelf*> shelfList;
+	
 
 signals:
 	

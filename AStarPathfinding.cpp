@@ -1,7 +1,7 @@
 #include"AStarPathfinding.h"
 
 
-bool notInVector(const vector<pair<int,int>>& vec, const int& x, const int& y) {
+bool notInVector(const QVector<QPair<int,int>>& vec, const int& x, const int& y) {
 	for(const pair<int,int>& element : vec)
 		if (element.first == x && element.second == y)
 			return false;
@@ -37,7 +37,7 @@ void AStarPathfinding::readMap()
 	map->max_height = excelTool->getSheetRow();
 
 	for (int i = 1; i <= map->max_height; i++) {
-		vector<MapCell> line;
+		QVector<MapCell> line;
 
 		for (int j = 1; j <= map->max_width; j++) {
 
@@ -54,35 +54,82 @@ void AStarPathfinding::readMap()
 
 
 	//寻找货架，并将货架和取货口绑定起来
+	//目前sn是乱写的，之后跟表里对应
 	int sn = 1;
-	vector<pair<int,int>>bannedList;
+	QVector<QPair<int,int>>bannedList;
 	for (int i = 0; i < map->max_height; i++)
 		for (int j = 0; j < map->max_width; j++) {
+			
+			Facility faci;
+			faci.type = -1;
+			faci.sn = sn;
+			sn++;
+
 			if (map->mapCells[i][j].type == CellType::CELL_SHELF && notInVector(bannedList, i+1,j+1)) {
-				//只有不在bannedList中的才能探货架区域
+				faci.type = CellType::CELL_SHELF;
 
-				Shelf sf;
-				sf.sn = sn;
-				sn++;
-				getShelfArea(map->mapCells[i][j], &sf);
+			}
+			else if (map->mapCells[i][j].type == CellType::CELL_CASHIER && notInVector(bannedList, i + 1, j + 1)) {
+				faci.type = CellType::CELL_CASHIER;
+			}
 
-				//在知道了shelf的area之后，沿着area的周围查找取货口
-				for (int k = 0; k < sf.area.size(); k++) {
-					int x = sf.area[k].x;
-					int y = sf.area[k].y;
-					if (x + 1 <= map->max_height && map->mapCells[x][y - 1].type == CellType::CELL_FETCH)
-						sf.fetchList.push_back(map->mapCells[x][y - 1]);
-					if (x - 1 >= 1 && map->mapCells[x - 2][y - 1].type == CellType::CELL_FETCH)
-						sf.fetchList.push_back(map->mapCells[x - 2][y - 1]);
-					if (y - 1 >= 1 && map->mapCells[x - 1][y - 2].type == CellType::CELL_FETCH)
-						sf.fetchList.push_back(map->mapCells[x - 1][y - 2]);
-					if (y + 1 <= map->max_width && map->mapCells[x - 1][y].type == CellType::CELL_FETCH)
-						sf.fetchList.push_back(map->mapCells[x - 1][y]);
+			if (faci.type >= 0) {
+				getFacilityArea(map->mapCells[i][j], &faci);
 
-					bannedList.push_back(std::make_pair(x,y));
+				//在知道了facility的area之后，沿着area的周围查找fetch和ports
+				for (int k = 0; k < faci.list_mapcell_area.size(); k++) {
+					int x = faci.list_mapcell_area[k].x;
+					int y = faci.list_mapcell_area[k].y;
+					if (x + 1 <= map->max_height) {
+						if (map->mapCells[x][y - 1].type == CellType::CELL_FETCH)
+							faci.list_mapcell_fetch.push_back(map->mapCells[x][y - 1]);
+						else if (map->mapCells[x][y - 1].type == CellType::CELL_SERVICE_PORTS)
+							faci.list_service_ports.push_back(map->mapCells[x][y - 1]);
+					}
+						
+					if (x - 1 >= 1) {
+						if(map->mapCells[x - 2][y - 1].type == CellType::CELL_FETCH)
+							faci.list_mapcell_fetch.push_back(map->mapCells[x - 2][y - 1]);
+						else if(map->mapCells[x - 2][y - 1].type == CellType::CELL_SERVICE_PORTS)
+							faci.list_service_ports.push_back(map->mapCells[x - 2][y - 1]);
+					}
+						
+					if (y - 1 >= 1) {
+						if(map->mapCells[x - 1][y - 2].type == CellType::CELL_FETCH)
+							faci.list_mapcell_fetch.push_back(map->mapCells[x - 1][y - 2]);
+						else if(map->mapCells[x - 1][y - 2].type == CellType::CELL_SERVICE_PORTS)
+							faci.list_service_ports.push_back(map->mapCells[x - 1][y - 2]);
+					}
+						
+					if (y + 1 <= map->max_width) {
+						if (map->mapCells[x - 1][y].type == CellType::CELL_FETCH)
+							faci.list_mapcell_fetch.push_back(map->mapCells[x - 1][y]);
+						else if (map->mapCells[x - 1][y].type == CellType::CELL_SERVICE_PORTS)
+							faci.list_service_ports.push_back(map->mapCells[x - 1][y]);
+					}	
+					
+
+					bannedList.push_back(std::make_pair(x, y));
 				}
 
-				map->shelfList.push_back(sf);
+				if (faci.type == CellType::CELL_CASHIER) {
+					Cashier c;
+					c.setSn(faci.sn);
+					c.setType(faci.type);
+					c.list_mapcell_area = faci.list_mapcell_area;
+					c.list_mapcell_fetch = faci.list_mapcell_fetch;
+					c.list_service_ports = faci.list_service_ports;
+					map->cashierList.push_back(c);
+				}
+				else if (faci.type == CellType::CELL_SHELF) {
+					Shelf s;
+					s.setSn(faci.sn);
+					s.setType(faci.type);
+					s.list_mapcell_area = faci.list_mapcell_area;
+					s.list_mapcell_fetch = faci.list_mapcell_fetch;
+					s.list_service_ports = faci.list_service_ports;
+					map->shelfList.push_back(s);
+				}
 
 			}
 		}
@@ -90,19 +137,27 @@ void AStarPathfinding::readMap()
 	bannedList.clear();
 }
 
-void AStarPathfinding::getShelfArea(MapCell cur, Shelf* sf)
+void AStarPathfinding::getFacilityArea(MapCell cur, Facility* facility)
 {
-	//往右和下方查找属于同一个shelf的格子
-	if (cur.x < map->max_height && map->mapCells[cur.x][cur.y - 1].type == CellType::CELL_SHELF)
-		getShelfArea(map->mapCells[cur.x][cur.y - 1], sf);
-	if (cur.y < map->max_width && map->mapCells[cur.x - 1][cur.y].type == CellType::CELL_SHELF)
-		getShelfArea(map->mapCells[cur.x - 1][cur.y], sf);
-	sf->area.push_back(cur);
+	int temp_type = facility->type;
+
+	if (temp_type != CellType::CELL_SHELF || temp_type != CellType::CELL_CASHIER) {
+		qDebug() << "not facility but getFacilityArea";
+		return;
+	}
+		
+
+	//往右和下方查找属于同一个设施的格子
+	if (cur.x < map->max_height && map->mapCells[cur.x][cur.y - 1].type == temp_type)
+		getFacilityArea(map->mapCells[cur.x][cur.y - 1], facility);
+	if (cur.y < map->max_width && map->mapCells[cur.x - 1][cur.y].type == temp_type)
+		getFacilityArea(map->mapCells[cur.x - 1][cur.y], facility);
+	facility->list_mapcell_area.push_back(cur);
 }
 
-vector<MapCell> AStarPathfinding::getPath(int startX, int startY, int endX, int endY) {
+QVector<MapCell> AStarPathfinding::getPath(int startX, int startY, int endX, int endY) {
 	
-	vector<MapCell> vec;
+	QVector<MapCell> vec;
 	
 	{
 	QMutexLocker locker(&getPathMutex);
@@ -301,7 +356,7 @@ void AStarPathfinding::moveToMinMapCell() {
 
 }
 
-vector<int> AStarPathfinding::getOrientedShelf(MapCell bef, MapCell next) {
+QVector<int> AStarPathfinding::getOrientedShelf(MapCell bef, MapCell next) {
 	//vector<int> shelfSn;
 	//int horizont = 3;
 
@@ -330,5 +385,5 @@ vector<int> AStarPathfinding::getOrientedShelf(MapCell bef, MapCell next) {
 	//	//非斜向走
 	//}
 
-	return vector<int>();
+	return QVector<int>();
 }

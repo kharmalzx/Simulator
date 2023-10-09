@@ -21,7 +21,7 @@ Customer::Customer(StoreManage* parent, QVector<QPair<int, int>> aim)
 void Customer::getPathBySeq()
 {
     for (int i = 0; i < aimList.size() - 1; i++) {
-        vector<MapCell> temp = astar->getPath(aimList[i].first, aimList[i].second, aimList[i + 1].first, aimList[i + 1].second);
+        QVector<MapCell> temp = astar->getPath(aimList[i].first, aimList[i].second, aimList[i + 1].first, aimList[i + 1].second);
         int size_bf = path.size();
         if (i != 0) {
             path.resize(size_bf + temp.size() - 1);
@@ -74,6 +74,19 @@ void Customer::initStateMachine()
 void Customer::getRandomShelf()
 {
     //顾客随机寻路获取目标
+    if (list_shelf_detected.size() == storeManage->shelfList.size()) {
+        int rand = std::rand() % storeManage->cashierList.size();
+        aimList.push_back(QPair<int, int>(storeManage->cashierList[rand]->list_mapcell_fetch[0].x, storeManage->cashierList[rand]->list_mapcell_fetch[0].y));
+    }
+    else {
+        int rand = 0;
+        while(list_shelf_detected.contains(storeManage->shelfList[(rand = std::rand() % storeManage->shelfList.size())]->sn)){}
+
+        //在货架周围随机选一个点
+        int pos_rand = std::rand() % MapCell::circle_one.size();
+
+        aimList.push_back(QPair<int, int>(storeManage->shelfList[rand]->list_mapcell_area[0].x, storeManage->shelfList[rand]->list_mapcell_area[0].y));
+    }
     
 }
 

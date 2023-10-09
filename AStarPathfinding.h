@@ -16,8 +16,8 @@ public:
 	AStarPathfinding();
 	~AStarPathfinding();
 	void readMap();
-	void getShelfArea(MapCell cur, Shelf* sf);
-	vector<MapCell> getPath(int startX, int startY, int endX, int endY);
+	void getFacilityArea(MapCell cur, Facility* facility);
+	QVector<MapCell> getPath(int startX, int startY, int endX, int endY);
 	void resetMap();
 
     Data* data;
@@ -28,8 +28,8 @@ private:
 
 	MapCell* start;
 	MapCell* end;
-	vector<pair<int,int>> openList;
-	vector<pair<int,int>> closeList;
+	QVector<QPair<int,int>> openList;
+	QVector<QPair<int,int>> closeList;
 	
 	Map* map;
 	MapCell* curMapCell;
@@ -43,5 +43,5 @@ private:
 	MapCell* getMinOpenMapCell();
 	void getAround();
 	void moveToMinMapCell();
-	vector<int> getOrientedShelf(MapCell bef, MapCell next);
+	QVector<int> getOrientedShelf(MapCell bef, MapCell next);
 };

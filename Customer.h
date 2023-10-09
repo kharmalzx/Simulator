@@ -37,11 +37,11 @@ public:
 	Customer(int horizont, float speed, QVector<int> needList,QVector<int> detectedList);
 	Customer(StoreManage* parent, QVector<QPair<int, int>> aim);
 	
-	void drawCell();
 	void setAStarKit(AStarPathfinding* as) { astar = as; };
 	void setMapPanel(MapPanel* mp) { mapPanel = mp; };
 	void setTimer(QTimer* t) { allTimer = t; };
 	QVector<MapCell> getPath();
+	StoreManage* getParent() { return storeManage; };
 
 
 signals:

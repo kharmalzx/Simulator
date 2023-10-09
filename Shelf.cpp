@@ -9,3 +9,11 @@ Shelf::Shelf()
 Shelf::~Shelf()
 {
 }
+
+Cashier::Cashier()
+{
+}
+
+Cashier::~Cashier()
+{
+}

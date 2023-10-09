@@ -26,3 +26,17 @@ bool MapCell::isAccessible()
 		return false;
 	else return true;
 }
+
+const QVector<MapCell::pos> MapCell::circle_one = {
+	QPair<int, int>(-1, 1),
+	QPair<int, int>(0, 1),
+	QPair<int, int>(1, 1),
+
+	QPair<int, int>(-1, 0),
+	QPair<int, int>(1, 0),
+
+	QPair<int, int>(-1, -1),
+	QPair<int, int>(0, -1),
+	QPair<int, int>(1, -1),
+
+};

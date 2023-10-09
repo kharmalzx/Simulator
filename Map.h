@@ -1,16 +1,16 @@
 #pragma once
 #include "Shelf.h"
+#include <qobject.h>
 
-using std::vector;
-
-class Map
+class Map : public QObject
 {
 public:
 
-	vector<vector<MapCell>> mapCells;
-	vector<Shelf> shelfList;
-	vector<MapCell> exitArea;
-	vector<MapCell> entranceArea;
+	QVector<QVector<MapCell>> mapCells;
+	QVector<Shelf> shelfList;
+	QVector<Cashier> cashierList;
+	QVector<MapCell> exitArea;
+	QVector<MapCell> entranceArea;
 
 	int max_height;
 	int max_width;

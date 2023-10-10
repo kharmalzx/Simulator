@@ -17,8 +17,9 @@ enum CellType
 };
 
 
-class MapCell : public QObject
+class MapCell
 {
+	
 public:
 
 	int x, y;
@@ -29,6 +30,7 @@ public:
 	using pos = QPair<int, int>;
 	//一环，左到右，上到下的8个点
 	static const QVector<pos> circle_one;
+
 
 	MapCell();
 

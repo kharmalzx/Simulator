@@ -8,8 +8,6 @@ MapCell::MapCell() {
 	G = 100000;
 	H = 100000;
 	parent = nullptr;
-
-	
 }
 
 void MapCell::clear()

@@ -5,7 +5,6 @@
 #include "Data.h"
 #include "ExcelTool.h"
 
-using std::pair;
 
 class AStarPathfinding {
 

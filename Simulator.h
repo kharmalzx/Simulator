@@ -24,7 +24,7 @@ private:
     
     AStarPathfinding* astar;
     
-    vector<MapCell> path;
+    QVector<MapCell> path;
     QTimer* timer;
     StoreManage* storeManage;
     void drawMap();

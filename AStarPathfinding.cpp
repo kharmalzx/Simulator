@@ -2,7 +2,7 @@
 
 
 bool notInVector(const QVector<QPair<int,int>>& vec, const int& x, const int& y) {
-	for(const pair<int,int>& element : vec)
+	for(const QPair<int,int>& element : vec)
 		if (element.first == x && element.second == y)
 			return false;
 	return true;

@@ -5,6 +5,7 @@
 
 #include <qstate.h>
 #include <qsignaltransition.h>
+#include "Customer.h"
 
 enum CustomerState
 {
@@ -34,14 +35,14 @@ class StateMove: public QState
 {
 	Q_OBJECT
 public:
-	explicit StateMove(QState* parent = nullptr) { state = CustomerState::STATE_MOVE; };
+	explicit StateMove(QState* parent = nullptr,Customer* owner);
 	void onEntry (QEvent* e) override;
 	void onExit(QEvent* e) override;
 	int getState() const { return state; };
 
 private:
 	int state;
-
+	
 };
 
 class StateQueue: public QState

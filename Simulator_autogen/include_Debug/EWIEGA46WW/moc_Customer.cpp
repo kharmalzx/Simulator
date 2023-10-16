@@ -183,15 +183,4 @@ int Customer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 
-// SIGNAL 0
-void Customer::updateCell()
-{
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
-}
-
-// SIGNAL 1
-void Customer::stopTimerSignal()
-{
-    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
-}
 QT_WARNING_POP

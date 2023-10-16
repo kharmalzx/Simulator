@@ -18,6 +18,8 @@ public:
 	void getFacilityArea(MapCell cur, Facility* facility);
 	QVector<MapCell> getPath(int startX, int startY, int endX, int endY);
 	void resetMap();
+	bool isOutofBound(int x, int y);
+
 
     Data* data;
 
@@ -36,7 +38,7 @@ private:
 	QMutex getPathMutex;
 
 	MapCell getMapCellFromExcel(int x, int y);
-	bool isOutofBound(int x, int y);
+	
 	float getMinDist(int startX, int startY, int endX, int endY);
 	bool isDetected(int x, int y);
 	MapCell* getMinOpenMapCell();

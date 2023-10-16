@@ -14,9 +14,19 @@ void StatePurchase::onExit(QEvent* e)
 	qDebug() << "StatePurchase::onExit";
 }
 
+StateMove::StateMove(QState* parent, Customer* owner)
+{
+
+	state = STATE_MOVE;
+	qDebug() << "StateMove::onMove";
+	connect(this, &QState::entered, owner, &Customer::moveToRandomShelf);
+
+}
+
 void StateMove::onEntry(QEvent* e)
 {
 	Q_UNUSED(e);
+
 	qDebug() << "StateMove::onEntry";
 
 }

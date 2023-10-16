@@ -43,6 +43,7 @@ public:
 	QVector<MapCell> getPath();
 	StoreManage* getParent() { return storeManage; };
 
+	void moveToRandomShelf();
 
 signals:
 	void purchaseStarted();
@@ -53,6 +54,8 @@ signals:
 	void queueFinished();
 	void enter();
 	void exit();
+	void moveToCheckout();
+
 
 
 
@@ -65,12 +68,13 @@ private:
 	StoreManage* storeManage;
 	MapPanel* mapPanel;
 	AStarPathfinding* astar;
+	Map* map;
 
 	QVector<int> list_commodity_needs;
 	QVector<int> list_shelf_detected;
 
 	//QPairÊÇ×ø±êx,y
-	QVector<QPair<int, int>> aimList;
+	QVector<MapCell> aimList;
 	
 	MapCell* start;
 	MapCell* end;
@@ -81,8 +85,9 @@ private:
 	QState* currentState;
 	QStateMachine* c_machine;
 
-	void getPathBySeq();
+	void getPathInAimlist();
 	void initStateMachine();
-	void getRandomShelf();
+	void movetoEnd();
+	
 };
 

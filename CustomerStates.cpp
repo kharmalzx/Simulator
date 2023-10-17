@@ -14,12 +14,12 @@ void StatePurchase::onExit(QEvent* e)
 	qDebug() << "StatePurchase::onExit";
 }
 
-StateMove::StateMove(QState* parent, Customer* owner)
+StateMove::StateMove(QState* parent, CustomerMachine* machine)
 {
 
 	state = STATE_MOVE;
 	qDebug() << "StateMove::onMove";
-	connect(this, &QState::entered, owner, &Customer::moveToRandomShelf);
+	connect(this, &QState::entered, machine, &CustomerMachine::rec_moveToRandomShelf);
 
 }
 

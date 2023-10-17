@@ -12,8 +12,8 @@
 #include <qstatemachine.h>
 #include <qsequentialanimationgroup.h>
 #include <qabstracttransition.h>
-#include "CustomerStates.h"
 #include "StoreManage.h"
+#include "CustomerMachine.h"
 
 
 class Customer : public QObject
@@ -30,7 +30,6 @@ public:
 
 	int horizont;
 	float speed;
-	QTimer* allTimer;
 	CustomerTask* customerTask;
 
 
@@ -39,28 +38,11 @@ public:
 	
 	void setAStarKit(AStarPathfinding* as) { astar = as; };
 	void setMapPanel(MapPanel* mp) { mapPanel = mp; };
-	void setTimer(QTimer* t) { allTimer = t; };
 	QVector<MapCell> getPath();
 	StoreManage* getParent() { return storeManage; };
 
 	void moveToRandomShelf();
-
-signals:
-	void purchaseStarted();
-	void purchaseToMove();
-	void checkoutStart();
-	void checkoutFinished();
-	void queueStarted();
-	void queueFinished();
-	void enter();
-	void exit();
-	void moveToCheckout();
-
-
-
-
-
-public slots:
+	QState getCurrentState();
 	
 
 private:
@@ -69,25 +51,31 @@ private:
 	MapPanel* mapPanel;
 	AStarPathfinding* astar;
 	Map* map;
-
+	CustomerMachine* machine;
+	
+	MapCell* currentCell;
+	QVector<MapCell> path;
 	QVector<int> list_commodity_needs;
 	QVector<int> list_shelf_detected;
 
-	//QPair是坐标x,y
 	QVector<MapCell> aimList;
-	
-	MapCell* start;
-	MapCell* end;
-	MapCell* curMapCell;
-	QVector<MapCell> path;
-	
 
-	QState* currentState;
-	QStateMachine* c_machine;
+
 
 	void getPathInAimlist();
-	void initStateMachine();
-	void movetoEnd();
+	void initConnectToMachine();
+	/// <summary>
+	/// 返回看到的货架编号
+	/// </summary>
+	/// <param name="nextCell"></param>
+	/// <returns></returns>
+	int watchDetect(MapCell* nextCell);
+	void moveToEnd(MapCell* end);
 	
+
+signals:
+	void sig_moveToEnd();
+	void sig_moveToCheckout();
+
 };
 

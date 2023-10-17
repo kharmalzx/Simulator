@@ -46,6 +46,9 @@
     <ClCompile Include="D:\vs projects\Simulator\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CustomerMachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\vs projects\Simulator\AStarPathfinding.h">
@@ -85,6 +88,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\StoreManage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomerMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

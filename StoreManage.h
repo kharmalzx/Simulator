@@ -12,6 +12,8 @@ public:
 	StoreManage(QObject* parent, MapPanel* mapPanel,AStarPathfinding* astar);
 
 	int commodityOnWhichFacility(int commoditySn);
+	int facilityHasWhatCommodity(int facilitySn);
+	int mapCellBelongsToWhichFacility(int x, int y);
 	void setCommodityOnFacility(int commoditySn, int facilitySn);
 	void createCustomer(QVector<QPair<int, int>> aim);
 	void addCustomer(Customer* c);
@@ -26,12 +28,14 @@ public:
 private:
 
 	AStarPathfinding* astar;
-	QVector<int> commodityOnFacility;
+	
 	MapPanel* mapPanel;
 	Map* map;
 
-	QThreadPool* customerPool;
-	
+	//first = commoditySn, second = facilitySn
+	QVector<QPair<int,int>> commodityOnFacility;
+	//first = facilitySn, second = commoditySn
+	QVector<QPair<int,int>> facilityHasCommodity;
 
 signals:
 	

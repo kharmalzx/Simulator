@@ -61,6 +61,15 @@ void CustomerMachine::rec_moveToRandomShelf()
     emit sig_toOwner_moveToRandomShelf();
 }
 
+void CustomerMachine::rec_moveToPurchase()
+{
+    //状态机转换为StatePurchase
+	emit moveToPurchase();
+
+    //发送给owner，让owner执行购物操作
+    emit sig_toOwner_moveToPurchase();
+}
+
 void CustomerMachine::initConnectToOwner()
 {
     connect(this,&CustomerMachine::sig_toOwner_moveToRandomShelf,owner,&Customer::moveToRandomShelf);

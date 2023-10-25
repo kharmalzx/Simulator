@@ -1,11 +1,19 @@
 #include "CustomerStates.h"
 
+StatePurchase::StatePurchase(QState* parent, CustomerMachine* machine)
+{
+	state = STATE_PURCHASE;
+	qDebug() << "StatePurchase::onPurchase";
+	
+	connect(this, &QState::entered, machine, &CustomerMachine::rec_moveToPurchase);
+}
+
 void StatePurchase::onEntry(QEvent* e)
 {
 	Q_UNUSED(e);
 	qDebug() << "StatePurchase::onEntry";
 	
-
+	emit sig_toOwner_moveToPurchase();
 }
 
 void StatePurchase::onExit(QEvent* e)

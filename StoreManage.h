@@ -18,6 +18,7 @@ public:
 	void createCustomer(QVector<QPair<int, int>> aim);
 	void addCustomer(Customer* c);
 	void startSimulation();
+	MapCell* getRecentFacilityFetchPoint(const int& x, const int& y, const int& shelfSn);
 
 	//店铺信息管理
 	QVector<Shelf*> shelfList;

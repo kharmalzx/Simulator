@@ -24,6 +24,7 @@ signals:
 	void moveToMove();
 
 	void sig_toOwner_moveToRandomShelf();
+	void sig_toOwner_moveToPurchase();
 
 public slots:
 
@@ -31,6 +32,7 @@ public slots:
 	void rec_moveToCheckout();
 
 	void rec_moveToRandomShelf();
+	void rec_moveToPurchase();
 
 private:
     StateEnter* enter;

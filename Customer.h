@@ -21,16 +21,9 @@ class Customer : public QObject
 	Q_OBJECT
 public:
 
-	class CustomerTask : public QRunnable {
-	public:
-
-		void writePath();
-
-	};
-
+	int id;
 	int horizont;
 	float speed;
-	CustomerTask* customerTask;
 
 
 	Customer(int horizont, float speed, QVector<int> needList,QVector<int> detectedList);
@@ -70,12 +63,14 @@ private:
 	/// <param name="nextCell"></param>
 	/// <returns></returns>
 	int watchDetect(MapCell* nextCell);
+	int getShelfInHorizont(const int& x, const int& y);
 	void moveToEnd(MapCell* end);
 	
 
 signals:
 	void sig_moveToEnd();
 	void sig_moveToCheckout();
+	void sig_moveToPurchase();
 
 };
 

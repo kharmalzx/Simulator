@@ -62,36 +62,40 @@ void Customer::initConnectToMachine()
 
 int Customer::watchDetect(MapCell* nextCell)
 {
-    //视野检测
+    //视野检测，从最远处看回来，而不是从原地看出去
+    
+    int shelfSn = 0;
+
     if (horizont == 3) {
+        //可以试试只看2格以外的地方，而不用看内圈
+        QPair<int, int> vec = QPair<int, int>(nextCell->x - currentCell->x, nextCell->y - currentCell->y);
+
         for (int i = -1; i < horizont - 1; i++) {
             for (int j = -1; j < horizont - 1; j++) {
-                if (nextCell->x + i >= 0 && nextCell->x + i < map->mapCells.size() && nextCell->y + j >= 0 && nextCell->y + j < map->mapCells[0].size())
-                    if (map->mapCells[nextCell->x + i][nextCell->y + j].type == CELL_SHELF) {
-                        int shelfSn = storeManage->mapCellBelongsToWhichFacility(nextCell->x + i, nextCell->y + j);
-                        int commoditySn = storeManage->facilityHasWhatCommodity(shelfSn);
-                        if (list_commodity_needs.contains(commoditySn)) {
-                            //看见有没买的商品就返回
-                            list_commodity_needs.removeOne(commoditySn);
-                            list_shelf_detected.push_back(shelfSn);
-                            return shelfSn;
-                        }
-                        else {
-                            //看见了就登记
-                            list_shelf_detected.push_back(shelfSn);
-                        }
-                            
-                    }
+                if(shelfSn = getShelfInHorizont(nextCell->x + i, nextCell->y + j))return shelfSn;
             }
         }
 
         //走到nextCell会看到边缘的一部分视野
-        if (abs(nextCell->x - currentCell->x) + abs(nextCell->y - currentCell->y) == 1) {
+        if (abs(vec.first) + abs(vec.second) == 1) {
             //延长3格
+            
+            int pos_x = nextCell->x + vec.first * 2;
+            int pos_y = nextCell->y + vec.second * 2;
 
+            for (int i = abs(vec.first) - 1; i <= 1 - abs(vec.first);i++){
+                for (int j = abs(vec.second) - 1; j <= 1 - abs(vec.second); j++) {
+                    if (shelfSn = getShelfInHorizont(pos_x + i,pos_y+j))return shelfSn;
+                }
+            }
         }
         else {
             //5格
+            if (shelfSn = getShelfInHorizont(nextCell->x + 2 * vec.first,nextCell->y))return shelfSn;
+            if (shelfSn = getShelfInHorizont(nextCell->x + 2 * vec.first, nextCell->y + 1 * vec.second))return shelfSn;
+            if (shelfSn = getShelfInHorizont(nextCell->x + 2 * vec.first, nextCell->y + 2 * vec.second))return shelfSn;
+            if (shelfSn = getShelfInHorizont(nextCell->x + 1 * vec.first, nextCell->y + 2 * vec.second))return shelfSn;
+            if (shelfSn = getShelfInHorizont(nextCell->x, nextCell->y + 2 * vec.second))return shelfSn;
         }
         
     }
@@ -103,6 +107,27 @@ int Customer::watchDetect(MapCell* nextCell)
     }
 
     return -1;
+}
+
+int Customer::getShelfInHorizont(const int& x, const int& y)
+{
+    if (x >= 0 && x < map->mapCells.size() && y >= 0 && y < map->mapCells[0].size()) {
+        if (map->mapCells[x][y].type == CELL_SHELF) {
+            int shelfSn = storeManage->mapCellBelongsToWhichFacility(x, y);
+            int commoditySn = storeManage->facilityHasWhatCommodity(shelfSn);
+            if (list_commodity_needs.contains(commoditySn)) {
+                //看见有没买的商品就返回
+                list_commodity_needs.removeOne(commoditySn);
+                list_shelf_detected.push_back(shelfSn);
+                return shelfSn;
+            }
+            else {
+                //看见了就登记
+                list_shelf_detected.push_back(shelfSn);
+            }
+
+        }
+    }
 }
 
 void Customer::moveToEnd(MapCell* end)
@@ -124,35 +149,46 @@ void Customer::moveToEnd(MapCell* end)
 
     //播走路动画，应该是个while循环,路上查视野，去往收银台的时候不查
     while ((shelfSn = watchDetect(nextCell)) < 0 && !isToCashier && (nextCell->x != end->x && nextCell->y!= end->y)) {
-
         path.pop_front();
 	    currentCell = nextCell;
 		nextCell = &map->mapCells[path[1].x][path[1].y];
     }
     
     if (shelfSn) {
-        list_shelf_detected.push_back(shelfSn);
-        end->x = storeManage->shelfList[shelfSn]->list_mapcell_fetch[0].x;
-		end->y = storeManage->shelfList[shelfSn]->list_mapcell_fetch[0].y;
-        aimList.push_back(storeManage->shelfList[shelfSn]->list_mapcell_fetch[0]);
+        //以货架最近的取货口为终点
+        end = storeManage->getRecentFacilityFetchPoint(currentCell->x, currentCell->y, shelfSn);
 
-        //打断式寻路
-        emit sig_moveToEnd();
+        if (end != nullptr) {
+            aimList.push_back(storeManage->shelfList[shelfSn]->list_mapcell_fetch[0]);
+            //打断式寻路
+            emit sig_moveToEnd();
+        }
+        else {
+            qDebug() << "顾客" << id << "找不到设施" << shelfSn << "的取货口/服务点";
+        }
+
+        
     }
     else {
 		//再走一步到达终点
         currentCell = nextCell;
 
         if (end->type == CELL_CASHIER) {
+            emit sig_moveToCheckout();
 			//到达收银台
 			//播放结账动画
 			//播放离开动画
 		}
+        else if(end->type == CELL_FETCH || end->type == CELL_SERVICE_PORTS){
+			//到达取货口或者服务点
+            emit sig_moveToPurchase();
+        }
         else {
-			//到达货架
-			//播放购物动画
-			//播放离开动画
-		}
+            //到达普通格子，路上什么事情都没发生
+            //不用改变状态，继续寻路
+            moveToRandomShelf();
+
+        }
 	}
 		
     
@@ -219,9 +255,4 @@ QState Customer::getCurrentState()
 QVector<MapCell> Customer::getPath()
 {
     return path;
-}
-
-void Customer::CustomerTask::writePath()
-{
-
 }

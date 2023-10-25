@@ -23,13 +23,17 @@ class StatePurchase : public QState
 {
 	Q_OBJECT
 public:
-	explicit StatePurchase(QState* parent = nullptr) { state = CustomerState::STATE_PURCHASE; };
+	explicit StatePurchase(QState* parent = nullptr, CustomerMachine* machine);
 	void onEntry(QEvent* e) override;
 	void onExit(QEvent* e) override;
 	int getState() const { return state; };
 
 private:
 	int state;
+
+signals:
+	void sig_toOwner_moveToPurchase();
+
 };
 
 class StateMove: public QState

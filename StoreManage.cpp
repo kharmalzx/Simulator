@@ -102,3 +102,21 @@ void StoreManage::startSimulation()
 
 }
 
+MapCell* StoreManage::getRecentFacilityFetchPoint(const int& x, const int& y, const int& shelfSn)
+{
+    float minDistance = 999999;
+    MapCell* recentCell = nullptr;
+
+    //之后可能需要分辨sn的种类，比如货架，收银台，服务台
+
+    for (int i = 0; i < shelfList[shelfSn-1]->list_mapcell_fetch.size(); i++) {
+        if (minDistance > sqrt(pow(shelfList[shelfSn - 1]->list_mapcell_fetch[i].x - x, 2) + pow(shelfList[shelfSn - 1]->list_mapcell_fetch[i].y - y, 2))) {
+            minDistance = sqrt(pow(shelfList[shelfSn - 1]->list_mapcell_fetch[i].x - x, 2) + pow(shelfList[shelfSn - 1]->list_mapcell_fetch[i].y - y, 2));
+            recentCell = &shelfList[shelfSn - 1]->list_mapcell_fetch[i];
+        }
+            
+    }
+    
+    return recentCell;
+}
+

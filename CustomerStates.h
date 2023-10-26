@@ -15,8 +15,8 @@ enum CustomerState
 	STATE_QUEUE,
 	STATE_ENTER,
 	STATE_EXIT,
-	STATE_SLACK,
-	STATE_CHECKOUT
+	STATE_CHECKOUT,
+	STATE_SERVICE
 };
 
 class StatePurchase : public QState
@@ -32,7 +32,7 @@ private:
 	int state;
 
 signals:
-	void sig_toOwner_moveToPurchase();
+	void moveToPurchase();
 
 };
 
@@ -91,11 +91,12 @@ private:
 	int state;
 };
 
-class StateSlack: public QState
+
+class StateCheckout: public QState
 {
 	Q_OBJECT
 public:
-	explicit StateSlack(QState* parent = nullptr) { state = CustomerState::STATE_SLACK; };
+	explicit StateCheckout(QState* parent = nullptr) { state = CustomerState::STATE_CHECKOUT; };
 	void onEntry(QEvent* e) override;
 	void onExit(QEvent* e) override;
 	int getState() const { return state; };
@@ -104,11 +105,11 @@ private:
 	int state;
 };
 
-class StateCheckout: public QState
+class StateService : public QState
 {
 	Q_OBJECT
 public:
-	explicit StateCheckout(QState* parent = nullptr) { state = CustomerState::STATE_CHECKOUT; };
+	explicit StateService(QState* parent = nullptr) { state = CustomerState::STATE_SERVICE; };
 	void onEntry(QEvent* e) override;
 	void onExit(QEvent* e) override;
 	int getState() const { return state; };

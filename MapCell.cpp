@@ -8,6 +8,7 @@ MapCell::MapCell() {
 	G = 100000;
 	H = 100000;
 	parent = nullptr;
+	isOccupy = false;
 }
 
 void MapCell::clear()
@@ -23,6 +24,18 @@ bool MapCell::isAccessible()
 	if (this->type == CELL_BLOCK || this->type == CELL_SHELF)
 		return false;
 	else return true;
+}
+
+bool MapCell::isOccupied()
+{
+	if (isAccessible() && !isOccupy && type != CELL_FETCH)
+		return false;
+	else return true;
+}
+
+void MapCell::setOccupy(bool oc)
+{
+	isOccupy = oc;
 }
 
 const QVector<MapCell::pos> MapCell::circle_one = {

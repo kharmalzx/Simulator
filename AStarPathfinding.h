@@ -16,7 +16,7 @@ public:
 	~AStarPathfinding();
 	void readMap();
 	void getFacilityArea(MapCell cur, Facility* facility);
-	QVector<MapCell> getPath(int startX, int startY, int endX, int endY);
+	QVector<MapCell*> getPath(int startX, int startY, int endX, int endY);
 	void resetMap();
 	bool isOutofBound(int x, int y);
 

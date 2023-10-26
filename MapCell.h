@@ -4,16 +4,18 @@
 
 enum CellType
 {
-	CELL_BLOCK = 0,
-	CELL_ACCESSIBLE = 1,
-	CELL_FETCH = 2,
-	CELL_SHELF = 3,
-	CELL_CASHIER = 4,
-	CELL_STOREHOUSE = 5,
-	CELL_STAFFROOM = 6,
-	CELL_EXIT = 7,
-	CELL_ENTRANCE = 8,
-	CELL_SERVICE_PORTS = 9,
+	CELL_BLOCK,
+	CELL_ACCESSIBLE,
+	CELL_FETCH,
+	CELL_SHELF,
+	CELL_COMPLEX,
+	CELL_DRESSINGROOM,
+	CELL_CASHIER,
+	CELL_STOREHOUSE,
+	CELL_STAFFROOM,
+	CELL_EXIT,
+	CELL_ENTRANCE,
+	CELL_SERVICE_PORTS,
 };
 
 
@@ -30,13 +32,20 @@ public:
 	using pos = QPair<int, int>;
 	//一环，左到右，上到下的8个点
 	static const QVector<pos> circle_one;
-
+	
+	
 
 	MapCell();
 
 	void clear();
 	bool isAccessible();
+	bool isOccupied();
+	void setOccupy(bool oc);
 	static const pos getCircleOnePos(int index){	return circle_one[index]; }
 
+private:
+
+	//被其它人占用
+	bool isOccupy;
 };
 

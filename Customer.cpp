@@ -1,16 +1,15 @@
 #include "Customer.h"
 
-Customer::Customer(int horizont, float speed, QVector<int> needList, QVector<int> detectedList)
+Customer::Customer(int id, int horizont, float speed, QVector<int> needList, QVector<int> detectedList)
 {
 	this->horizont = horizont;
 	this->speed = speed;
 	this->list_commodity_needs = needList;
 	this->list_shelf_detected = detectedList;
 
-	
 }
 
-Customer::Customer(StoreManage* parent, QVector<QPair<int, int>> aim)
+Customer::Customer(StoreManage* parent, QVector<MapCell*> aim)
 {
     setParent(parent);
     storeManage = parent;
@@ -21,20 +20,15 @@ Customer::Customer(StoreManage* parent, QVector<QPair<int, int>> aim)
 
 	
     for (int i = 0; i < aim.size(); i++) {
-        MapCell c;
-        c.clear();
-        c.x = aim[i].first;
-        c.y = aim[i].second;
-        aimList.push_back(c);
+        aimList.push_back(aim[i]);
     }
-
 
 }
 
 void Customer::getPathInAimlist()
 {
     for (int i = 0; i < aimList.size() - 1; i++) {
-        QVector<MapCell> temp = astar->getPath(aimList[i].x, aimList[i].y, aimList[i + 1].x, aimList[i + 1].y);
+        QVector<MapCell*> temp = astar->getPath(aimList[i]->x, aimList[i]->y, aimList[i + 1]->x, aimList[i + 1]->y);
         int size_bf = path.size();
         if (i != 0) {
             path.resize(size_bf + temp.size() - 1);
@@ -55,9 +49,21 @@ void Customer::getPathInAimlist()
 
 void Customer::initConnectToMachine()
 {
-    connect(this, &Customer::sig_moveToEnd, machine, &CustomerMachine::rec_moveToEnd);
-    connect(this, &Customer::sig_moveToCheckout, machine, &CustomerMachine::rec_moveToCheckout);
+    
+    connect(this, &Customer::sig_StateChange_moveToEnd, machine, &CustomerMachine::rec_fromOwner_moveToEnd);
+    connect(this, &Customer::sig_StateChange_moveToCheckout, machine, &CustomerMachine::rec_fromOwner_moveToCheckout);
+    connect(this, &Customer::sig_StateChange_moveToPurchase, machine, &CustomerMachine::rec_fromOwner_moveToPurchase);
 
+
+    //用信号传递执行的通知，不用把自身传进去，避免成员修改父节点
+    connect(machine, &CustomerMachine::sig_toOwner_moveToRandomShelf, this, &Customer::moveToRandomShelf);
+    connect(machine, &CustomerMachine::sig_toOwner_moveToPurchase, this, &Customer::queue);
+    
+}
+
+void Customer::initConnectToStoreManage()
+{
+    connect(this, &Customer::updateQueue, storeManage, &StoreManage::updateQueue);
 }
 
 int Customer::watchDetect(MapCell* nextCell)
@@ -139,68 +145,96 @@ void Customer::moveToEnd(MapCell* end)
 
     bool isToCashier = false;
 
-    if (end->type != CELL_CASHIER) {
+    if (end->type == CELL_CASHIER) {
         isToCashier = true;
     }
 
-    int shelfSn = -1;
-    currentCell = &map->mapCells[path[0].x][path[0].y];
-    MapCell* nextCell = &map->mapCells[path[1].x][path[1].y];
+    int facilitySn = -1;
+    currentCell = &map->mapCells[path[0]->x][path[0]->y];
+    MapCell* nextCell = &map->mapCells[path[1]->x][path[1]->y];
 
     //播走路动画，应该是个while循环,路上查视野，去往收银台的时候不查
-    while ((shelfSn = watchDetect(nextCell)) < 0 && !isToCashier && (nextCell->x != end->x && nextCell->y!= end->y)) {
+    while ((facilitySn = watchDetect(nextCell)) < 0 && !isToCashier && (nextCell->x != end->x && nextCell->y!= end->y)) {
         path.pop_front();
 	    currentCell = nextCell;
-		nextCell = &map->mapCells[path[1].x][path[1].y];
+		nextCell = &map->mapCells[path[1]->x][path[1]->y];
+
+
     }
     
-    if (shelfSn) {
-        //以货架最近的取货口为终点
-        end = storeManage->getRecentFacilityFetchPoint(currentCell->x, currentCell->y, shelfSn);
+    if (facilitySn) {
+        //看到后，需要看设施人数是否超过容忍上限
+        QPair<bool, bool> shallJoin = storeManage->shallJoinQueue(this, facilitySn);
+        if (shallJoin.first) {
+			//需要等待
+            queueInfo.isQueue = true;
+            queueInfo.facilitySn = facilitySn;
+            queueInfo.isInQueue1 = shallJoin.second;
 
-        if (end != nullptr) {
-            aimList.push_back(storeManage->shelfList[shelfSn]->list_mapcell_fetch[0]);
-            //打断式寻路
-            emit sig_moveToEnd();
-        }
+            //以货架最近的取货口的队尾为终点,已经占用了
+            end = storeManage->requestShortestQueueEnd(id, facilitySn);
+
+            if (end != nullptr) {
+                path.clear();
+                aimList.clear();
+                aimList.push_back(end);
+
+                //打断式寻路
+                emit sig_StateChange_moveToEnd();
+            }
+            else {
+                qDebug() << "顾客" << id << "找不到设施" << facilitySn << "的取货口/服务点的队尾";
+            }
+
+		}
         else {
-            qDebug() << "顾客" << id << "找不到设施" << shelfSn << "的取货口/服务点";
-        }
+			//不等待
+            queueInfo.isQueue = false;
+		}
 
-        
     }
     else {
 		//再走一步到达终点
         currentCell = nextCell;
 
-        if (end->type == CELL_CASHIER) {
-            emit sig_moveToCheckout();
-			//到达收银台
-			//播放结账动画
-			//播放离开动画
-		}
-        else if(end->type == CELL_FETCH || end->type == CELL_SERVICE_PORTS){
-			//到达取货口或者服务点
-            emit sig_moveToPurchase();
+        //判断终点属于什么，决定接下来的行为
+        if (queueInfo.isQueue) {
+            //在队中，但在收银台，试衣间还是货架？返回值偷懒用CELL类型代替
+            pos_at = currentCell;
+
+            if (storeManage->getFacilityType(queueInfo.facilitySn) == CELL_CASHIER) {
+
+                emit sig_StateChange_moveToCheckout();
+            }
+            else if (storeManage->getFacilityType(queueInfo.facilitySn) == CELL_SHELF) {
+                emit updateQueue(this,queueInfo.facilitySn);
+                queue();
+                emit sig_StateChange_moveToPurchase();
+            }
+            else if (storeManage->getFacilityType(queueInfo.facilitySn) == CELL_COMPLEX) {
+
+            }
+            else if (storeManage->getFacilityType(queueInfo.facilitySn) == CELL_DRESSINGROOM) {
+
+            }
+            
         }
         else {
             //到达普通格子，路上什么事情都没发生
             //不用改变状态，继续寻路
             moveToRandomShelf();
-
         }
 	}
-		
-    
-		
+			
 }
+
 
 void Customer::moveToRandomShelf()
 {
     if (!aimList.isEmpty()){
         //已经有目标了，不用再找随机货架
         getPathInAimlist();
-        moveToEnd(&aimList[0]);
+        moveToEnd(aimList[0]);
         return;
     }
         
@@ -209,10 +243,14 @@ void Customer::moveToRandomShelf()
 
     //顾客随机寻路获取目标
     if (list_shelf_detected.size() == storeManage->shelfList.size()) {
-        //全都搜寻完了，去结账
+        //全都搜寻完了，判断是否买完了
+        
+
+
+        //此处应该找举例结账点最近的队尾
         int rand = std::rand() % storeManage->cashierList.size();
-        randMapCell = &storeManage->cashierList[rand]->list_mapcell_fetch[0];
-        aimList.push_back(storeManage->cashierList[rand]->list_mapcell_fetch[0]);
+        randMapCell = storeManage->requestShortestQueueEnd(id, storeManage->cashierList[rand]->sn);
+        aimList.push_back(randMapCell);
     }
     else {
 
@@ -234,7 +272,7 @@ void Customer::moveToRandomShelf()
         }
 
 
-        aimList.push_back(map->mapCells[randMapCell->x + MapCell::circle_one[rand_pos].first][randMapCell->y + MapCell::circle_one[rand_pos].second]);
+        aimList.push_back(&map->mapCells[randMapCell->x + MapCell::circle_one[rand_pos].first][randMapCell->y + MapCell::circle_one[rand_pos].second]);
     }
     
     getPathInAimlist();
@@ -242,6 +280,16 @@ void Customer::moveToRandomShelf()
 
     //然后走到终点
     moveToEnd(randMapCell);
+}
+
+void Customer::queue()
+{
+    emit updateQueue(this,queueInfo.facilitySn);
+
+
+    //成功后切去结账的走路状态
+    emit sig_StateChange_moveToEnd();
+
 }
 
 QState Customer::getCurrentState()
@@ -252,7 +300,7 @@ QState Customer::getCurrentState()
         qDebug() << "不能获得当前状态";
 }
 
-QVector<MapCell> Customer::getPath()
+QVector<MapCell*> Customer::getPath()
 {
     return path;
 }

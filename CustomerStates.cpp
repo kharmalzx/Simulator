@@ -5,7 +5,8 @@ StatePurchase::StatePurchase(QState* parent, CustomerMachine* machine)
 	state = STATE_PURCHASE;
 	qDebug() << "StatePurchase::onPurchase";
 	
-	connect(this, &QState::entered, machine, &CustomerMachine::rec_moveToPurchase);
+	//先这么写着，后面要用再调整
+	connect(this, &StatePurchase::moveToPurchase, machine, &CustomerMachine::rec_fromStates_moveToPurchase);
 }
 
 void StatePurchase::onEntry(QEvent* e)
@@ -13,7 +14,8 @@ void StatePurchase::onEntry(QEvent* e)
 	Q_UNUSED(e);
 	qDebug() << "StatePurchase::onEntry";
 	
-	emit sig_toOwner_moveToPurchase();
+	//状态转换成功后发送信号
+	emit moveToPurchase();
 }
 
 void StatePurchase::onExit(QEvent* e)
@@ -22,12 +24,11 @@ void StatePurchase::onExit(QEvent* e)
 	qDebug() << "StatePurchase::onExit";
 }
 
+
 StateMove::StateMove(QState* parent, CustomerMachine* machine)
 {
-
 	state = STATE_MOVE;
 	qDebug() << "StateMove::onMove";
-	connect(this, &QState::entered, machine, &CustomerMachine::rec_moveToRandomShelf);
 
 }
 
@@ -82,18 +83,6 @@ void StateExit::onExit(QEvent* e)
 {
 	Q_UNUSED(e);
 	qDebug() << "StateExit::onExit";
-}
-
-void StateSlack::onEntry(QEvent* e)
-{
-	Q_UNUSED(e);
-	qDebug() << "StateSlack::onEntry";
-}
-
-void StateSlack::onExit(QEvent* e)
-{
-	Q_UNUSED(e);
-	qDebug() << "StateSlack::onExit";
 }
 
 void StateCheckout::onEntry(QEvent* e)

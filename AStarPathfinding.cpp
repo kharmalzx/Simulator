@@ -155,9 +155,9 @@ void AStarPathfinding::getFacilityArea(MapCell cur, Facility* facility)
 	facility->list_mapcell_area.push_back(cur);
 }
 
-QVector<MapCell> AStarPathfinding::getPath(int startX, int startY, int endX, int endY) {
+QVector<MapCell*> AStarPathfinding::getPath(int startX, int startY, int endX, int endY) {
 	
-	QVector<MapCell> vec;
+	QVector<MapCell*> vec;
 	
 	{
 	QMutexLocker locker(&getPathMutex);
@@ -179,11 +179,11 @@ QVector<MapCell> AStarPathfinding::getPath(int startX, int startY, int endX, int
 
 	
 	while (curMapCell->x != start->x || curMapCell->y != start->y) {
-		vec.push_back(*curMapCell);
+		vec.push_back(curMapCell);
 		curMapCell = curMapCell->parent;
 	}
 
-	vec.push_back(*curMapCell);
+	vec.push_back(curMapCell);
 	std::reverse(vec.begin(), vec.end());
 
 	resetMap();

@@ -19,6 +19,21 @@ enum CustomerState
 	STATE_SERVICE
 };
 
+
+class StateFetch : public QState
+{
+	Q_OBJECT
+public:
+	explicit StateFetch(QState* parent = nullptr, CustomerMachine* machine);
+	void onEntry(QEvent* e) override;
+	void onExit(QEvent* e) override;
+	int getState() const { return state; };
+
+private:
+	int state;
+
+};
+
 class StatePurchase : public QState
 {
 	Q_OBJECT
@@ -30,6 +45,7 @@ public:
 
 private:
 	int state;
+	int waitWill;
 
 signals:
 	void moveToPurchase();

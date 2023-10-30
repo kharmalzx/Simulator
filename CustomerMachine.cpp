@@ -4,7 +4,6 @@ CustomerMachine::CustomerMachine(QObject *parent,Customer* owner)
 	: QStateMachine(parent)
 {
     this->owner = owner;
-    initConnectToOwner();
 
     //声明所有的状态，状态机添加所有状态
     //进入，移动，购物，结账，离开
@@ -14,14 +13,12 @@ CustomerMachine::CustomerMachine(QObject *parent,Customer* owner)
     purchase = new StatePurchase(this);
     checkout = new StateCheckout(this);
     exit = new StateExit(this);
-    slack = new StateSlack(this);
 
     addState(enter);
     addState(move);
     addState(purchase);
     addState(checkout);
     addState(exit);
-    addState(slack);
 
     setInitialState(enter);
 

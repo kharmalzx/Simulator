@@ -73,7 +73,7 @@ int Customer::watchDetect(MapCell* nextCell)
     int shelfSn = 0;
 
     if (horizont == 3) {
-        //可以试试只看2格以外的地方，而不用看内圈
+        //可以试试向量+点与点之间的距离看是否在视野范围内
         QPair<int, int> vec = QPair<int, int>(nextCell->x - currentCell->x, nextCell->y - currentCell->y);
 
         for (int i = -1; i < horizont - 1; i++) {
@@ -207,9 +207,9 @@ void Customer::moveToEnd(MapCell* end)
                 emit sig_StateChange_moveToCheckout();
             }
             else if (storeManage->getFacilityType(queueInfo.facilitySn) == CELL_SHELF) {
-                emit updateQueue(this,queueInfo.facilitySn);
                 queue();
                 emit sig_StateChange_moveToPurchase();
+                
             }
             else if (storeManage->getFacilityType(queueInfo.facilitySn) == CELL_COMPLEX) {
 

@@ -42,7 +42,6 @@ private:
     StatePurchase* purchase;
     StateCheckout* checkout;
     StateExit* exit;
-    StateSlack* slack;
 
 	Customer* owner;
 

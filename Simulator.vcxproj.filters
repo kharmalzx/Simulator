@@ -49,6 +49,15 @@
     <ClCompile Include="CustomerMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StateQueue.cpp">
+      <Filter>Source Files\CustomerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="StateFetch.cpp">
+      <Filter>Source Files\CustomerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractCustomerState.cpp">
+      <Filter>Source Files\CustomerStates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\vs projects\Simulator\AStarPathfinding.h">
@@ -93,6 +102,15 @@
     <ClInclude Include="CustomerMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="StateQueue.h">
+      <Filter>Source Files\CustomerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="StateFetch.h">
+      <Filter>Source Files\CustomerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractCustomerState.h">
+      <Filter>Source Files\CustomerStates</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\vs projects\Simulator\CMakeLists.txt" />
@@ -103,6 +121,9 @@
     </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{7027B185-A2A3-3DDB-8A1A-2BFD8C8EEB7F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CustomerStates">
+      <UniqueIdentifier>{dcd578a7-9792-442d-8ede-fe8f45ec464c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

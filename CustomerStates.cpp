@@ -14,6 +14,7 @@ void StatePurchase::onEntry(QEvent* e)
 	Q_UNUSED(e);
 	qDebug() << "StatePurchase::onEntry";
 	
+
 	//状态转换成功后发送信号
 	emit moveToPurchase();
 }

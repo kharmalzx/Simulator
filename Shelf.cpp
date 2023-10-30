@@ -2,14 +2,9 @@
 
 void Facility::updateQueue(const int& fetchPoint, const int& customerId, MapCell* c)
 {
-	//如果新开取货口，和下面的做出区别
-	if (list_queue.size() < fetchPoint + 1) {
-		QueueCellInfo info;
-		info.cellAt = c;
-		info.customerId = customerId;
-		QVector<QueueCellInfo> q;
-		q.push_back(info);
-		list_queue.push_back(q);
+	//如果新开取货口不在这里处理
+	if (list_queue.size() < fetchPoint) {
+		qDebug() << "没有在升级时扩大取货口位置";
 		return;
 	}
 

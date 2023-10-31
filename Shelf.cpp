@@ -20,6 +20,7 @@ void Facility::updateQueue(const int& fetchPoint, const int& customerId, MapCell
 	info.cellAt = c;
 	info.customerId = customerId;
 	list_queue[fetchPoint].push_back(info);
+	cur_population++;
 
 }
 

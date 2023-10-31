@@ -1,8 +1,7 @@
 #include "StateFetch.h"
 
-StateFetch::StateFetch(QObject *parent)
+StateFetch::StateFetch(QObject *parent): AbstractCustomerState(parent)
 {
-	setParent(parent);
 
 }
 

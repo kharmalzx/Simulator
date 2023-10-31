@@ -58,6 +58,15 @@
     <ClCompile Include="AbstractCustomerState.cpp">
       <Filter>Source Files\CustomerStates</Filter>
     </ClCompile>
+    <ClCompile Include="CustomerInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMove.cpp">
+      <Filter>Source Files\CustomerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="StateEnter.cpp">
+      <Filter>Source Files\CustomerStates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\vs projects\Simulator\AStarPathfinding.h">
@@ -67,9 +76,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\Customer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\vs projects\Simulator\CustomerStates.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\Data.h">
@@ -102,14 +108,26 @@
     <ClInclude Include="CustomerMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StateQueue.h">
-      <Filter>Source Files\CustomerStates</Filter>
+    <ClInclude Include="AbstractCustomerState.h">
+      <Filter>Header Files\HCustomerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\CustomerStates.h">
+      <Filter>Header Files\HCustomerStates</Filter>
     </ClInclude>
     <ClInclude Include="StateFetch.h">
-      <Filter>Source Files\CustomerStates</Filter>
+      <Filter>Header Files\HCustomerStates</Filter>
     </ClInclude>
-    <ClInclude Include="AbstractCustomerState.h">
-      <Filter>Source Files\CustomerStates</Filter>
+    <ClInclude Include="StateQueue.h">
+      <Filter>Header Files\HCustomerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomerInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMove.h">
+      <Filter>Header Files\HCustomerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="StateEnter.h">
+      <Filter>Header Files\HCustomerStates</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +142,9 @@
     </Filter>
     <Filter Include="Source Files\CustomerStates">
       <UniqueIdentifier>{dcd578a7-9792-442d-8ede-fe8f45ec464c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HCustomerStates">
+      <UniqueIdentifier>{8a41b925-0882-4c2f-adc0-e770e6534ceb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

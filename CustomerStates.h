@@ -7,6 +7,10 @@
 #include <qsignaltransition.h>
 #include "Customer.h"
 #include "CustomerMachine.h"
+#include "StateMove.h"
+#include "StateEnter.h"
+#include "StateQueue.h"
+#include "StateFetch.h"
 
 enum CustomerState
 {
@@ -17,121 +21,6 @@ enum CustomerState
 	STATE_EXIT,
 	STATE_CHECKOUT,
 	STATE_SERVICE
-};
-
-
-class StateFetch : public QState
-{
-	Q_OBJECT
-public:
-	explicit StateFetch(QState* parent = nullptr, CustomerMachine* machine);
-	void onEntry(QEvent* e) override;
-	void onExit(QEvent* e) override;
-	int getState() const { return state; };
-
-private:
-	int state;
-
-};
-
-class StatePurchase : public QState
-{
-	Q_OBJECT
-public:
-	explicit StatePurchase(QState* parent = nullptr, CustomerMachine* machine);
-	void onEntry(QEvent* e) override;
-	void onExit(QEvent* e) override;
-	int getState() const { return state; };
-
-private:
-	int state;
-	int waitWill;
-
-signals:
-	void moveToPurchase();
-
-};
-
-class StateMove: public QState
-{
-	Q_OBJECT
-public:
-	explicit StateMove(QState* parent = nullptr,CustomerMachine* machine);
-	void onEntry (QEvent* e) override;
-	void onExit(QEvent* e) override;
-	int getState() const { return state; };
-
-private:
-	int state;
-	
-};
-
-class StateQueue: public QState
-{
-	Q_OBJECT
-public:
-	explicit StateQueue(QState* parent = nullptr) { state = CustomerState::STATE_QUEUE; };
-	void onEntry(QEvent* e) override;
-	void onExit(QEvent* e) override;
-	int getState() const { return state; };
-
-private:
-	int state;
-
-};
-
-class StateEnter: public QState
-{
-	Q_OBJECT
-public:
-	explicit StateEnter(QState* parent = nullptr) { state = CustomerState::STATE_ENTER; };
-	void onEntry(QEvent* e) override;
-	void onExit(QEvent* e) override;
-	int getState() const { return state; };
-
-private:
-	int state;
-
-};
-
-class StateExit : public QState
-{
-	Q_OBJECT
-public:
-	explicit StateExit(QState* parent = nullptr) { state = CustomerState::STATE_EXIT; };
-	void onEntry(QEvent* e) override;
-	void onExit(QEvent* e) override;
-	int getState() const { return state; };
-
-private:
-	int state;
-};
-
-
-class StateCheckout: public QState
-{
-	Q_OBJECT
-public:
-	explicit StateCheckout(QState* parent = nullptr) { state = CustomerState::STATE_CHECKOUT; };
-	void onEntry(QEvent* e) override;
-	void onExit(QEvent* e) override;
-	int getState() const { return state; };
-
-private:
-	int state;
-};
-
-class StateService : public QState
-{
-	Q_OBJECT
-public:
-	explicit StateService(QState* parent = nullptr) { state = CustomerState::STATE_SERVICE; };
-	void onEntry(QEvent* e) override;
-	void onExit(QEvent* e) override;
-	int getState() const { return state; };
-
-private:
-	int state;
 };
 
 #endif // CUSTOMERSTATES_H

@@ -35,30 +35,30 @@ int StoreManage::mapCellBelongsToWhichFacility(int x, int y)
 {
     for (int i = 0; i < shelfList.size(); i++) {
         for (int j = 0; j < shelfList[i]->list_mapcell_area.size(); j++) {
-            if(shelfList[i]->list_mapcell_area[j].x == x && shelfList[i]->list_mapcell_area[j].y == y)
+            if(shelfList[i]->list_mapcell_area[j].x() == x && shelfList[i]->list_mapcell_area[j].y() == y)
                 return shelfList[i]->sn;
         }
         for (int j = 0; j < shelfList[i]->list_mapcell_fetch.size(); j++) {
-            if(shelfList[i]->list_mapcell_fetch[j].x == x && shelfList[i]->list_mapcell_fetch[j].y == y)
+            if(shelfList[i]->list_mapcell_fetch[j].x() == x && shelfList[i]->list_mapcell_fetch[j].y() == y)
 				return shelfList[i]->sn;
         }
         for (int j = 0; j < shelfList[i]->list_service_ports.size(); j++) {
-            if(shelfList[i]->list_service_ports[j].x == x && shelfList[i]->list_service_ports[j].y == y)
+            if(shelfList[i]->list_service_ports[j].x() == x && shelfList[i]->list_service_ports[j].y() == y)
                 return shelfList[i]->sn;
 		}
     }
 
     for (int i = 0; i < cashierList.size(); i++) {
         for(int j=0;j<cashierList[i]->list_mapcell_area.size();j++)
-			if (cashierList[i]->list_mapcell_area[j].x == x && cashierList[i]->list_mapcell_area[j].y == y)
+			if (cashierList[i]->list_mapcell_area[j].x() == x && cashierList[i]->list_mapcell_area[j].y() == y)
 				return cashierList[i]->sn;
 
         for (int j = 0; j < cashierList[i]->list_mapcell_fetch.size(); j++)
-            if (cashierList[i]->list_mapcell_fetch[j].x == x && cashierList[i]->list_mapcell_fetch[j].y == y)
+            if (cashierList[i]->list_mapcell_fetch[j].x() == x && cashierList[i]->list_mapcell_fetch[j].y() == y)
                 return cashierList[i]->sn;
 
         for (int j = 0; j < cashierList[i]->list_service_ports.size(); j++)
-            if (cashierList[i]->list_service_ports[j].x == x && cashierList[i]->list_service_ports[j].y == y)
+            if (cashierList[i]->list_service_ports[j].x() == x && cashierList[i]->list_service_ports[j].y() == y)
 				return cashierList[i]->sn;
     }
 
@@ -79,9 +79,7 @@ void StoreManage::setCommodityOnFacility(int commoditySn, int facilitySn)
 
 void StoreManage::createCustomer(QVector<MapCell*> aim)
 {
-    Customer* customer = new Customer(this,aim);
-    customer->setAStarKit(astar);
-    customer->setMapPanel(mapPanel);
+    Customer* customer = new Customer(this);
 	customerList.push_back(customer);
 
 }
@@ -121,7 +119,7 @@ MapCell* StoreManage::requestShortestQueueEnd(const int& customerId, const int& 
     }
 
     //找到endCell周围未被占用的cell，并上锁
-    endCell = getMapCellUnoccupiedAround(endCell->x, endCell->y);
+    endCell = getMapCellUnoccupiedAround(endCell->x(), endCell->y());
     if (endCell != nullptr) {        
         customerList[posAtCustomerList(customerId)]->queueInfo.fetchPoint = fetchPoint;
         endCell->setOccupy(true);
@@ -140,8 +138,8 @@ MapCell* StoreManage::getRecentFacilityFetchPoint(const int& x, const int& y, co
     int pos = posAtShelfList(shelfSn);
 
     for (int i = 0; i < shelfList[pos]->list_mapcell_fetch.size(); i++) {
-        if (minDistance > sqrt(pow(shelfList[pos]->list_mapcell_fetch[i].x - x, 2) + pow(shelfList[pos]->list_mapcell_fetch[i].y - y, 2))) {
-            minDistance = sqrt(pow(shelfList[pos]->list_mapcell_fetch[i].x - x, 2) + pow(shelfList[pos]->list_mapcell_fetch[i].y - y, 2));
+        if (minDistance > sqrt(pow(shelfList[pos]->list_mapcell_fetch[i].x() - x, 2) + pow(shelfList[pos]->list_mapcell_fetch[i].y() - y, 2))) {
+            minDistance = sqrt(pow(shelfList[pos]->list_mapcell_fetch[i].x() - x, 2) + pow(shelfList[pos]->list_mapcell_fetch[i].y() - y, 2));
             recentCell = &shelfList[pos]->list_mapcell_fetch[i];
         }
             
@@ -174,6 +172,26 @@ MapCell* StoreManage::getMapCellUnoccupiedAround(const int& x, const int& y)
     return nullptr;
 }
 
+int StoreManage::getMapHeight() const
+{
+    return map->mapCells.size();
+}
+
+int StoreManage::getMapWidth() const
+{
+    return map->mapCells[0].size();
+}
+
+int StoreManage::getFacilityPopulation(const int& facilitySn)
+{
+    return getFaciPtr(facilitySn)->cur_population;
+}
+
+MapCell* StoreManage::getMapCell(const int& x, const int& y) const
+{
+    return &map->mapCells[x][y];
+}
+
 int StoreManage::posAtShelfList(const int& shelfSn)
 {
     for (int i = 0; i < shelfList.size(); i++)
@@ -186,7 +204,7 @@ int StoreManage::posAtShelfList(const int& shelfSn)
 int StoreManage::posAtCustomerList(const int& customerId)
 {
     for (int i = 0; i < customerList.size(); i++)
-        if (customerList[i]->id == customerId)
+        if (customerList[i]->AIData.id == customerId)
             return i;
 
     return -1;
@@ -197,7 +215,7 @@ int StoreManage::posAtFetchList(const int& facilitySn, MapCell* c)
     Facility* faci =getFaciPtr(facilitySn);
 
     for (int i = 0; i < faci->list_mapcell_fetch.size(); i++) {
-        if (faci->list_mapcell_fetch[i].x == c->x && faci->list_mapcell_fetch[i].y == c->y)
+        if (faci->list_mapcell_fetch[i].x() == c->x() && faci->list_mapcell_fetch[i].y() == c->y())
 			return i;
     }
 }
@@ -217,8 +235,8 @@ QPair<bool, bool> StoreManage::shallJoinQueue(Customer* customer, const int& fac
 {
     Facility* facility = getFaciPtr(facilitySn);
 
-    if (facility->cur_population >= customer->num_tolerance) {
-        if (customer->waitWill > 0) {
+    if (facility->cur_population >= customer->AIData.num_tolerance) {
+        if (customer->AIData.waitWill > 0) {
             return qMakePair(true,false);
         }
         else {
@@ -247,9 +265,43 @@ Facility* StoreManage::getFaciPtr(const int& facilitySn)
     return faci;
 }
 
-void StoreManage::updateQueue(Customer* customer, const int& facilitySn){
+void StoreManage::queueAdjust(const int& facilitySn, MapCell* fetchPoint)
+{
+    //取货完成之后进行队列调整，去除第一个取货的人，后面的人走到前面的格子，末尾的格子被释放
+    //可能顾客还没到队伍位置中就要调整位置
+    Facility* facility = getFaciPtr(facilitySn);
+    int pos = posAtFetchList(facilitySn, fetchPoint);
+
+    for (int i = 1; i < facility->list_queue[pos].size(); i++) {
+        int cID = facility->list_queue[pos][i].customerId;
+        customerQueueMoveOne(facility->sn, cID, facility->list_queue[pos][i-1].cellAt);
+    }
+
+    facility->list_queue[pos].end()->cellAt->setOccupy(false);
+
+    for (int i = 0; i < facility->list_queue[pos].size() - 1; i++) {
+        facility->list_queue[pos][i].customerId = facility->list_queue[pos][i+1].customerId;
+    }
+
+    facility->list_queue.pop_back();
+    facility->cur_population--;
+}
+
+void StoreManage::customerQueueMoveOne(const int& facilitySn, const int& customerID, MapCell* end)
+{
+    //保险起见，应该打断顾客当前的行为，重新指定寻路终点
+    Customer* customer = customerList[posAtCustomerList(customerID)];
+    customer->animationMoveTo(end);
+
+    int pos_faci = posAtShelfList(facilitySn);
+    
+    //移动队伍的时候判断货架当前人数是否小于容忍上限
+    customer->check_if_queue2to1();
+}
+
+void StoreManage::lockQueueEnd(Customer* customer, const int& facilitySn){
     Facility* facility = getFaciPtr(facilitySn);
 
-    facility->updateQueue(posAtFetchList(facilitySn,customer->queueInfo.fetchPoint), customer->id, customer->pos_at);
+    facility->updateQueue(posAtFetchList(facilitySn,customer->queueInfo.fetchPoint), customer->AIData.id, customer->currentCell);
 
 }

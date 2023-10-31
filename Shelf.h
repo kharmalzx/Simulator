@@ -5,6 +5,7 @@
 
 class Facility : public QObject {
 
+	Q_OBJECT
 public:
 
 	struct QueueCellInfo
@@ -27,6 +28,9 @@ public:
 	void setSn(int sn) { this->sn = sn; }
 	void setType(int type) { this->type = type; }
 	void updateQueue(const int& fetchPoint, const int& customerId, MapCell* c);
+	
+signals:
+	void adustQueueFormation();
 
 };
 

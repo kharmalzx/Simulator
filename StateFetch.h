@@ -1,9 +1,8 @@
 #pragma once
 
-#include <QState>
-#include <QEvent>
+#include "AbstractCustomerState.h"
 
-class StateFetch  : public QState
+class StateFetch  : public AbstractCustomerState
 {
 	Q_OBJECT
 

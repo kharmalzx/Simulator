@@ -24,17 +24,14 @@ class MapCell
 	
 public:
 
-	int x, y;
 	CellType type;
-	float F, G, H;  //F=G+H
+	
 	MapCell* parent;  //只有1个最优的parent
 
 	using pos = QPair<int, int>;
 	//一环，左到右，上到下的8个点
 	static const QVector<pos> circle_one;
 	
-	
-
 	MapCell();
 
 	void clear();
@@ -43,8 +40,21 @@ public:
 	void setOccupy(bool oc);
 	static const pos getCircleOnePos(int index){	return circle_one[index]; }
 
-private:
+	int x() const { return x_; };
+	int y() const { return y_; };
+	void setX(int x) { x_ = x; };
+	void setY(int y) { y_ = y; };
+	void setPos(int x, int y) { x_ = x; y_ = y; };
+	float F() const { return F_; };
+	float G() const { return G_; };
+	float H() const { return H_; };
+	void setF(float F) { F_ = F; };
+	void setG(float G) { G_ = G; };
+	void setH(float H) { H_ = H; };
 
+private:
+	int x_, y_;
+	float F_, G_, H_;  //F=G+H
 	//被其它人占用
 	bool isOccupy;
 };

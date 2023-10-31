@@ -27,6 +27,10 @@ public:
 	QVector<Shelf*> shelfList;
 	QVector<Customer*> customerList;
 	QVector<Cashier*> cashierList;
+	int getMapHeight() const;
+	int getMapWidth() const;
+	int getFacilityPopulation(const int& facilitySn);
+	MapCell* getMapCell(const int& x, const int& y) const;
 	int posAtShelfList(const int& shelfSn);
 	int posAtCustomerList(const int& customerId);
 	int posAtFetchList(const int& facilitySn, MapCell* c);
@@ -36,8 +40,14 @@ public:
 
 	Facility* getFaciPtr(const int& facilitySn);
 
+	//队列相关
+	void queueAdjust(const int& facilitySn,MapCell* fetchPoint);
+	void customerQueueMoveOne(const int& facilitySn, const int& customerID, MapCell* end);
+
+
+
 public slots:
-	void updateQueue(Customer* customer, const int& facilitySn);
+	void lockQueueEnd(Customer* customer, const int& facilitySn);
 
 private:
 

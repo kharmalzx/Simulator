@@ -398,6 +398,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstractCustomerState.cpp" />
+    <ClCompile Include="CustomerInfo.cpp" />
     <ClCompile Include="CustomerMachine.cpp" />
     <ClCompile Include="D:\vs projects\Simulator\Simulator_autogen\mocs_compilation_Debug.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -418,9 +419,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\vs projects\Simulator\Simulator.cpp" />
     <ClCompile Include="D:\vs projects\Simulator\StoreManage.cpp" />
     <ClCompile Include="D:\vs projects\Simulator\main.cpp" />
+    <ClCompile Include="StateEnter.cpp" />
     <ClCompile Include="StateFetch.cpp" />
+    <ClCompile Include="StateMove.cpp" />
     <ClCompile Include="StateQueue.cpp" />
     <ClInclude Include="AbstractCustomerState.h" />
+    <ClInclude Include="CustomerInfo.h" />
     <ClInclude Include="CustomerMachine.h" />
     <ClInclude Include="D:\vs projects\Simulator\AStarPathfinding.h" />
     <ClInclude Include="D:\vs projects\Simulator\Commodity.h" />
@@ -435,7 +439,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\vs projects\Simulator\Shelf.h" />
     <ClInclude Include="D:\vs projects\Simulator\Simulator.h" />
     <ClInclude Include="D:\vs projects\Simulator\StoreManage.h" />
+    <ClInclude Include="StateEnter.h" />
     <ClInclude Include="StateFetch.h" />
+    <ClInclude Include="StateMove.h" />
     <ClInclude Include="StateQueue.h" />
   </ItemGroup>
   <ItemGroup>

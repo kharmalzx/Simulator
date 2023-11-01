@@ -29,7 +29,7 @@ CustomerMachine::CustomerMachine(QObject *parent,Customer* owner)
     move->addTransition(move, &StateMove::moveToQueue,queue);
     queue->addTransition(queue, &StateQueue::QueueToMove, move);
     queue->addTransition(queue, &StateQueue::QueueToFetch, fetch);
-
+    fetch->addTransition(fetch, &StateFetch::fetchToMove, move);
 }
 
 

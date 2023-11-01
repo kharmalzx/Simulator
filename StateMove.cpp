@@ -109,18 +109,15 @@ int StateMove::watchDetect(MapCell* nextCell)
 int StateMove::getShelfInHorizont(const int& x, const int& y)
 {
     if (x >= 0 && x < storeManage->getMapHeight() && y >= 0 && y < storeManage->getMapWidth()) {
-        if (cellAt(x,y)->type == CELL_SHELF) {
+        if (cellAt(x,y)->type == CELL_SHELF || cellAt(x,y)->type == CELL_COMPLEX) {
             int shelfSn = storeManage->mapCellBelongsToWhichFacility(x, y);
             int commoditySn = storeManage->facilityHasWhatCommodity(shelfSn);
-            if (owner->AIData.list_commodity_needs.contains(commoditySn)) {
-                //看见有没买的商品就返回
-                owner->AIData.list_commodity_needs.removeOne(commoditySn);
-                owner->list_shelf_detected.push_back(shelfSn);
-                return shelfSn;
-            }
-            else {
-                //看见了就登记
-                owner->list_shelf_detected.push_back(shelfSn);
+
+            for (int i = 0; i < owner->AIData.list_commodity_needs.size(); i++) {
+                if (owner->AIData.list_commodity_needs[i].commoditySn == commoditySn) {
+                    owner->list_shelf_detected.push_back(shelfSn);
+                    return shelfSn;
+                }
             }
 
         }

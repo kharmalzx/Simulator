@@ -3,6 +3,12 @@
 #include "StoreManage.h"
 #include <qvector.h>
 
+struct CommodityNeed {
+	int commoditySn;
+	int num_require;
+};
+
+
 struct CustomerAIData
 {
 	int id;
@@ -14,9 +20,10 @@ struct CustomerAIData
 	int t_wait_patience;
 	float coefficient_checkout;
 	float coefficient_service;
+	float coefficient_fetch;
 	
 
-	QVector<int> list_commodity_needs;
+	QVector<CommodityNeed> list_commodity_needs;
 
 };
 

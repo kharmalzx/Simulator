@@ -296,7 +296,12 @@ void StoreManage::customerQueueMoveOne(const int& facilitySn, const int& custome
     int pos_faci = posAtShelfList(facilitySn);
     
     //移动队伍的时候判断货架当前人数是否小于容忍上限
-    customer->check_if_queue2to1();
+    customer->check_if_queueStateChange();
+}
+
+int StoreManage::getQueueLength(const int& facilitySn, MapCell* fetchPoint)
+{
+    return shelfList[posAtShelfList(facilitySn)]->list_queue[posAtFetchList(facilitySn, fetchPoint)].size();
 }
 
 void StoreManage::lockQueueEnd(Customer* customer, const int& facilitySn){

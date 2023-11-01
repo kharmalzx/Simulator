@@ -9,4 +9,26 @@ class StateFetch  : public AbstractCustomerState
 public:
 	StateFetch(QObject *parent);
 	~StateFetch();
+
+	void setOwner(Customer* owner) override;
+	void onEntry(QEvent* event) override;
+	void ToMove() override;
+
+public slots:
+	void onFetchTimerOut();
+	void OnInterruption() override;
+
+
+signals:
+	void fetchToMove();
+	
+
+private:
+	QTimer* fetchTimer;
+	Customer* owner;
+	StoreManage* storeManage;
+
+	Facility* targetFacility;
+
+	int tick;
 };

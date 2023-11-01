@@ -33,7 +33,7 @@ public:
 	
 	void setAIData(CustomerAIData aiData) { AIData = aiData; };
 	void animationMoveTo(MapCell* next);
-	void check_if_queue2to1();
+	void check_if_queueStateChange();
 	QState getCurrentState();
 
 signals:

@@ -2,7 +2,7 @@
 
 StateQueue::StateQueue(QObject* parent): AbstractCustomerState(parent)
 {
-	timer_queue2 = new QTimer();
+	timer_queue2 = new QTimer(this);
 	timer_queue2->setSingleShot(true);
 	timer_queue2->setInterval(owner->AIData.t_wait_patience);
 	connect(timer_queue2, &QTimer::timeout, this, &StateQueue::onQueue2Timeout);
@@ -43,9 +43,16 @@ void StateQueue::checkQueueStateChange()
 {
 	int population = getFacilityPopulation();
 	
+	if (storeManage->getQueueLength(owner->queueInfo.facilitySn, owner->queueInfo.fetchPoint) == 1) {
+		ToFetch();
+		return;
+	}
+
+
 	if (owner->AIData.num_tolerance >= population)
 	{
 		timer_queue2->stop();
+		
 	}
 
 }

@@ -18,6 +18,7 @@ public:
 	int type;
 	int max_size;
 	int cur_population;
+	int service_tick;
 
 	QVector<MapCell> list_mapcell_area;
 	QVector<MapCell> list_mapcell_fetch;

@@ -3,7 +3,7 @@ project(Simulator)
 set(CMAKE_CXX_STANDARD 17)
 
 
-set(CMAKE_PREFIX_PATH "D:/QT/6.5.1/msvc2019_64/lib/cmake")
+set(CMAKE_PREFIX_PATH "D:/QT/6.5.2/msvc2019_64/lib/cmake")
 
 find_package(Qt6 COMPONENTS Widgets Core Gui StateMachine Quick Scxml REQUIRED)
 

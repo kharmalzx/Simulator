@@ -28,7 +28,7 @@ void Customer::animationMoveTo(MapCell* next)
     currentCell = next;
 }
 
-void Customer::check_if_queue2to1()
+void Customer::check_if_queueStateChange()
 {
 
     emit checkQueueStateChange();

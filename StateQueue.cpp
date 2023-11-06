@@ -20,6 +20,7 @@ void StateQueue::onEntry(QEvent* event)
 
 void StateQueue::ToMove()
 {
+	owner->findCommoditySn = 0;
 	emit QueueToMove();
 }
 

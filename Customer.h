@@ -28,13 +28,16 @@ public:
 	MapCell* currentCell;
 
 	QVector<int> list_shelf_detected;
-	QVector<MapCell*> aimList;
+	QVector<MapCell*> list_moveCell_aim;
+	int findCommoditySn;
 
 	
 	void setAIData(CustomerAIData aiData) { AIData = aiData; };
 	void animationMoveTo(MapCell* next);
 	void check_if_queueStateChange();
 	QState getCurrentState();
+	void fetchCommodityOneTick(const int& commoditySn);
+	CommodityNeed* getCommodityNeed(const int& commoditySn);
 
 signals:
 	void checkQueueStateChange();

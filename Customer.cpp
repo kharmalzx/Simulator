@@ -5,6 +5,7 @@ Customer::Customer(QObject* parent)
 	//初始化状态机
     machine = new CustomerMachine(this,this);
     
+    findCommoditySn = 0;
 }
 
 
@@ -41,4 +42,29 @@ QState Customer::getCurrentState()
         return qobject_cast<QState>(machine->configuration().values()[0]);
     else
         qDebug() << "不能获得当前状态";
+}
+
+void Customer::fetchCommodityOneTick(const int& commoditySn)
+{
+    CommodityNeed* c = getCommodityNeed(commoditySn);
+
+    if (c != nullptr) {
+        if (c->num_require - c->fetchCount_pertick <= 0)
+            c->num_require = 0;
+        else c->num_require = c->num_require - c->fetchCount_pertick;
+    }
+    else {
+        qDebug() << "找不到顾客" << AIData.id << "想要的商品sn" << commoditySn;
+    }
+    
+}
+
+CommodityNeed* Customer::getCommodityNeed(const int& commoditySn)
+{
+    for (int i = 0; i < AIData.list_commodity_needs.size(); i++) {
+        if (AIData.list_commodity_needs[i].commoditySn == commoditySn)
+            return &AIData.list_commodity_needs[i];
+    }
+
+    return nullptr;
 }

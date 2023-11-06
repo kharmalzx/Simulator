@@ -19,9 +19,6 @@
     <ClCompile Include="D:\vs projects\Simulator\CustomerMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\CustomerStates.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="D:\vs projects\Simulator\Data.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -67,6 +64,9 @@
     <ClCompile Include="D:\vs projects\Simulator\StateQueue.cpp">
       <Filter>Source Files\CustomerStates</Filter>
     </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\CustomerStates.cpp">
+      <Filter>Source Files\CustomerStates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\vs projects\Simulator\AStarPathfinding.h">
@@ -82,9 +82,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\CustomerMachine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\vs projects\Simulator\CustomerStates.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\Data.h">
@@ -127,6 +124,9 @@
       <Filter>Header Files\HCustomerStates</Filter>
     </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\StateQueue.h">
+      <Filter>Header Files\HCustomerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\CustomerStates.h">
       <Filter>Header Files\HCustomerStates</Filter>
     </ClInclude>
   </ItemGroup>

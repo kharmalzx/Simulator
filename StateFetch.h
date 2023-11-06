@@ -24,11 +24,12 @@ signals:
 	
 
 private:
-	QTimer* fetchTimer;
+	QTimer* fetchTickTimer;
 	Customer* owner;
 	StoreManage* storeManage;
 
 	Facility* targetFacility;
 
 	int tick;
+	int count_remain;
 };

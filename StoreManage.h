@@ -44,6 +44,7 @@ public:
 	void queueAdjust(const int& facilitySn,MapCell* fetchPoint);
 	void customerQueueMoveOne(const int& facilitySn, const int& customerID, MapCell* end);
 	int getQueueLength(const int& facilitySn, MapCell* fetchPoint);
+	bool fetchOneOnFacility(const int& facilitySn, const int& fetchCount);
 
 
 public slots:

@@ -14,7 +14,7 @@ void StateMove::setOwner(Customer * owner)
     
     storeManage = owner->storeManage;
     path = &owner->path;
-    aimList = &owner->aimList;
+    aimList = &owner->list_moveCell_aim;
     currentCell = owner->currentCell;
 
 }
@@ -113,12 +113,13 @@ int StateMove::getShelfInHorizont(const int& x, const int& y)
             int shelfSn = storeManage->mapCellBelongsToWhichFacility(x, y);
             int commoditySn = storeManage->facilityHasWhatCommodity(shelfSn);
 
-            for (int i = 0; i < owner->AIData.list_commodity_needs.size(); i++) {
-                if (owner->AIData.list_commodity_needs[i].commoditySn == commoditySn) {
-                    owner->list_shelf_detected.push_back(shelfSn);
-                    return shelfSn;
-                }
+            CommodityNeed* cn = owner->getCommodityNeed(commoditySn);
+            if (cn != nullptr) {
+                owner->findCommoditySn = commoditySn;
+                owner->list_shelf_detected.push_back(shelfSn);
+                return shelfSn;
             }
+            
 
         }
     }
@@ -165,8 +166,8 @@ void StateMove::moveToEnd(MapCell* end)
 
             if (end != nullptr) {
                 owner->path.clear();
-                owner->aimList.clear();
-                owner->aimList.push_back(end);
+                owner->list_moveCell_aim.clear();
+                owner->list_moveCell_aim.push_back(end);
 
                 storeManage->lockQueueEnd(owner, facilitySn);
 

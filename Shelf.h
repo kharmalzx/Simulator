@@ -2,6 +2,7 @@
 #include "MapCell.h"
 #include "Commodity.h"
 #include <qobject.h>
+#include <qmutex.h>
 
 class Facility : public QObject {
 
@@ -19,6 +20,7 @@ public:
 	int max_size;
 	int cur_population;
 	int service_tick;
+	QMutex serviceMutex;
 
 	QVector<MapCell> list_mapcell_area;
 	QVector<MapCell> list_mapcell_fetch;
@@ -45,14 +47,14 @@ public:
 	Shelf();
 	~Shelf();
 
-
+	int cur_count;
 	Commodity m_commodity;
 	//未初始化，first是属于哪个取货口组，second是mapcell
 	QVector<FetchSquare> fetchGroup;
 	
 
 	void setCommodity(Commodity c) { m_commodity = c; }
-	
+	bool fetchOneCommodity(const int& fetchCount);
 
 };
 

@@ -304,6 +304,26 @@ int StoreManage::getQueueLength(const int& facilitySn, MapCell* fetchPoint)
     return shelfList[posAtShelfList(facilitySn)]->list_queue[posAtFetchList(facilitySn, fetchPoint)].size();
 }
 
+bool StoreManage::fetchOneOnFacility(const int& facilitySn, const int& fetchCount)
+{
+
+    Facility* facility = getFaciPtr(facilitySn);
+    if (getFacilityType(facilitySn) == CELL_SHELF) {
+        Shelf* shelf = dynamic_cast<Shelf*>(getFaciPtr(facilitySn));
+        if (shelf->fetchOneCommodity(fetchCount)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    else if (getFacilityType(facilitySn) == CELL_COMPLEX) {
+
+    }
+
+
+}
+
 void StoreManage::lockQueueEnd(Customer* customer, const int& facilitySn){
     Facility* facility = getFaciPtr(facilitySn);
 

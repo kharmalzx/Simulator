@@ -44,8 +44,12 @@ public:
 	void queueAdjust(const int& facilitySn,MapCell* fetchPoint);
 	void customerQueueMoveOne(const int& facilitySn, const int& customerID, MapCell* end);
 	int getQueueLength(const int& facilitySn, MapCell* fetchPoint);
-	bool fetchOneOnFacility(const int& facilitySn, const int& fetchCount);
+	bool canFetchOnFacility(const int& facilitySn, const int& fetchCount);
+	void realFetchOnFacility(const int& facilitySn, const int& fetchCount);
 
+
+	//店员补货相关
+	void alarmShelfRepl(const int& shelfSn);
 
 public slots:
 	void lockQueueEnd(Customer* customer, const int& facilitySn);

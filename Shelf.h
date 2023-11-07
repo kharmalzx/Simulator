@@ -21,6 +21,7 @@ public:
 	int cur_population;
 	int service_tick;
 	QMutex serviceMutex;
+	QMutex expectedMutex;
 
 	QVector<MapCell> list_mapcell_area;
 	QVector<MapCell> list_mapcell_fetch;
@@ -48,13 +49,16 @@ public:
 	~Shelf();
 
 	int cur_count;
+	//用这个量来记录这个货架上占据商品后的存量，因为可能会有人拿走，但是还没读条完
+	int expected_count;
 	Commodity m_commodity;
 	//未初始化，first是属于哪个取货口组，second是mapcell
 	QVector<FetchSquare> fetchGroup;
 	
 
 	void setCommodity(Commodity c) { m_commodity = c; }
-	bool fetchOneCommodity(const int& fetchCount);
+	bool canFetchCommodity(const int& fetchCount);
+	void realFetchCommodity(const int& fetchCount);
 
 };
 

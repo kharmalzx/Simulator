@@ -27,6 +27,7 @@ void Facility::updateQueue(const int& fetchPoint, const int& customerId, MapCell
 Shelf::Shelf()
 {
 	cur_count = max_size;
+	expected_count = cur_count;
 	sn = 1;
 
 }
@@ -35,14 +36,23 @@ Shelf::~Shelf()
 {
 }
 
-bool Shelf::fetchOneCommodity(const int& fetchCount)
+bool Shelf::canFetchCommodity(const int& fetchCount)
+{
+	QMutexLocker locker(&expectedMutex);
+
+	if (expected_count < fetchCount)return false;
+	else
+	{
+		expected_count -= fetchCount;
+		return true;
+	}
+	
+}
+
+void Shelf::realFetchCommodity(const int& fetchCount)
 {
 	QMutexLocker locker(&serviceMutex);
-
-	if (cur_count < fetchCount)return false;
-	
-	cur_count = cur_count - fetchCount;
-	return true;
+	cur_count -= fetchCount;
 }
 
 

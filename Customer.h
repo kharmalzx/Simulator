@@ -36,7 +36,6 @@ public:
 	void animationMoveTo(MapCell* next);
 	void check_if_queueStateChange();
 	QState getCurrentState();
-	void fetchCommodityOneTick(const int& commoditySn);
 	CommodityNeed* getCommodityNeed(const int& commoditySn);
 
 signals:

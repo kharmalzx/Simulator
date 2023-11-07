@@ -24,6 +24,7 @@ signals:
 	
 
 private:
+	//用于读条，计时器结束时才拿取
 	QTimer* fetchTickTimer;
 	Customer* owner;
 	StoreManage* storeManage;
@@ -32,4 +33,7 @@ private:
 
 	int tick;
 	int count_remain;
+
+	void fetchCommodity();
+	bool canFetchCommodity();
 };

@@ -7,6 +7,9 @@
     <ClCompile Include="D:\vs projects\Simulator\AStarPathfinding.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\AbstractCustomerState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="D:\vs projects\Simulator\Commodity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -17,6 +20,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="D:\vs projects\Simulator\CustomerMachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\CustomerStates.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="D:\vs projects\Simulator\Data.cpp">
@@ -43,33 +49,30 @@
     <ClCompile Include="D:\vs projects\Simulator\Simulator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\StateEnter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\StateFetch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\StateMove.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\StateQueue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="D:\vs projects\Simulator\StoreManage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="D:\vs projects\Simulator\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\AbstractCustomerState.cpp">
-      <Filter>Source Files\CustomerStates</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\StateEnter.cpp">
-      <Filter>Source Files\CustomerStates</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\StateFetch.cpp">
-      <Filter>Source Files\CustomerStates</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\StateMove.cpp">
-      <Filter>Source Files\CustomerStates</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\StateQueue.cpp">
-      <Filter>Source Files\CustomerStates</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\CustomerStates.cpp">
-      <Filter>Source Files\CustomerStates</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\vs projects\Simulator\AStarPathfinding.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\AbstractCustomerState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\Commodity.h">
@@ -82,6 +85,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\CustomerMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\CustomerStates.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\Data.h">
@@ -108,26 +114,20 @@
     <ClInclude Include="D:\vs projects\Simulator\Simulator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\vs projects\Simulator\StoreManage.h">
+    <ClInclude Include="D:\vs projects\Simulator\StateEnter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\vs projects\Simulator\AbstractCustomerState.h">
-      <Filter>Header Files\HCustomerStates</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\vs projects\Simulator\StateEnter.h">
-      <Filter>Header Files\HCustomerStates</Filter>
-    </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\StateFetch.h">
-      <Filter>Header Files\HCustomerStates</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\StateMove.h">
-      <Filter>Header Files\HCustomerStates</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\StateQueue.h">
-      <Filter>Header Files\HCustomerStates</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\vs projects\Simulator\CustomerStates.h">
-      <Filter>Header Files\HCustomerStates</Filter>
+    <ClInclude Include="D:\vs projects\Simulator\StoreManage.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -139,12 +139,6 @@
     </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{7027B185-A2A3-3DDB-8A1A-2BFD8C8EEB7F}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\HCustomerStates">
-      <UniqueIdentifier>{a0a2d8b8-b7c4-4d86-a54c-e04306979e52}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\CustomerStates">
-      <UniqueIdentifier>{3a01a135-5bef-48a6-a6f1-632beaf2a8f1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

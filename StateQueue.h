@@ -13,13 +13,13 @@ public:
 	~StateQueue();
 
 	void onEntry(QEvent* event) override;
-	void ToMove() override;
+	
 	void setOwner(Customer* owner) override;
 
 	int getFacilityPopulation();
 
 public slots:
-	void OnInterruption() override;
+	void onInterruption() override;
 	void onQueue2Timeout();
 	void checkQueueStateChange();
 
@@ -35,4 +35,5 @@ private:
 	StoreManage* storeManage;
 
 	void ToFetch();
+	void toMove() override;
 };

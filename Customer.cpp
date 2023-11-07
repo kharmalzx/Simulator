@@ -55,3 +55,8 @@ CommodityNeed* Customer::getCommodityNeed(const int& commoditySn)
 
     return nullptr;
 }
+
+void Customer::checkAfterRepl()
+{
+    emit checkFetch();
+}

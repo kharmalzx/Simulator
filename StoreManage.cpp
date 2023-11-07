@@ -104,24 +104,24 @@ MapCell* StoreManage::requestShortestQueueEnd(const int& customerId, const int& 
 {
     //计划是去最近的取货口组的人数最少的取货口，目前没判断最近的取货口组
     MapCell* endCell = nullptr;
-    MapCell* fetchPoint = nullptr;
+    int fetchPointOrd = 0;
     int type = getFacilityType(facilitySn);
     Facility* faci = getFaciPtr(facilitySn);
 
 
     int minSize = 999999;
-    for (int j = 0; j < faci->list_queue[j].size(); j++) {
+    for (int j = 0; j < faci->list_queue.size(); j++) {
         if (minSize > faci->list_queue[j].size()) {
             minSize = faci->list_queue[j].size();
             endCell = faci->list_queue[j][faci->list_queue[j].size() - 1].cellAt;
-            fetchPoint = faci->list_queue[j][0].cellAt;
+            fetchPointOrd = j;
         }
     }
 
     //找到endCell周围未被占用的cell，并上锁
     endCell = getMapCellUnoccupiedAround(endCell->x(), endCell->y());
     if (endCell != nullptr) {        
-        customerList[posAtCustomerList(customerId)]->queueInfo.fetchPoint = fetchPoint;
+        getCustomerPtr(customerId)->queueInfo.fetchPointOrd = fetchPointOrd;
         endCell->setOccupy(true);
     }
     
@@ -129,18 +129,18 @@ MapCell* StoreManage::requestShortestQueueEnd(const int& customerId, const int& 
 
 }
 
-MapCell* StoreManage::getRecentFacilityFetchPoint(const int& x, const int& y, const int& shelfSn)
+MapCell* StoreManage::getRecentFacilityFetchPoint(const int& x, const int& y, const int& facilitySn)
 {
     float minDistance = 999999;
     MapCell* recentCell = nullptr;
 
     //之后可能需要分辨sn的种类，比如货架，收银台，服务台
-    int pos = posAtShelfList(shelfSn);
+    Facility* facility = getFaciPtr(facilitySn);
 
-    for (int i = 0; i < shelfList[pos]->list_mapcell_fetch.size(); i++) {
-        if (minDistance > sqrt(pow(shelfList[pos]->list_mapcell_fetch[i].x() - x, 2) + pow(shelfList[pos]->list_mapcell_fetch[i].y() - y, 2))) {
-            minDistance = sqrt(pow(shelfList[pos]->list_mapcell_fetch[i].x() - x, 2) + pow(shelfList[pos]->list_mapcell_fetch[i].y() - y, 2));
-            recentCell = &shelfList[pos]->list_mapcell_fetch[i];
+    for (int i = 0; i < facility->list_mapcell_fetch.size(); i++) {
+        if (minDistance > sqrt(pow(facility->list_mapcell_fetch[i].x() - x, 2) + pow(facility->list_mapcell_fetch[i].y() - y, 2))) {
+            minDistance = sqrt(pow(facility->list_mapcell_fetch[i].x() - x, 2) + pow(facility->list_mapcell_fetch[i].y() - y, 2));
+            recentCell = &facility->list_mapcell_fetch[i];
         }
             
     }
@@ -192,24 +192,6 @@ MapCell* StoreManage::getMapCell(const int& x, const int& y) const
     return &map->mapCells[x][y];
 }
 
-int StoreManage::posAtShelfList(const int& shelfSn)
-{
-    for (int i = 0; i < shelfList.size(); i++)
-        if (shelfList[i]->sn == shelfSn)
-            return i;
-
-    return -1;
-}
-
-int StoreManage::posAtCustomerList(const int& customerId)
-{
-    for (int i = 0; i < customerList.size(); i++)
-        if (customerList[i]->AIData.id == customerId)
-            return i;
-
-    return -1;
-}
-
 int StoreManage::posAtFetchList(const int& facilitySn, MapCell* c)
 {
     Facility* faci =getFaciPtr(facilitySn);
@@ -252,10 +234,14 @@ QPair<bool, bool> StoreManage::shallJoinQueue(Customer* customer, const int& fac
 Facility* StoreManage::getFaciPtr(const int& facilitySn)
 {
     Facility* faci = nullptr;
-    if(getFacilityType(facilitySn) == CELL_SHELF)
-		faci = shelfList[posAtShelfList(facilitySn)];
-	else if (getFacilityType(facilitySn) == CELL_CASHIER)
-		faci = cashierList[posAtShelfList(facilitySn)];
+    if (getFacilityType(facilitySn) == CELL_SHELF) {
+        for (int i = 0; i < shelfList.size(); i++)
+            if (shelfList[i]->sn == facilitySn)
+                return shelfList[i];
+    }
+    else if (getFacilityType(facilitySn) == CELL_CASHIER) {
+
+    }
     else if (getFacilityType(facilitySn) == CELL_COMPLEX) {
 
     }
@@ -263,6 +249,14 @@ Facility* StoreManage::getFaciPtr(const int& facilitySn)
 
     }
     return faci;
+}
+
+Customer* StoreManage::getCustomerPtr(const int& customerID)
+{
+    for (int i = 0; i < customerList.size(); i++) {
+        if (customerList[i]->AIData.id == customerID)
+            return customerList[i];
+    }
 }
 
 void StoreManage::queueAdjust(const int& facilitySn, MapCell* fetchPoint)
@@ -290,18 +284,17 @@ void StoreManage::queueAdjust(const int& facilitySn, MapCell* fetchPoint)
 void StoreManage::customerQueueMoveOne(const int& facilitySn, const int& customerID, MapCell* end)
 {
     //保险起见，应该打断顾客当前的行为，重新指定寻路终点
-    Customer* customer = customerList[posAtCustomerList(customerID)];
+    Customer* customer = getCustomerPtr(customerID);
     customer->animationMoveTo(end);
 
-    int pos_faci = posAtShelfList(facilitySn);
     
     //移动队伍的时候判断货架当前人数是否小于容忍上限
     customer->check_if_queueStateChange();
 }
 
-int StoreManage::getQueueLength(const int& facilitySn, MapCell* fetchPoint)
+int StoreManage::getQueueLength(const int& facilitySn, const int& fetchPointOrd)
 {
-    return shelfList[posAtShelfList(facilitySn)]->list_queue[posAtFetchList(facilitySn, fetchPoint)].size();
+    return getFaciPtr(facilitySn)->list_queue[fetchPointOrd].size();
 }
 
 bool StoreManage::canFetchOnFacility(const int& facilitySn, const int& fetchCount)
@@ -336,14 +329,32 @@ void StoreManage::realFetchOnFacility(const int& facilitySn, const int& fetchCou
 	}
 }
 
-void StoreManage::alarmShelfRepl(const int& shelfSn)
+void StoreManage::requestQuitQueue(Customer* owner)
 {
+    QVector<Facility::QueueCellInfo>* qc = &getFaciPtr(owner->queueInfo.facilitySn)->list_queue[owner->queueInfo.fetchPointOrd];
+    
+    for (int i = 0; i < qc->size(); i++) {
+        if (qc->at(i).customerId == owner->AIData.id) {
+            qc->removeAt(i);
+            break;
+        }
+    }
 
+}
+
+void StoreManage::alarmShelfFinishedRepl(const int& facilitySn)
+{
+    QVector<QVector<Facility::QueueCellInfo>>* arr_qc = &getFaciPtr(facilitySn)->list_queue;
+
+    for (int i = 0; i < arr_qc->size(); i++) {
+        //只需要让取货口的顾客动起来
+        getCustomerPtr(arr_qc->at(i)[0].customerId)->checkAfterRepl();
+    }
 }
 
 void StoreManage::lockQueueEnd(Customer* customer, const int& facilitySn){
     Facility* facility = getFaciPtr(facilitySn);
 
-    facility->updateQueue(posAtFetchList(facilitySn,customer->queueInfo.fetchPoint), customer->AIData.id, customer->currentCell);
+    facility->updateQueue(customer->queueInfo.fetchPointOrd, customer->AIData.id, customer->currentCell);
 
 }

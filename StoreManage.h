@@ -31,28 +31,28 @@ public:
 	int getMapWidth() const;
 	int getFacilityPopulation(const int& facilitySn);
 	MapCell* getMapCell(const int& x, const int& y) const;
-	int posAtShelfList(const int& shelfSn);
-	int posAtCustomerList(const int& customerId);
 	int posAtFetchList(const int& facilitySn, MapCell* c);
 	int getFacilityType(const int& facilitySn);
 	//返回值第一个bool表示是否等待，第二个bool true表示在队列1，false表示在队列2
 	QPair<bool,bool> shallJoinQueue(Customer* customer, const int& facilitySn);
 
 	Facility* getFaciPtr(const int& facilitySn);
+	Customer* getCustomerPtr(const int& customerID);
 
 	//队列相关
 	void queueAdjust(const int& facilitySn,MapCell* fetchPoint);
 	void customerQueueMoveOne(const int& facilitySn, const int& customerID, MapCell* end);
-	int getQueueLength(const int& facilitySn, MapCell* fetchPoint);
+	int getQueueLength(const int& facilitySn, const int& fetchPointOrd);
 	bool canFetchOnFacility(const int& facilitySn, const int& fetchCount);
 	void realFetchOnFacility(const int& facilitySn, const int& fetchCount);
-
+	void requestQuitQueue(Customer* owner);
 
 	//店员补货相关
-	void alarmShelfRepl(const int& shelfSn);
+	void alarmShelfFinishedRepl(const int& facilitySn);
 
 public slots:
 	void lockQueueEnd(Customer* customer, const int& facilitySn);
+
 
 private:
 
@@ -65,8 +65,6 @@ private:
 	QVector<QPair<int,int>> commodityOnFacility;
 	//first = facilitySn, second = commoditySn
 	QVector<QPair<int,int>> facilityHasCommodity;
-
-signals:
 
 
 	

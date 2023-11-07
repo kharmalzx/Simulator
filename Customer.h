@@ -37,9 +37,13 @@ public:
 	void check_if_queueStateChange();
 	QState getCurrentState();
 	CommodityNeed* getCommodityNeed(const int& commoditySn);
+	
+	//检查状态，通知相关
+	void checkAfterRepl();
 
 signals:
 	void checkQueueStateChange();
+	void checkFetch();
 
 private:
 

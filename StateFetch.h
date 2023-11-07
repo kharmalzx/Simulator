@@ -12,12 +12,12 @@ public:
 
 	void setOwner(Customer* owner) override;
 	void onEntry(QEvent* event) override;
-	void ToMove() override;
+	
 
 public slots:
 	void onFetchTimerOut();
-	void OnInterruption() override;
-
+	void onInterruption() override;
+	void onCheckReplenishment();
 
 signals:
 	void fetchToMove();
@@ -36,4 +36,7 @@ private:
 
 	void fetchCommodity();
 	bool canFetchCommodity();
+
+	void toMove() override;
+
 };

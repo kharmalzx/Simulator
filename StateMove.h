@@ -17,7 +17,7 @@ public:
 
 public slots:
 
-	void OnInterruption() override;
+	void onInterruption() override;
 
 signals:
 	void moveToQueue();
@@ -42,6 +42,6 @@ private:
 	void ToQueue();
 	void ToFetch();
 	void ToCheckout();
-
-	void ToMove() override;
+	
+	void toMove() override;
 };

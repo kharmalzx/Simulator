@@ -11,11 +11,11 @@ public:
 	StateEnter(QObject *parent);
 	~StateEnter();
 
-	void ToMove() override;
+	void toMove() override;
 	void setOwner(Customer* owner) override;
 
 public slots:
-	void OnInterruption() override;
+	void onInterruption() override;
 
 signals:
 	void enterTomove();

@@ -18,10 +18,10 @@ public:
 	virtual void setOwner(Customer* owner) = 0;
 
 public slots:
-	virtual void OnInterruption() = 0;
+	virtual void onInterruption() = 0;
 	
 
 private:
 
-	virtual void ToMove() = 0;
+	virtual void toMove() = 0;
 };

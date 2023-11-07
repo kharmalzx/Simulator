@@ -38,7 +38,7 @@ struct StoreKnowledge
 struct QueueInfo {
 	bool isQueue;
 	int facilitySn;
-	MapCell* fetchPoint;
+	int fetchPointOrd;
 	int isInQueue1;
 };
 

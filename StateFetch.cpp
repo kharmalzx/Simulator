@@ -5,7 +5,7 @@ StateFetch::StateFetch(QObject *parent): AbstractCustomerState(parent)
 	fetchTickTimer = new QTimer(this);
 
 	connect(fetchTickTimer, &QTimer::timeout, this, &StateFetch::onFetchTimerOut);
-
+	
 
 }
 
@@ -25,6 +25,7 @@ void StateFetch::setOwner(Customer* owner)
 	fetchTickTimer->setSingleShot(true);
 	fetchTickTimer->setInterval(tick);
 	
+	connect(owner, &Customer::checkFetch, this, &StateFetch::onCheckReplenishment);
 }
 
 void StateFetch::onEntry(QEvent* event)
@@ -38,12 +39,12 @@ void StateFetch::onEntry(QEvent* event)
 	
 }
 
-void StateFetch::ToMove()
+void StateFetch::toMove()
 {
 	owner->findCommoditySn = 0;
 
 	//退出队伍
-
+	storeManage->requestQuitQueue(owner);
 	emit fetchToMove();
 }
 
@@ -53,8 +54,14 @@ void StateFetch::onFetchTimerOut() {
 	fetchCommodity();
 }
 
-void StateFetch::OnInterruption()
+void StateFetch::onInterruption()
 {
+}
+
+void StateFetch::onCheckReplenishment()
+{
+	if (canFetchCommodity())
+		fetchTickTimer->start();
 }
 
 void StateFetch::fetchCommodity()
@@ -69,11 +76,12 @@ void StateFetch::fetchCommodity()
 
 		//决定是否继续取货
 		if (c->num_require > 0) {
-			canFetchCommodity();
+			if(canFetchCommodity())
+				fetchTickTimer->start();
 		}	
 		else {
 			//取货完成，退出队伍
-			ToMove();
+			toMove();
 		}
 	}
 	else {

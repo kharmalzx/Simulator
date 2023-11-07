@@ -18,7 +18,7 @@ void StateQueue::onEntry(QEvent* event)
 
 }
 
-void StateQueue::ToMove()
+void StateQueue::toMove()
 {
 	owner->findCommoditySn = 0;
 	emit QueueToMove();
@@ -37,14 +37,14 @@ int StateQueue::getFacilityPopulation()
 
 void StateQueue::onQueue2Timeout()
 {
-	ToMove();
+	toMove();
 }
 
 void StateQueue::checkQueueStateChange()
 {
 	int population = getFacilityPopulation();
 	
-	if (storeManage->getQueueLength(owner->queueInfo.facilitySn, owner->queueInfo.fetchPoint) == 1) {
+	if (storeManage->getQueueLength(owner->queueInfo.facilitySn, owner->queueInfo.fetchPointOrd) == 1) {
 		ToFetch();
 		return;
 	}

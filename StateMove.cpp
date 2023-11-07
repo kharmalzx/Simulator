@@ -19,7 +19,7 @@ void StateMove::setOwner(Customer * owner)
 
 }
 
-void StateMove::ToMove()
+void StateMove::toMove()
 {
     //如果目标为空，就随机找一个货架
     if (aimList->size() == 0) {
@@ -171,7 +171,7 @@ void StateMove::moveToEnd(MapCell* end)
 
                 storeManage->lockQueueEnd(owner, facilitySn);
 
-                ToMove();
+                toMove();
                 
             }
             else {
@@ -213,7 +213,7 @@ void StateMove::moveToEnd(MapCell* end)
         else {
             //到达普通格子，路上什么事情都没发生
             //不用改变状态，继续寻路
-            ToMove();
+            toMove();
         }
     }
 }

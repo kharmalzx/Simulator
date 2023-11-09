@@ -22,6 +22,7 @@ private:
     StateMove* move;
     StateQueue* queue;
 	StateFetch* fetch;
+	StateCheckout* checkout;
 
 	Customer* owner;
 

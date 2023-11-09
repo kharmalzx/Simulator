@@ -195,11 +195,9 @@ void StateMove::moveToEnd(MapCell* end)
             //在队中，但在收银台，试衣间还是货架？返回值偷懒用CELL类型代替
             
             if (storeManage->getFacilityType(owner->queueInfo.facilitySn) == CELL_CASHIER) {
-                ToCheckout();
-                
+                ToQueue();
             }
             else if (storeManage->getFacilityType(owner->queueInfo.facilitySn) == CELL_SHELF) {
-                
                 ToQueue();
             }
             else if (storeManage->getFacilityType(owner->queueInfo.facilitySn) == CELL_COMPLEX) {
@@ -274,8 +272,4 @@ void StateMove::moveToRandomShelf()
 void StateMove::ToQueue()
 {
     emit moveToQueue();
-}
-
-void StateMove::ToCheckout()
-{
 }

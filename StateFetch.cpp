@@ -10,10 +10,7 @@ StateFetch::StateFetch(QObject *parent): AbstractCustomerState(parent)
 }
 
 StateFetch::~StateFetch()
-{
-	
-
-}
+{}
 
 void StateFetch::setOwner(Customer* owner)
 {
@@ -32,11 +29,7 @@ void StateFetch::onEntry(QEvent* event)
 {
 	if (canFetchCommodity()) {
 		fetchTickTimer->start();
-	}
-	else {
-		//等待货架通知
-	}
-	
+	}	
 }
 
 void StateFetch::toMove()
@@ -69,13 +62,18 @@ void StateFetch::fetchCommodity()
 	CommodityNeed* c = owner->getCommodityNeed(owner->findCommoditySn);
 
 	if (c != nullptr) {
-		if (c->num_require - c->fetchCount_pertick <= 0)
-			c->num_require = 0;
-		else c->num_require = c->num_require - c->fetchCount_pertick;
+		if (c->num_remain - c->fetchCount_pertick <= 0) {
+			c->num_remain = 0;
+			c->num_fetched += c->num_remain;
+		}	
+		else { 
+			c->num_remain = c->num_remain - c->fetchCount_pertick;
+			c->num_fetched += c->fetchCount_pertick;
+		}
 		storeManage->realFetchOnFacility(owner->queueInfo.facilitySn, c->fetchCount_pertick);
 
 		//决定是否继续取货
-		if (c->num_require > 0) {
+		if (c->num_remain > 0) {
 			if(canFetchCommodity())
 				fetchTickTimer->start();
 		}	
@@ -94,7 +92,7 @@ bool StateFetch::canFetchCommodity()
 	CommodityNeed* cn = owner->getCommodityNeed(owner->findCommoditySn);
 
 	if (cn != nullptr) {
-		int fetchCount = cn->num_require >= cn->fetchCount_pertick ? cn->fetchCount_pertick : cn->num_require;
+		int fetchCount = cn->num_remain >= cn->fetchCount_pertick ? cn->fetchCount_pertick : cn->num_remain;
 		if (storeManage->canFetchOnFacility(owner->queueInfo.facilitySn, fetchCount)) {
 			//如果能够取货，那么已经锁定数量，开始计时，但还没让货架减少储量
 			return true;

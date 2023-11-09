@@ -20,8 +20,31 @@ void StateQueue::onEntry(QEvent* event)
 
 void StateQueue::toMove()
 {
+	clearQueueInfoWhenLeave();
+
 	owner->findCommoditySn = 0;
-	emit QueueToMove();
+	emit queueToMove();
+}
+
+void StateQueue::toCheckout()
+{
+	clearQueueInfoWhenFaci();
+
+	emit queueToCheckout();
+}
+
+void StateQueue::clearQueueInfoWhenLeave()
+{
+	owner->queueInfo.isQueue = false;
+	owner->queueInfo.isInQueue1 = false;
+	owner->queueInfo.facilitySn = 0;
+	owner->queueInfo.fetchPointOrd = 0;
+}
+
+void StateQueue::clearQueueInfoWhenFaci()
+{
+	owner->queueInfo.isQueue = false;
+	owner->queueInfo.isInQueue1 = false;
 }
 
 void StateQueue::setOwner(Customer* owner)
@@ -45,7 +68,7 @@ void StateQueue::checkQueueStateChange()
 	int population = getFacilityPopulation();
 	
 	if (storeManage->getQueueLength(owner->queueInfo.facilitySn, owner->queueInfo.fetchPointOrd) == 1) {
-		ToFetch();
+		toFetch();
 		return;
 	}
 
@@ -59,7 +82,10 @@ void StateQueue::checkQueueStateChange()
 }
 
 
-void StateQueue::ToFetch()
+void StateQueue::toFetch()
 {
-	emit QueueToFetch();
+	owner->queueInfo.isQueue = false;
+	owner->queueInfo.isInQueue1 = false;
+
+	emit queueToFetch();
 }

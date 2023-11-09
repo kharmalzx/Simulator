@@ -1,6 +1,7 @@
 #pragma once
 #include "Customer.h"
 #include "ExcelTool.h"
+#include "UserRunningData.h"
 
 class StoreManage : public QObject
 {
@@ -27,6 +28,7 @@ public:
 	QVector<Shelf*> shelfList;
 	QVector<Customer*> customerList;
 	QVector<Cashier*> cashierList;
+	QVector<Commodity*> commodityList;
 	int getMapHeight() const;
 	int getMapWidth() const;
 	int getFacilityPopulation(const int& facilitySn);
@@ -38,6 +40,7 @@ public:
 
 	Facility* getFaciPtr(const int& facilitySn);
 	Customer* getCustomerPtr(const int& customerID);
+	Commodity* getCommodityPtr(const int& commoditySn);
 
 	//队列相关
 	void queueAdjust(const int& facilitySn,MapCell* fetchPoint);
@@ -50,6 +53,9 @@ public:
 	//店员补货相关
 	void alarmShelfFinishedRepl(const int& facilitySn);
 
+	//结账相关
+	void customerPay(Customer* customer);
+
 public slots:
 	void lockQueueEnd(Customer* customer, const int& facilitySn);
 
@@ -60,6 +66,7 @@ private:
 	
 	MapPanel* mapPanel;
 	Map* map;
+	UserRunningData* urdata;
 
 	//first = commoditySn, second = facilitySn
 	QVector<QPair<int,int>> commodityOnFacility;

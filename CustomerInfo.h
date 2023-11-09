@@ -5,7 +5,8 @@
 
 struct CommodityNeed {
 	int commoditySn;
-	int num_require;
+	int num_remain;
+	int num_fetched;
 	int fetchCount_pertick;
 };
 

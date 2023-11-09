@@ -11,6 +11,7 @@
 #include "StateEnter.h"
 #include "StateQueue.h"
 #include "StateFetch.h"
+#include "StateCheckout.h"
 
 enum CustomerState
 {

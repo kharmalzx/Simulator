@@ -27,9 +27,11 @@ CustomerMachine::CustomerMachine(QObject *parent,Customer* owner)
     //初始化各状态之间的转换
     enter->addTransition(enter, &StateEnter::enterTomove, move);
     move->addTransition(move, &StateMove::moveToQueue,queue);
-    queue->addTransition(queue, &StateQueue::QueueToMove, move);
-    queue->addTransition(queue, &StateQueue::QueueToFetch, fetch);
+    queue->addTransition(queue, &StateQueue::queueToMove, move);
+    queue->addTransition(queue, &StateQueue::queueToFetch, fetch);
+    queue->addTransition(queue,&StateQueue::queueToCheckout, checkout);
     fetch->addTransition(fetch, &StateFetch::fetchToMove, move);
+    checkout->addTransition(checkout, &StateCheckout::checkoutToMove, move);
 }
 
 

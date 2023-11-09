@@ -7,6 +7,7 @@ StoreManage::StoreManage(QObject* parent, MapPanel * mapp, AStarPathfinding* as)
     this->mapPanel = mapp;
     this->map = mapp->map;
     this->astar = as;
+    urdata = new UserRunningData(this);
 
     shelfList.resize(map->shelfList.size());
     for (int i = 0; i < shelfList.size(); i++) { shelfList[i] = &map->shelfList[i]; }
@@ -259,6 +260,15 @@ Customer* StoreManage::getCustomerPtr(const int& customerID)
     }
 }
 
+Commodity* StoreManage::getCommodityPtr(const int& commoditySn)
+{
+    for (int i = 0; i < commodityList.size(); i++) {
+        if(commodityList[i]->sn == commoditySn)
+			return commodityList[i];
+    }
+    
+}
+
 void StoreManage::queueAdjust(const int& facilitySn, MapCell* fetchPoint)
 {
     //取货完成之后进行队列调整，去除第一个取货的人，后面的人走到前面的格子，末尾的格子被释放
@@ -350,6 +360,19 @@ void StoreManage::alarmShelfFinishedRepl(const int& facilitySn)
         //只需要让取货口的顾客动起来
         getCustomerPtr(arr_qc->at(i)[0].customerId)->checkAfterRepl();
     }
+}
+
+void StoreManage::customerPay(Customer* customer)
+{
+    long long money = 0;
+    
+    for (int i = 0; i < customer->AIData.list_commodity_needs.size(); i++) {
+        CommodityNeed* cn = &customer->AIData.list_commodity_needs[i];
+
+        money += getCommodityPtr(cn->commoditySn)->price * (cn->num_fetched);
+    }
+
+    urdata->addMoney(money);
 }
 
 void StoreManage::lockQueueEnd(Customer* customer, const int& facilitySn){

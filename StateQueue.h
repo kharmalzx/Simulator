@@ -25,15 +25,19 @@ public slots:
 
 
 signals:
-    void QueueToMove();
-	void QueueToFetch();
-	
+    void queueToMove();
+	void queueToFetch();
+	void queueToCheckout();
 
 private:
 	Customer* owner;
 	QTimer* timer_queue2;
 	StoreManage* storeManage;
 
-	void ToFetch();
+	void toFetch();
 	void toMove() override;
+	void toCheckout();
+
+	void clearQueueInfoWhenLeave();
+	void clearQueueInfoWhenFaci();
 };

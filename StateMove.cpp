@@ -190,23 +190,30 @@ void StateMove::moveToEnd(MapCell* end)
         //再走一步到达终点
         currentCell = nextCell;
 
-        //判断终点属于什么，决定接下来的行为
         if (owner->queueInfo.isQueue) {
             //在队中，但在收银台，试衣间还是货架？返回值偷懒用CELL类型代替
-            
-            if (storeManage->getFacilityType(owner->queueInfo.facilitySn) == CELL_CASHIER) {
-                ToQueue();
-            }
-            else if (storeManage->getFacilityType(owner->queueInfo.facilitySn) == CELL_SHELF) {
-                ToQueue();
-            }
-            else if (storeManage->getFacilityType(owner->queueInfo.facilitySn) == CELL_COMPLEX) {
+            int faci_type = storeManage->getFacilityType(owner->queueInfo.facilitySn);
+            switch (faci_type)
+            {
+                case CELL_CASHIER:
+                    toQueue();
+                    break;
+                case CELL_SHELF:
+                    toQueue();
+                    break;
+                case CELL_COMPLEX:
+                    toQueue();
+					break;
+                case CELL_DRESSINGROOM:
+                    toQueue();
+                    break;
+                case CELL_EXIT:
+                    toExit();
+                    break;
 
+                default:
+                    break;
             }
-            else if (storeManage->getFacilityType(owner->queueInfo.facilitySn) == CELL_DRESSINGROOM) {
-
-            }
-
         }
         else {
             //到达普通格子，路上什么事情都没发生
@@ -269,7 +276,12 @@ void StateMove::moveToRandomShelf()
     moveToEnd(randMapCell);
 }
 
-void StateMove::ToQueue()
+void StateMove::toQueue()
 {
     emit moveToQueue();
+}
+
+void StateMove::toExit()
+{
+    emit moveToExit();
 }

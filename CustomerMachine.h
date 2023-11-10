@@ -11,9 +11,7 @@ public:
 	CustomerMachine(QObject *parent,Customer* owner);
 	~CustomerMachine();
 
-signals:
-    void enterToMove();
-
+	void setOwner(Customer* owner);
 public slots:
 
 
@@ -23,6 +21,8 @@ private:
     StateQueue* queue;
 	StateFetch* fetch;
 	StateCheckout* checkout;
+	StateExit* exit;
+	
 
 	Customer* owner;
 

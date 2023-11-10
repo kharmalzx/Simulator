@@ -397,6 +397,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AbstractClerkState.cpp" />
+    <ClCompile Include="Clerk.cpp" />
+    <ClCompile Include="ClerkInfo.cpp" />
+    <ClCompile Include="ClerkMachine.cpp" />
+    <ClCompile Include="ClerkStates.cpp" />
     <ClCompile Include="D:\vs projects\Simulator\Simulator_autogen\mocs_compilation_Debug.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</ExcludedFromBuild>
@@ -414,7 +419,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\vs projects\Simulator\Map.cpp" />
     <ClCompile Include="D:\vs projects\Simulator\MapCell.cpp" />
     <ClCompile Include="D:\vs projects\Simulator\MapPanel.cpp" />
-    <ClCompile Include="D:\vs projects\Simulator\Path.cpp" />
     <ClCompile Include="D:\vs projects\Simulator\Shelf.cpp" />
     <ClCompile Include="D:\vs projects\Simulator\Simulator.cpp" />
     <ClCompile Include="D:\vs projects\Simulator\StateCheckout.cpp" />
@@ -424,7 +428,24 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\vs projects\Simulator\StateQueue.cpp" />
     <ClCompile Include="D:\vs projects\Simulator\StoreManage.cpp" />
     <ClCompile Include="D:\vs projects\Simulator\main.cpp" />
+    <ClCompile Include="Room.cpp" />
+    <ClCompile Include="StateClerkEnd.cpp" />
+    <ClCompile Include="StateClerkIdle.cpp" />
+    <ClCompile Include="StateClerkInit.cpp" />
+    <ClCompile Include="StateClerkLoad.cpp" />
+    <ClCompile Include="StateClerkMove.cpp" />
+    <ClCompile Include="StateClerkService.cpp" />
+    <ClCompile Include="StateExit.cpp" />
+    <ClCompile Include="StateClerkReplenish.cpp" />
+    <ClCompile Include="StateClerkSlack.cpp" />
+    <ClCompile Include="StateClerkSolicit.cpp" />
+    <ClCompile Include="StateClerkRest.cpp" />
     <ClCompile Include="UserRunningData.cpp" />
+    <ClInclude Include="AbstractClerkState.h" />
+    <ClInclude Include="Clerk.h" />
+    <ClInclude Include="ClerkInfo.h" />
+    <ClInclude Include="ClerkMachine.h" />
+    <ClInclude Include="ClerkStates.h" />
     <ClInclude Include="D:\vs projects\Simulator\AStarPathfinding.h" />
     <ClInclude Include="D:\vs projects\Simulator\AbstractCustomerState.h" />
     <ClInclude Include="D:\vs projects\Simulator\Commodity.h" />
@@ -437,7 +458,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\vs projects\Simulator\Map.h" />
     <ClInclude Include="D:\vs projects\Simulator\MapCell.h" />
     <ClInclude Include="D:\vs projects\Simulator\MapPanel.h" />
-    <ClInclude Include="D:\vs projects\Simulator\Path.h" />
     <ClInclude Include="D:\vs projects\Simulator\Shelf.h" />
     <ClInclude Include="D:\vs projects\Simulator\Simulator.h" />
     <ClInclude Include="D:\vs projects\Simulator\StateCheckout.h" />
@@ -446,6 +466,18 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\vs projects\Simulator\StateMove.h" />
     <ClInclude Include="D:\vs projects\Simulator\StateQueue.h" />
     <ClInclude Include="D:\vs projects\Simulator\StoreManage.h" />
+    <ClInclude Include="Room.h" />
+    <ClInclude Include="StateClerkEnd.h" />
+    <ClInclude Include="StateClerkIdle.h" />
+    <ClInclude Include="StateClerkInit.h" />
+    <ClInclude Include="StateClerkLoad.h" />
+    <ClInclude Include="StateClerkMove.h" />
+    <ClInclude Include="StateClerkService.h" />
+    <ClInclude Include="StateExit.h" />
+    <ClInclude Include="StateClerkReplenish.h" />
+    <ClInclude Include="StateClerkSlack.h" />
+    <ClInclude Include="StateClerkSolicit.h" />
+    <ClInclude Include="StateClerkRest.h" />
     <ClInclude Include="UserRunningData.h" />
   </ItemGroup>
   <ItemGroup>

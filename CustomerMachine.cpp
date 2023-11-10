@@ -11,13 +11,18 @@ CustomerMachine::CustomerMachine(QObject *parent,Customer* owner)
     enter = new StateEnter(this);
     move = new StateMove(this);
     queue = new StateQueue(this);
-
+    fetch = new StateFetch(this);
+    checkout = new StateCheckout(this);
+    exit = new StateExit(this);
 
 
     addState(enter);
     addState(move);
     addState(queue);
     addState(fetch);
+    addState(checkout);
+    addState(exit);
+    
 
     setInitialState(enter);
 
@@ -32,9 +37,15 @@ CustomerMachine::CustomerMachine(QObject *parent,Customer* owner)
     queue->addTransition(queue,&StateQueue::queueToCheckout, checkout);
     fetch->addTransition(fetch, &StateFetch::fetchToMove, move);
     checkout->addTransition(checkout, &StateCheckout::checkoutToMove, move);
+    move->addTransition(move, &StateMove::moveToExit, exit);
 }
 
 
 
 CustomerMachine::~CustomerMachine()
 {}
+
+void CustomerMachine::setOwner(Customer * owner)
+{
+    this->owner = owner;
+}

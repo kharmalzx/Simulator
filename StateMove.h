@@ -21,6 +21,7 @@ public slots:
 
 signals:
 	void moveToQueue();
+	void moveToExit();
 
 private:
 	Customer* owner;
@@ -40,7 +41,7 @@ private:
 	void moveToRandomShelf();
 
 	//moveToQueue适用于一切从move到设施的情况，再从queue到各类设施的状态
-	void ToQueue();
-	
+	void toQueue();
+	void toExit();
 	void toMove() override;
 };

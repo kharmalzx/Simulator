@@ -6,12 +6,12 @@
 #include <qstate.h>
 #include <qsignaltransition.h>
 #include "Customer.h"
-#include "CustomerMachine.h"
 #include "StateMove.h"
 #include "StateEnter.h"
 #include "StateQueue.h"
 #include "StateFetch.h"
 #include "StateCheckout.h"
+#include "StateExit.h"
 
 enum CustomerState
 {

@@ -4,142 +4,238 @@
     <ClCompile Include="D:\vs projects\Simulator\Simulator_autogen\mocs_compilation_Debug.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\AStarPathfinding.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\Commodity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\Customer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\CustomerInfo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\CustomerMachine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="D:\vs projects\Simulator\Data.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\ExcelTool.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\Map.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\MapCell.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\MapPanel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\Path.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\Shelf.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="D:\vs projects\Simulator\Simulator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\vs projects\Simulator\StoreManage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="D:\vs projects\Simulator\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="D:\vs projects\Simulator\AbstractCustomerState.cpp">
-      <Filter>Source Files\CustomerStates</Filter>
+      <Filter>Source Files\Customer\CustomerStates</Filter>
     </ClCompile>
     <ClCompile Include="D:\vs projects\Simulator\StateQueue.cpp">
-      <Filter>Source Files\CustomerStates</Filter>
+      <Filter>Source Files\Customer\CustomerStates</Filter>
     </ClCompile>
     <ClCompile Include="D:\vs projects\Simulator\StateMove.cpp">
-      <Filter>Source Files\CustomerStates</Filter>
+      <Filter>Source Files\Customer\CustomerStates</Filter>
     </ClCompile>
     <ClCompile Include="D:\vs projects\Simulator\StateFetch.cpp">
-      <Filter>Source Files\CustomerStates</Filter>
+      <Filter>Source Files\Customer\CustomerStates</Filter>
     </ClCompile>
     <ClCompile Include="D:\vs projects\Simulator\StateEnter.cpp">
-      <Filter>Source Files\CustomerStates</Filter>
+      <Filter>Source Files\Customer\CustomerStates</Filter>
     </ClCompile>
     <ClCompile Include="D:\vs projects\Simulator\StateCheckout.cpp">
-      <Filter>Source Files\CustomerStates</Filter>
+      <Filter>Source Files\Customer\CustomerStates</Filter>
     </ClCompile>
     <ClCompile Include="D:\vs projects\Simulator\CustomerStates.cpp">
-      <Filter>Source Files\CustomerStates</Filter>
+      <Filter>Source Files\Customer\CustomerStates</Filter>
     </ClCompile>
     <ClCompile Include="UserRunningData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StateExit.cpp">
+      <Filter>Source Files\Customer\CustomerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\CustomerMachine.cpp">
+      <Filter>Source Files\Customer\CustomerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\Customer.cpp">
+      <Filter>Source Files\Customer</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\CustomerInfo.cpp">
+      <Filter>Source Files\Customer</Filter>
+    </ClCompile>
+    <ClCompile Include="ClerkMachine.cpp">
+      <Filter>Source Files\Clerk\ClerkStates</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractClerkState.cpp">
+      <Filter>Source Files\Clerk\ClerkStates</Filter>
+    </ClCompile>
+    <ClCompile Include="ClerkStates.cpp">
+      <Filter>Source Files\Clerk\ClerkStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Clerk.cpp">
+      <Filter>Source Files\Clerk</Filter>
+    </ClCompile>
+    <ClCompile Include="ClerkInfo.cpp">
+      <Filter>Source Files\Clerk</Filter>
+    </ClCompile>
+    <ClCompile Include="StateClerkMove.cpp">
+      <Filter>Source Files\Clerk\ClerkStates</Filter>
+    </ClCompile>
+    <ClCompile Include="StateClerkSolicit.cpp">
+      <Filter>Source Files\Clerk\ClerkStates</Filter>
+    </ClCompile>
+    <ClCompile Include="StateClerkReplenish.cpp">
+      <Filter>Source Files\Clerk\ClerkStates</Filter>
+    </ClCompile>
+    <ClCompile Include="StateClerkSlack.cpp">
+      <Filter>Source Files\Clerk\ClerkStates</Filter>
+    </ClCompile>
+    <ClCompile Include="StateClerkRest.cpp">
+      <Filter>Source Files\Clerk\ClerkStates</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\StoreManage.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\ExcelTool.cpp">
+      <Filter>Source Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\AStarPathfinding.cpp">
+      <Filter>Source Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\Shelf.cpp">
+      <Filter>Source Files\InMap</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\Commodity.cpp">
+      <Filter>Source Files\InMap</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\Map.cpp">
+      <Filter>Source Files\InMap</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\MapCell.cpp">
+      <Filter>Source Files\InMap</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\vs projects\Simulator\MapPanel.cpp">
+      <Filter>Source Files\InMap</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp">
+      <Filter>Source Files\InMap</Filter>
+    </ClCompile>
+    <ClCompile Include="StateClerkIdle.cpp">
+      <Filter>Source Files\Clerk\ClerkStates</Filter>
+    </ClCompile>
+    <ClCompile Include="StateClerkEnd.cpp">
+      <Filter>Source Files\Clerk\ClerkStates</Filter>
+    </ClCompile>
+    <ClCompile Include="StateClerkInit.cpp">
+      <Filter>Source Files\Clerk\ClerkStates</Filter>
+    </ClCompile>
+    <ClCompile Include="StateClerkLoad.cpp">
+      <Filter>Source Files\Clerk\ClerkStates</Filter>
+    </ClCompile>
+    <ClCompile Include="StateClerkService.cpp">
+      <Filter>Source Files\Clerk\ClerkStates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="D:\vs projects\Simulator\AStarPathfinding.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\vs projects\Simulator\Commodity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\vs projects\Simulator\Customer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\vs projects\Simulator\CustomerInfo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\vs projects\Simulator\CustomerMachine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\Data.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\vs projects\Simulator\ExcelTool.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\vs projects\Simulator\Map.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\vs projects\Simulator\MapCell.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\vs projects\Simulator\MapPanel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\vs projects\Simulator\Path.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\vs projects\Simulator\Shelf.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\Simulator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\vs projects\Simulator\StoreManage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\CustomerStates.h">
-      <Filter>Header Files\HCustomerStates</Filter>
+      <Filter>Header Files\HCustomer\HCustomerStates</Filter>
     </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\StateCheckout.h">
-      <Filter>Header Files\HCustomerStates</Filter>
+      <Filter>Header Files\HCustomer\HCustomerStates</Filter>
     </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\StateEnter.h">
-      <Filter>Header Files\HCustomerStates</Filter>
+      <Filter>Header Files\HCustomer\HCustomerStates</Filter>
     </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\StateFetch.h">
-      <Filter>Header Files\HCustomerStates</Filter>
+      <Filter>Header Files\HCustomer\HCustomerStates</Filter>
     </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\StateMove.h">
-      <Filter>Header Files\HCustomerStates</Filter>
+      <Filter>Header Files\HCustomer\HCustomerStates</Filter>
     </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\StateQueue.h">
-      <Filter>Header Files\HCustomerStates</Filter>
+      <Filter>Header Files\HCustomer\HCustomerStates</Filter>
     </ClInclude>
     <ClInclude Include="D:\vs projects\Simulator\AbstractCustomerState.h">
-      <Filter>Header Files\HCustomerStates</Filter>
+      <Filter>Header Files\HCustomer\HCustomerStates</Filter>
     </ClInclude>
     <ClInclude Include="UserRunningData.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StateExit.h">
+      <Filter>Header Files\HCustomer\HCustomerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\CustomerMachine.h">
+      <Filter>Header Files\HCustomer\HCustomerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\Customer.h">
+      <Filter>Header Files\HCustomer</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\CustomerInfo.h">
+      <Filter>Header Files\HCustomer</Filter>
+    </ClInclude>
+    <ClInclude Include="ClerkMachine.h">
+      <Filter>Header Files\HClerk\HClerkStates</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractClerkState.h">
+      <Filter>Header Files\HClerk\HClerkStates</Filter>
+    </ClInclude>
+    <ClInclude Include="ClerkStates.h">
+      <Filter>Header Files\HClerk\HClerkStates</Filter>
+    </ClInclude>
+    <ClInclude Include="ClerkInfo.h">
+      <Filter>Header Files\HClerk</Filter>
+    </ClInclude>
+    <ClInclude Include="Clerk.h">
+      <Filter>Header Files\HClerk</Filter>
+    </ClInclude>
+    <ClInclude Include="StateClerkMove.h">
+      <Filter>Header Files\HClerk\HClerkStates</Filter>
+    </ClInclude>
+    <ClInclude Include="StateClerkSolicit.h">
+      <Filter>Header Files\HClerk\HClerkStates</Filter>
+    </ClInclude>
+    <ClInclude Include="StateClerkReplenish.h">
+      <Filter>Header Files\HClerk\HClerkStates</Filter>
+    </ClInclude>
+    <ClInclude Include="StateClerkSlack.h">
+      <Filter>Header Files\HClerk\HClerkStates</Filter>
+    </ClInclude>
+    <ClInclude Include="StateClerkRest.h">
+      <Filter>Header Files\HClerk\HClerkStates</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\StoreManage.h">
+      <Filter>Header Files\HManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\AStarPathfinding.h">
+      <Filter>Header Files\HTools</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\ExcelTool.h">
+      <Filter>Header Files\HTools</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\Map.h">
+      <Filter>Header Files\HInMap</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\MapCell.h">
+      <Filter>Header Files\HInMap</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\MapPanel.h">
+      <Filter>Header Files\HInMap</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\Shelf.h">
+      <Filter>Header Files\HInMap</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\vs projects\Simulator\Commodity.h">
+      <Filter>Header Files\HInMap</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
+      <Filter>Header Files\HInMap</Filter>
+    </ClInclude>
+    <ClInclude Include="StateClerkIdle.h">
+      <Filter>Header Files\HClerk\HClerkStates</Filter>
+    </ClInclude>
+    <ClInclude Include="StateClerkEnd.h">
+      <Filter>Header Files\HClerk\HClerkStates</Filter>
+    </ClInclude>
+    <ClInclude Include="StateClerkInit.h">
+      <Filter>Header Files\HClerk\HClerkStates</Filter>
+    </ClInclude>
+    <ClInclude Include="StateClerkLoad.h">
+      <Filter>Header Files\HClerk\HClerkStates</Filter>
+    </ClInclude>
+    <ClInclude Include="StateClerkService.h">
+      <Filter>Header Files\HClerk\HClerkStates</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -152,11 +248,47 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{7027B185-A2A3-3DDB-8A1A-2BFD8C8EEB7F}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\CustomerStates">
+    <Filter Include="Header Files\HCustomer">
+      <UniqueIdentifier>{e8df887f-644e-4a12-baa0-4c569a649d87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HCustomer\HCustomerStates">
+      <UniqueIdentifier>{837ad227-bb22-48bf-b134-80e76100d903}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Customer">
+      <UniqueIdentifier>{0f43dad2-4bb5-4f0e-87ea-6c1c86f5900e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Customer\CustomerStates">
       <UniqueIdentifier>{22f41099-9477-4cd2-b37c-4969c974a1ac}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\HCustomerStates">
-      <UniqueIdentifier>{837ad227-bb22-48bf-b134-80e76100d903}</UniqueIdentifier>
+    <Filter Include="Source Files\Clerk">
+      <UniqueIdentifier>{d2afdf5b-0c6d-443a-9172-d9b0dd535e59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Clerk\ClerkStates">
+      <UniqueIdentifier>{9189ae09-821e-486b-bc7b-4fdb5cde49b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HClerk">
+      <UniqueIdentifier>{8b2b40e1-7c36-4494-b0ee-acf027f9e2b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HClerk\HClerkStates">
+      <UniqueIdentifier>{db14dc34-de2d-4d62-b70c-f97148cf101e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Managers">
+      <UniqueIdentifier>{dec15d33-99cb-4119-9c5b-1d8c7119ae31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tools">
+      <UniqueIdentifier>{e0821134-d8c4-46c5-af3d-c1346501e307}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HManagers">
+      <UniqueIdentifier>{8706426b-bea8-42d9-8bde-a48ab9b8ce66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HTools">
+      <UniqueIdentifier>{d32a2bb9-f965-4f1e-be20-47ec4575cca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HInMap">
+      <UniqueIdentifier>{4fa24b04-4b4d-4d66-bf59-a4e4510b4821}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\InMap">
+      <UniqueIdentifier>{cdfae177-ae42-4c86-9f65-dcd8af2817ad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

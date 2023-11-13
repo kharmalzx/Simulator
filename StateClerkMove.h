@@ -24,6 +24,20 @@ signals:
 	void moveToEnd();
 
 private:
-	Clerk* m_owner;
+	Clerk* owner;
+	StoreManage* storeManage;
+	QVector<MapCell*>* path;
+	QVector<MapCell*>* findPathCellList;
+	AStarPathfinding* astar;
+
+	MapCell* cellAt(const int& x, const int& y) const;
+	void getPathInFindCelllist();
+	void moveToTargetCell(MapCell* end);
+
 	void toMove() override;
+	void toSolicit();
+	void toReplenish();
+	void toRest();
+	void toLoad();
+	void toEnd();
 };

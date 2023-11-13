@@ -23,9 +23,7 @@ public:
 	StoreKnowledge storeKnowledge;
 	StoreManage* storeManage;
 
-	CustomerMachine* machine;
-	QVector<MapCell*> path;
-	MapCell* currentCell;
+	CustomerMachine* machine;	
 
 	QVector<int> list_shelf_detected;
 	QVector<MapCell*> list_moveCell_aim;
@@ -37,6 +35,8 @@ public:
 	void check_if_queueStateChange();
 	QState getCurrentState();
 	CommodityNeed* getCommodityNeed(const int& commoditySn);
+	MapCell* cellAt() const { return currentCell; }
+	void setLoc(MapCell* cell) { *currentCell = *cell; }
 	
 	//检查状态，通知相关
 	void checkAfterRepl();
@@ -46,6 +46,6 @@ signals:
 	void checkFetch();
 
 private:
-
+	MapCell* currentCell;
 };
 

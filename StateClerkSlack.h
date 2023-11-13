@@ -17,10 +17,14 @@ public slots:
 	void onInterruption() override;
 
 signals:
-	void slackToMove();
-	void slackToWork(int targetState);
+	void slackToWork();
 
 private:
 	Clerk* owner;
+	StoreManage* storeManage;
+
+	QTimer* m_slackTimer;
+
 	void toMove() override;
+	void toWork();
 };

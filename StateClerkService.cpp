@@ -10,6 +10,8 @@ StateClerkService::~StateClerkService()
 void StateClerkService::setOwner(Clerk * clerk)
 {
 	owner = clerk;
+
+	
 }
 
 void StateClerkService::toMove()

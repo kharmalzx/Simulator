@@ -1,8 +1,8 @@
 #pragma once
 
 #include <QStateMachine>
-#include "ClerkStates.h"
 #include <qhistorystate.h>
+#include "ClerkStates.h"
 
 class ClerkMachine  : public QStateMachine
 {
@@ -26,7 +26,8 @@ private:
 	StateClerkInit* stateInit;
 	StateClerkService* service;
 
-	Clerk* owner;
+	QState* working;
+	QHistoryState* history;
 
-	void slackBackToWork(int historyState);
+	Clerk* owner;
 };

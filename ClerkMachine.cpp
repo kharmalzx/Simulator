@@ -3,27 +3,18 @@
 ClerkMachine::ClerkMachine(QObject *parent)
 	: QStateMachine(parent)
 {
+	working = new QState(this);
 	move = new StateClerkMove(this);
-	load = new StateClerkLoad(this);
+	load = new StateClerkLoad(working);
 	slack = new StateClerkSlack(this);
-	solicit = new StateClerkSolicit(this);
-	replenish = new StateClerkReplenish(this);
+	solicit = new StateClerkSolicit(working);
+	replenish = new StateClerkReplenish(working);
 	idle = new StateClerkIdle(this);
 	rest = new StateClerkRest(this);
 	stateEnd = new StateClerkEnd(this);
 	stateInit = new StateClerkInit(this);
-	service = new StateClerkService(this);
-
-	addState(move);
-	addState(load);
-	addState(slack);
-	addState(solicit);
-	addState(replenish);
-	addState(idle);
-	addState(rest);
-	addState(stateEnd);
-	addState(stateInit);
-	addState(service);
+	service = new StateClerkService(working);
+	history = new QHistoryState(working);
 
 	setInitialState(stateInit);
 
@@ -40,15 +31,12 @@ ClerkMachine::ClerkMachine(QObject *parent)
 	load->addTransition(load, &StateClerkLoad::loadToMove, move);
 	load->addTransition(load, &StateClerkLoad::loadToEnd, stateEnd);
 
-	//slack回复到历史状态，根据信号的不同，转换到不同的状态
-	slack->addTransition(slack, &StateClerkSlack::slackToMove, move);
-	slack->addTransition(service);
-	slack->addTransition(solicit);
-	slack->addTransition(replenish);
-	connect(slack,&StateClerkSlack::slackToWork,this,&ClerkMachine::slackBackToWork);
+	//slack回复到历史状态
+	working->addTransition(working, &QState::entered, slack);
+	slack->addTransition(slack, &StateClerkSlack::slackToWork, history);
 
 	solicit->addTransition(solicit, &StateClerkSolicit::solicitToMove, move);
-	solicit->addTransition(solicit, &StateClerkSolicit::solicitToSlack, slack);
+	working->addTransition(solicit, &StateClerkSolicit::solicitToSlack, slack);
 
 	replenish->addTransition(replenish, &StateClerkReplenish::replenishToMove, move);
 	replenish->addTransition(replenish, &StateClerkReplenish::replenishToEnd, stateEnd);
@@ -62,9 +50,10 @@ ClerkMachine::ClerkMachine(QObject *parent)
 	rest->addTransition(rest, &StateClerkRest::restToEnd, stateEnd);
 
 	service->addTransition(service, &StateClerkService::serviceToIdle, idle);
-	service->addTransition(service, &StateClerkService::serviceToSlack, slack);
+	working->addTransition(service, &StateClerkService::serviceToSlack, slack);
 	service->addTransition(service, &StateClerkService::serviceToEnd, stateEnd);
 	service->addTransition(service, &StateClerkService::serviceToMove, move);
+	
 }
 
 ClerkMachine::~ClerkMachine()
@@ -73,9 +62,15 @@ ClerkMachine::~ClerkMachine()
 void ClerkMachine::setOwner(Clerk * clerk)
 {
 	owner = clerk;
-}
+	move->setOwner(clerk);
+	load->setOwner(clerk);
+	slack->setOwner(clerk);
+	solicit->setOwner(clerk);
+	replenish->setOwner(clerk);
+	idle->setOwner(clerk);
+	rest->setOwner(clerk);
+	stateEnd->setOwner(clerk);
+	stateInit->setOwner(clerk);
+	service->setOwner(clerk);
 
-void ClerkMachine::slackBackToWork(int hs)
-{
-	QHistoryState* historyState = static_cast<QHistoryState*>(sender());
 }

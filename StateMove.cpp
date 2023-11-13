@@ -13,9 +13,9 @@ void StateMove::setOwner(Customer * owner)
     this->owner = owner;
     
     storeManage = owner->storeManage;
-    path = &owner->path;
+    path = new QVector<MapCell*>();
     aimList = &owner->list_moveCell_aim;
-    currentCell = owner->currentCell;
+    currentCell = owner->cellAt();
 
 }
 
@@ -32,7 +32,10 @@ void StateMove::toMove()
 
 MapCell* StateMove::cellAt(const int& x, const int& y) const
 {
-    return storeManage->getMapCell(x,y);
+    if (x >= 0 && x < storeManage->getMapHeight() && y >= 0 && y < storeManage->getMapWidth())
+    {
+        return storeManage->getMapCell(x, y);
+    }
 }
 
 void StateMove::getPathInAimlist()
@@ -139,14 +142,14 @@ void StateMove::moveToEnd(MapCell* end)
     }
 
     int facilitySn = -1;
-    owner->currentCell = cellAt(owner->path[0]->x(), owner->path[0]->y());
-    MapCell* nextCell = cellAt(owner->path[1]->x(), owner->path[1]->y());
+    owner->setLoc(path->at(0));
+    MapCell* nextCell = path->at(1);
 
     //播走路动画，应该是个while循环,路上查视野，去往收银台的时候不查
     while ((facilitySn = watchDetect(nextCell)) < 0 && !isToCashier && (nextCell->x() != end->x() && nextCell->y() != end->y())) {
-        owner->path.pop_front();
-        owner->currentCell = nextCell;
-        nextCell = cellAt(owner->path[1]->x(), owner->path[1]->y());
+        path->pop_front();
+        owner->setLoc(nextCell);
+        nextCell = path->at(1);
 
 
     }
@@ -165,7 +168,7 @@ void StateMove::moveToEnd(MapCell* end)
             end = owner->storeManage->requestShortestQueueEnd(owner->AIData.id, facilitySn);
 
             if (end != nullptr) {
-                owner->path.clear();
+                path->clear();
                 owner->list_moveCell_aim.clear();
                 owner->list_moveCell_aim.push_back(end);
 
@@ -189,6 +192,7 @@ void StateMove::moveToEnd(MapCell* end)
     else {
         //再走一步到达终点
         currentCell = nextCell;
+        owner->setLoc(nextCell);
 
         if (owner->queueInfo.isQueue) {
             //在队中，但在收银台，试衣间还是货架？返回值偷懒用CELL类型代替

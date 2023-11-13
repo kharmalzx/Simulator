@@ -18,4 +18,5 @@ public slots:
 
 private:
 	virtual void toMove() = 0;
+	
 };

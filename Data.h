@@ -17,15 +17,6 @@ public:
 
 	template<typename T>
 	T get(DataType, int groupID);
-	
-protected: 
-	class CustomerAIParams {
-
-	};
-	
-	class ClerkAIParams {
-
-	};
 
 };
 

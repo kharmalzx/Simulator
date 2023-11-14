@@ -121,6 +121,24 @@
     <ClCompile Include="StateClerkService.cpp">
       <Filter>Source Files\Clerk\ClerkStates</Filter>
     </ClCompile>
+    <ClCompile Include="StateClerkWorking.cpp">
+      <Filter>Source Files\Clerk\ClerkStates</Filter>
+    </ClCompile>
+    <ClCompile Include="StateClerkClean.cpp">
+      <Filter>Source Files\Clerk\ClerkStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Cart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Trash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StoreSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\vs projects\Simulator\Data.h">
@@ -236,6 +254,24 @@
     </ClInclude>
     <ClInclude Include="StateClerkService.h">
       <Filter>Header Files\HClerk\HClerkStates</Filter>
+    </ClInclude>
+    <ClInclude Include="StateClerkWorking.h">
+      <Filter>Header Files\HClerk\HClerkStates</Filter>
+    </ClInclude>
+    <ClInclude Include="StateClerkClean.h">
+      <Filter>Header Files\HClerk\HClerkStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Cart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Trash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StoreSettings.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

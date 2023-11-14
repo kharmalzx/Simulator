@@ -18,7 +18,6 @@ public slots :
 
 signals:
 	void solicitToMove();
-	void solicitToSlack();
 
 private:
 	Clerk* owner;

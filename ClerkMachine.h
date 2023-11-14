@@ -25,9 +25,23 @@ private:
 	StateClerkEnd* stateEnd;
 	StateClerkInit* stateInit;
 	StateClerkService* service;
-
-	QState* working;
+	StateClerkWorking* working;
+	StateClerkClean* clean;
 	QHistoryState* history;
 
 	Clerk* owner;
+
+	void initWorkingTransitions();
+	void initMoveTransitions();
+	void initLoadTransitions();
+	void initSlackTransitions();
+	void initSolicitTransitions();
+	void initReplenishTransitions();
+	void initIdleTransitions();
+	void initRestTransitions();
+	void initStateEndTransitions();
+	void initStateInitTransitions();
+	void initServiceTransitions();
+	void initCleanTransitions();
+
 };

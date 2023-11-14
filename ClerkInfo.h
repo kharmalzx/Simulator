@@ -15,6 +15,7 @@ struct ClerkAIData
 	QPair<int, int> slackRandom;
 	int shiftFactor;
 	int moveSpeed;
+	int loadSpeed;
 };
 
 struct ReplenishInfo {

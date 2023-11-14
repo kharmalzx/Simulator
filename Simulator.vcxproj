@@ -398,6 +398,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstractClerkState.cpp" />
+    <ClCompile Include="Cart.cpp" />
+    <ClCompile Include="CharacterSettings.cpp" />
     <ClCompile Include="Clerk.cpp" />
     <ClCompile Include="ClerkInfo.cpp" />
     <ClCompile Include="ClerkMachine.cpp" />
@@ -429,19 +431,25 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\vs projects\Simulator\StoreManage.cpp" />
     <ClCompile Include="D:\vs projects\Simulator\main.cpp" />
     <ClCompile Include="Room.cpp" />
+    <ClCompile Include="StateClerkClean.cpp" />
     <ClCompile Include="StateClerkEnd.cpp" />
     <ClCompile Include="StateClerkIdle.cpp" />
     <ClCompile Include="StateClerkInit.cpp" />
     <ClCompile Include="StateClerkLoad.cpp" />
     <ClCompile Include="StateClerkMove.cpp" />
     <ClCompile Include="StateClerkService.cpp" />
+    <ClCompile Include="StateClerkWorking.cpp" />
     <ClCompile Include="StateExit.cpp" />
     <ClCompile Include="StateClerkReplenish.cpp" />
     <ClCompile Include="StateClerkSlack.cpp" />
     <ClCompile Include="StateClerkSolicit.cpp" />
     <ClCompile Include="StateClerkRest.cpp" />
+    <ClCompile Include="StoreSettings.cpp" />
+    <ClCompile Include="Trash.cpp" />
     <ClCompile Include="UserRunningData.cpp" />
     <ClInclude Include="AbstractClerkState.h" />
+    <ClInclude Include="Cart.h" />
+    <ClInclude Include="CharacterSettings.h" />
     <ClInclude Include="Clerk.h" />
     <ClInclude Include="ClerkInfo.h" />
     <ClInclude Include="ClerkMachine.h" />
@@ -467,17 +475,21 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\vs projects\Simulator\StateQueue.h" />
     <ClInclude Include="D:\vs projects\Simulator\StoreManage.h" />
     <ClInclude Include="Room.h" />
+    <ClInclude Include="StateClerkClean.h" />
     <ClInclude Include="StateClerkEnd.h" />
     <ClInclude Include="StateClerkIdle.h" />
     <ClInclude Include="StateClerkInit.h" />
     <ClInclude Include="StateClerkLoad.h" />
     <ClInclude Include="StateClerkMove.h" />
     <ClInclude Include="StateClerkService.h" />
+    <ClInclude Include="StateClerkWorking.h" />
     <ClInclude Include="StateExit.h" />
     <ClInclude Include="StateClerkReplenish.h" />
     <ClInclude Include="StateClerkSlack.h" />
     <ClInclude Include="StateClerkSolicit.h" />
     <ClInclude Include="StateClerkRest.h" />
+    <ClInclude Include="StoreSettings.h" />
+    <ClInclude Include="Trash.h" />
     <ClInclude Include="UserRunningData.h" />
   </ItemGroup>
   <ItemGroup>

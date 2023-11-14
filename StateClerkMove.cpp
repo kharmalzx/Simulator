@@ -66,6 +66,31 @@ void StateClerkMove::moveToTargetCell(MapCell* end)
             //走路
 		}
     }
+
+    //到达目标后清空路径
+    path->clear();
+
+    switch (owner->workAction()) {
+        case ClerkAction::CLEAN:
+			toClean();
+			break;
+        case ClerkAction::LOAD:
+            toLoad();
+			break;
+		case ClerkAction::REPLENISH:
+            toReplenish();
+			break;
+        case ClerkAction::SOLICIT:
+			toSolicit();
+            break;
+		default:
+            break;
+    }
+}
+
+void StateClerkMove::addTargetCell(MapCell* end)
+{
+    findPathCellList->append(end);
 }
 
 void StateClerkMove::toMove()
@@ -82,11 +107,6 @@ void StateClerkMove::toReplenish()
     emit moveToReplenish();
 }
 
-void StateClerkMove::toRest()
-{
-    emit moveToRest();
-}
-
 void StateClerkMove::toLoad()
 {
     emit moveToLoad();
@@ -94,7 +114,11 @@ void StateClerkMove::toLoad()
 
 void StateClerkMove::toEnd()
 {
-    emit moveToEnd();
+}
+
+void StateClerkMove::toClean()
+{
+    emit moveToClean();
 }
 
 void StateClerkMove::onInterruption() {

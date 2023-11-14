@@ -12,17 +12,23 @@ public:
 	~StateClerkService();
 
 	void setOwner(Clerk* clerk);
+	void onEntry(QEvent* event) override;
+	void onExit(QEvent* event) override;
 
 public slots:
 	void onInterruption() override;
+	void onServiceFinished();
 
 signals:
 	void serviceToMove();
 	void serviceToIdle();
-	void serviceToSlack();
-	void serviceToEnd();
 
 private:
 	Clerk* owner;
+	StoreManage* storeManage;
+	QTimer* m_serviceTimer;
+	
+	void service();
 	void toMove() override;
+	void toIdle();
 };

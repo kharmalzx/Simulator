@@ -18,7 +18,6 @@ public slots:
 
 signals:
 	void replenishToMove();
-	void replenishToEnd();
 
 private:
 	Clerk* owner;

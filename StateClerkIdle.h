@@ -12,6 +12,7 @@ public:
 	~StateClerkIdle();
 
 	void setOwner(Clerk* clerk) override;
+	void onEntry(QEvent* e) override;
 
 public slots:
 	void onInterruption() override;
@@ -19,9 +20,13 @@ public slots:
 signals:
 	void idleToMove();
 	void idleToService();
-	void idleToEnd();
-	void idleToSlack();
+	//不清楚揽客的时候是否idle，先写着
+	void idleToSolicit();
 
 private:
+	Clerk* owner;
+
+	//可能会去打扫
 	void toMove() override;
+	void toService();
 };

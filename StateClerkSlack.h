@@ -12,9 +12,11 @@ public:
 	~StateClerkSlack();
 
 	void setOwner(Clerk* clerk) override;
+	void onEntry(QEvent* event) override;
 
 public slots:
 	void onInterruption() override;
+	
 
 signals:
 	void slackToWork();

@@ -3,57 +3,37 @@
 ClerkMachine::ClerkMachine(QObject *parent)
 	: QStateMachine(parent)
 {
-	working = new QState(this);
-	move = new StateClerkMove(this);
+	working = new StateClerkWorking(this);
 	load = new StateClerkLoad(working);
-	slack = new StateClerkSlack(this);
 	solicit = new StateClerkSolicit(working);
 	replenish = new StateClerkReplenish(working);
-	idle = new StateClerkIdle(this);
+	service = new StateClerkService(working);
+	idle = new StateClerkIdle(working);
+	clean = new StateClerkClean(working);
+	history = new QHistoryState(working);
+	move = new StateClerkMove(working);
+
 	rest = new StateClerkRest(this);
 	stateEnd = new StateClerkEnd(this);
 	stateInit = new StateClerkInit(this);
-	service = new StateClerkService(working);
-	history = new QHistoryState(working);
+	slack = new StateClerkSlack(this);
+	
 
 	setInitialState(stateInit);
-
-	//初始化各状态之间的转换
-	stateInit->addTransition(stateInit, &StateClerkInit::initToMove, move);
-	stateInit->addTransition(stateInit, &StateClerkInit::initToEnd, stateEnd);
-
-	move->addTransition(move, &StateClerkMove::moveToLoad, load);
-	move->addTransition(move,&StateClerkMove::moveToSolicit, solicit);
-	move->addTransition(move,&StateClerkMove::moveToReplenish,replenish);
-	move->addTransition(move,&StateClerkMove::moveToRest,rest);
-	move->addTransition(move,&StateClerkMove::moveToEnd,stateEnd);
-
-	load->addTransition(load, &StateClerkLoad::loadToMove, move);
-	load->addTransition(load, &StateClerkLoad::loadToEnd, stateEnd);
-
-	//slack回复到历史状态
-	working->addTransition(working, &QState::entered, slack);
-	slack->addTransition(slack, &StateClerkSlack::slackToWork, history);
-
-	solicit->addTransition(solicit, &StateClerkSolicit::solicitToMove, move);
-	working->addTransition(solicit, &StateClerkSolicit::solicitToSlack, slack);
-
-	replenish->addTransition(replenish, &StateClerkReplenish::replenishToMove, move);
-	replenish->addTransition(replenish, &StateClerkReplenish::replenishToEnd, stateEnd);
-
-	idle->addTransition(idle, &StateClerkIdle::idleToMove, move);
-	idle->addTransition(idle, &StateClerkIdle::idleToService, service);
-	idle->addTransition(idle, &StateClerkIdle::idleToSlack, slack);
-	idle->addTransition(idle, &StateClerkIdle::idleToEnd, stateEnd);
-
-	rest->addTransition(rest, &StateClerkRest::restToMove, move);
-	rest->addTransition(rest, &StateClerkRest::restToEnd, stateEnd);
-
-	service->addTransition(service, &StateClerkService::serviceToIdle, idle);
-	working->addTransition(service, &StateClerkService::serviceToSlack, slack);
-	service->addTransition(service, &StateClerkService::serviceToEnd, stateEnd);
-	service->addTransition(service, &StateClerkService::serviceToMove, move);
+	initIdleTransitions();
+	initLoadTransitions();
+	initMoveTransitions();
+	initReplenishTransitions();
+	initRestTransitions();
+	initServiceTransitions();
+	initSlackTransitions();
+	initSolicitTransitions();
+	initStateEndTransitions();
+	initStateInitTransitions();
+	initWorkingTransitions();
 	
+
+
 }
 
 ClerkMachine::~ClerkMachine()
@@ -62,6 +42,7 @@ ClerkMachine::~ClerkMachine()
 void ClerkMachine::setOwner(Clerk * clerk)
 {
 	owner = clerk;
+	working->setOwner(clerk);
 	move->setOwner(clerk);
 	load->setOwner(clerk);
 	slack->setOwner(clerk);
@@ -72,5 +53,74 @@ void ClerkMachine::setOwner(Clerk * clerk)
 	stateEnd->setOwner(clerk);
 	stateInit->setOwner(clerk);
 	service->setOwner(clerk);
+	clean->setOwner(clerk);
 
+}
+
+void ClerkMachine::initWorkingTransitions()
+{
+	working->addTransition(working, &StateClerkWorking::workingToSlack, slack);
+	working->addTransition(working, &StateClerkWorking::workingToRest, rest);
+	//这里还没实装
+	working->addTransition(working,&StateClerkWorking::workingToEnd, stateEnd);
+}
+
+void ClerkMachine::initMoveTransitions()
+{
+	move->addTransition(move, &StateClerkMove::moveToLoad, load);
+	move->addTransition(move, &StateClerkMove::moveToSolicit, solicit);
+	move->addTransition(move, &StateClerkMove::moveToReplenish, replenish);
+}
+
+void ClerkMachine::initLoadTransitions()
+{
+	load->addTransition(load, &StateClerkLoad::loadToMove, move);
+}
+
+void ClerkMachine::initSlackTransitions()
+{
+	slack->addTransition(slack, &StateClerkSlack::slackToWork, history);
+}
+
+void ClerkMachine::initSolicitTransitions()
+{
+	solicit->addTransition(solicit, &StateClerkSolicit::solicitToMove, move);
+}
+
+void ClerkMachine::initReplenishTransitions()
+{
+	replenish->addTransition(replenish, &StateClerkReplenish::replenishToMove, move);
+}
+
+void ClerkMachine::initIdleTransitions()
+{
+	idle->addTransition(idle, &StateClerkIdle::idleToService, service);
+	idle->addTransition(idle,&StateClerkIdle::idleToMove,move);
+}
+
+void ClerkMachine::initRestTransitions()
+{
+	rest->addTransition(rest, &StateClerkRest::restToEnd, stateEnd);
+	rest->addTransition(rest, &StateClerkRest::restToWork, history);
+}
+
+void ClerkMachine::initStateEndTransitions()
+{
+}
+
+void ClerkMachine::initStateInitTransitions()
+{
+	stateInit->addTransition(stateInit, &StateClerkInit::initToMove, move);
+	stateInit->addTransition(stateInit, &StateClerkInit::initToEnd, stateEnd);
+}
+
+void ClerkMachine::initServiceTransitions()
+{
+	service->addTransition(service, &StateClerkService::serviceToIdle, idle);
+	service->addTransition(service, &StateClerkService::serviceToMove, move);
+}
+
+void ClerkMachine::initCleanTransitions()
+{
+	clean->addTransition(clean, &StateClerkClean::cleanToMove, move);
 }

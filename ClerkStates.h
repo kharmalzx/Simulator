@@ -17,20 +17,24 @@
 #include "StateClerkEnd.h"
 #include "StateClerkRest.h"
 #include "StateClerkInit.h"
+#include "StateClerkWorking.h"
+#include "StateClerkClean.h"
 
 
-enum ClerkState
+enum ClerkAction
 {
-	STATE_MOVE,
-	STATE_LOAD,
-	STATE_REPLENISH,
-	STATE_SERVICE,
-	STATE_SLACK,
-	STATE_SOLICIT,
-	STATE_IDLE,
-	STATE_REST,
-	STATE_END,
-	STATE_INIT
+	MOVE,
+	LOAD,
+	REPLENISH,
+	SERVICE,
+	SLACK,
+	SOLICIT,
+	IDLE,
+	REST,
+	END,
+	INIT,
+	WORKING,
+	CLEAN
 };
 
 #endif // CLERKSTATES_H

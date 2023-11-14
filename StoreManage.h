@@ -2,6 +2,9 @@
 #include "Customer.h"
 #include "ExcelTool.h"
 #include "UserRunningData.h"
+#include "CharacterSettings.h"
+#include "StoreSettings.h"
+#include "Trash.h"
 
 class StoreManage : public QObject
 {
@@ -9,7 +12,6 @@ class StoreManage : public QObject
 public:
 
 	
-
 	StoreManage(QObject* parent, MapPanel* mapPanel,AStarPathfinding* astar);
 
 	int commodityOnWhichFacility(int commoditySn);
@@ -23,12 +25,17 @@ public:
 	MapCell* getRecentFacilityFetchPoint(const int& x, const int& y, const int& shelfSn);
 	//目前还没按照需求站队伍
 	MapCell* getMapCellUnoccupiedAround(const int& x, const int& y);
+	MapCell* findRestChair();
+
+	//人物信息管理
+	CharacterSettings* getCharacterSettingsPtr() { return m_charcSetting; }
 
 	//店铺信息管理
 	QVector<Shelf*> shelfList;
 	QVector<Customer*> customerList;
 	QVector<Cashier*> cashierList;
 	QVector<Commodity*> commodityList;
+	QVector<MapCell*> restChairList;
 	int getMapHeight() const;
 	int getMapWidth() const;
 	int getFacilityPopulation(const int& facilitySn);
@@ -56,6 +63,10 @@ public:
 	//结账相关
 	void customerPay(Customer* customer);
 
+	//清洁相关
+	void generateTrash();
+	void cleanTrash(MapCell* c);
+
 public slots:
 	void lockQueueEnd(Customer* customer, const int& facilitySn);
 
@@ -67,6 +78,10 @@ private:
 	MapPanel* mapPanel;
 	Map* map;
 	UserRunningData* urdata;
+	//暂时放在storeManage里面
+	CharacterSettings* m_charcSetting;
+	StoreSettings* m_storeSetting;
+	QVector<Trash*> trashList;
 
 	//first = commoditySn, second = facilitySn
 	QVector<QPair<int,int>> commodityOnFacility;

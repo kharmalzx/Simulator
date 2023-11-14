@@ -12,6 +12,9 @@ public:
 	~StateClerkMove();
 
 	void setOwner(Clerk* clerk) override;
+	void getPathInFindCelllist();
+	void moveToTargetCell(MapCell* end);
+	void addTargetCell(MapCell* end);
 
 public slots:
 	void onInterruption() override;
@@ -20,8 +23,7 @@ signals:
 	void moveToLoad();
 	void moveToSolicit();
 	void moveToReplenish();
-	void moveToRest();
-	void moveToEnd();
+	void moveToClean();
 
 private:
 	Clerk* owner;
@@ -31,13 +33,11 @@ private:
 	AStarPathfinding* astar;
 
 	MapCell* cellAt(const int& x, const int& y) const;
-	void getPathInFindCelllist();
-	void moveToTargetCell(MapCell* end);
-
+	
 	void toMove() override;
 	void toSolicit();
 	void toReplenish();
-	void toRest();
 	void toLoad();
 	void toEnd();
+	void toClean();
 };

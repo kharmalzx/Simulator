@@ -17,12 +17,17 @@ void StateClerkSlack::setOwner(Clerk * clerk)
 	owner = clerk;
 	storeManage = owner->getStoreManage();
 
-	int rd = 0;
-	while ((rd = rand() % owner->getAIData()->slackRandom.second) < owner->getAIData()->slackRandom.first) {
+	m_slackTimer->setInterval(Clerk::slackTime);
 
-	}
-	m_slackTimer->start(rd);
+}
 
+void StateClerkSlack::onEntry(QEvent* event)
+{
+	Q_UNUSED(event);
+	if (owner != nullptr)
+		m_slackTimer->start();
+	else
+		qDebug() << "StateClerkSlack's owner is nullptr";
 }
 
 void StateClerkSlack::toMove()
@@ -31,7 +36,8 @@ void StateClerkSlack::toMove()
 
 void StateClerkSlack::toWork()
 {
-	m_slackTimer->stop();
+	if(m_slackTimer->isActive())
+		m_slackTimer->stop();
 	emit slackToWork();
 }
 

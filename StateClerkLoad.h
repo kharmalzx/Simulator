@@ -12,15 +12,19 @@ public:
 	~StateClerkLoad();
 
 	void setOwner(Clerk* clerk) override;
+	void onEntry(QEvent* event) override;
 
 public slots:
 	void onInterruption() override;
+	void onLoadTimeOut();
 
 signals:
 	void loadToMove();
-	void loadToEnd();
 
 private:
 	Clerk* owner;
+	StoreManage* storeManage;
+	QTimer* m_loadTimer;
+
 	void toMove() override;
 };

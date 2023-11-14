@@ -12,6 +12,7 @@ public:
 	~StateClerkRest();
 
 	void setOwner(Clerk* clerk) override;
+	void onEntry(QEvent* event) override;
 
 public slots:
 	void onInterruption() override;
@@ -19,8 +20,14 @@ public slots:
 signals:
 	void restToMove();
 	void restToEnd();
+	void restToWork();
 
 private:
 	Clerk* owner;
+	StoreManage* storeManage;
+	StateClerkMove* m_stateMoveToRest;
+
+	QTimer* m_restTimer;
+
 	void toMove() override;
 };

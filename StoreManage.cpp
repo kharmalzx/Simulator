@@ -9,6 +9,16 @@ StoreManage::StoreManage(QObject* parent, MapPanel * mapp, AStarPathfinding* as)
     this->astar = as;
     urdata = new UserRunningData(this);
 
+    //暂时放在这里，并写死一些数据
+    m_charcSetting = new CharacterSettings(this);
+    m_storeSetting = new StoreSettings(this);
+    QVector<MapCell*> trashPos;
+    for (int i = 0; i < m_storeSetting->getTrashCount(); i++) {
+        trashPos.push_back(&map->mapCells[7][11+i]);
+    }
+    m_storeSetting->setTrashPossiLoc(trashPos);
+
+
     shelfList.resize(map->shelfList.size());
     for (int i = 0; i < shelfList.size(); i++) { shelfList[i] = &map->shelfList[i]; }
 }
@@ -168,6 +178,16 @@ MapCell* StoreManage::getMapCellUnoccupiedAround(const int& x, const int& y)
 
         dist++;
         count++;
+    }
+
+    return nullptr;
+}
+
+MapCell* StoreManage::findRestChair()
+{
+    for (int i = 0; i < restChairList.size(); i++) {
+        if(!restChairList[i]->isOccupied())
+            return restChairList[i];
     }
 
     return nullptr;
@@ -375,9 +395,29 @@ void StoreManage::customerPay(Customer* customer)
     urdata->addMoney(money);
 }
 
+void StoreManage::generateTrash()
+{
+    if (trashList.size() < m_storeSetting->getTrashCount()) {
+        Trash* t = new Trash(this);
+        t->setLoc(m_storeSetting->getTrashPossiLocPtr()->at(trashList.size()));
+        trashList.push_back(t);
+    }
+}
+
+void StoreManage::cleanTrash(MapCell* c)
+{
+	for (int i = 0; i < trashList.size(); i++) {
+		if (trashList[i]->locAt() == c) {
+			trashList[i]->clean();
+			trashList.remove(i);
+			break;
+		}
+	}
+}
+
 void StoreManage::lockQueueEnd(Customer* customer, const int& facilitySn){
     Facility* facility = getFaciPtr(facilitySn);
 
-    facility->updateQueue(customer->queueInfo.fetchPointOrd, customer->AIData.id, customer->currentCell);
+    facility->updateQueue(customer->queueInfo.fetchPointOrd, customer->AIData.id, customer->cellAt());
 
 }

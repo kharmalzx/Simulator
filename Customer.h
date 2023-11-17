@@ -41,11 +41,15 @@ public:
 	//检查状态，通知相关
 	void checkAfterRepl();
 
+	bool isWatchForbidden() const { return m_isWatchForbidden; }
+	void setWatchForbidden(bool val) { m_isWatchForbidden = val; }
+
 signals:
 	void checkQueueStateChange();
 	void checkFetch();
 
 private:
 	MapCell* currentCell;
+	bool m_isWatchForbidden;
 };
 

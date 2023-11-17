@@ -36,8 +36,16 @@ public:
 	Facility* getWorkingFacility() { return m_workingFacility; }
 	void createCart();
 	void setCartSize(int size) { cart->setSize(size); }
+	int getCartSize() { return cart->getSize(); }
+	void discardCart() { delete cart; }
+	//改变体力值，返回值表示是否体力不足
+	bool staminaChange(const int& change);
+	void setTargetCell(MapCell* cell) { targetCell = cell; }
 
 private:
+
+	QMutex staminaMutex;
+
 	bool willSlack;
 	bool willRest;
 	//将要执行的动作
@@ -51,5 +59,8 @@ private:
 	StoreManage* m_storeManage;
 
 	MapCell* currentCell;
+	//包括站着不动的地点，以及补货的地点
 	MapCell* workCell;
+	MapCell* targetCell;
+
 };

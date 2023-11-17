@@ -146,13 +146,16 @@ void StateMove::moveToEnd(MapCell* end)
     MapCell* nextCell = path->at(1);
 
     //播走路动画，应该是个while循环,路上查视野，去往收银台的时候不查
-    while ((facilitySn = watchDetect(nextCell)) < 0 && !isToCashier && (nextCell->x() != end->x() && nextCell->y() != end->y())) {
-        path->pop_front();
-        owner->setLoc(nextCell);
-        nextCell = path->at(1);
+    if (!owner->isWatchForbidden()) {
+        while ((facilitySn = watchDetect(nextCell)) < 0 && !isToCashier && (nextCell->x() != end->x() && nextCell->y() != end->y())) {
+            path->pop_front();
+            owner->setLoc(nextCell);
+            nextCell = path->at(1);
 
 
+        }
     }
+    
 
     if (facilitySn) {
         //看到后，需要看设施人数是否超过容忍上限
@@ -214,13 +217,27 @@ void StateMove::moveToEnd(MapCell* end)
                 case CELL_EXIT:
                     toExit();
                     break;
-
+                case CELL_SOLICITAREA:
+                    // 如果是在店外的顾客
+                    if (storeManage->isSolicitSussessful()) {
+                        moveToRandomShelf();
+                        storeManage->customerCountChange(1);
+                    }
+                    else {
+                        moveToEnd(storeManage->getDestroyCell());
+                    }
+                    break;
+                case CELL_DESTROY:
+                    //如果是在销毁点的顾客
+                    
+					break;
                 default:
                     break;
             }
         }
         else {
-            //到达普通格子，路上什么事情都没发生
+            // 店内顾客到达普通格子，
+            // 路上什么事情都没发生
             //不用改变状态，继续寻路
             toMove();
         }

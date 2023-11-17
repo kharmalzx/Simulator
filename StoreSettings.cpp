@@ -3,9 +3,10 @@
 StoreSettings::StoreSettings(QObject *parent)
 	: QObject(parent)
 {
-	maxCount_trash = 5;
-	list_trashPossiLoc.resize(maxCount_trash);
-	
+	m_maxCount_trash = 5;
+	list_trashPossiLoc.resize(m_maxCount_trash);
+	m_solicitStamina = 3000;
+
 }
 
 StoreSettings::~StoreSettings()

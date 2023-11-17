@@ -15,11 +15,18 @@ public:
 
 public slots:
 	void onInterruption() override;
+	void onReplenishTimerTimeout();
 
 signals:
 	void replenishToMove();
+	void replenishToRest();
 
 private:
 	Clerk* owner;
+	StoreManage* storeManage;
+
+	QTimer* m_replenishTimer;
+
 	void toMove() override;
+	void findFaciToReplenish();
 };

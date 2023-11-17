@@ -61,6 +61,9 @@ void ClerkMachine::initWorkingTransitions()
 {
 	working->addTransition(working, &StateClerkWorking::workingToSlack, slack);
 	working->addTransition(working, &StateClerkWorking::workingToRest, rest);
+
+	
+
 	//这里还没实装
 	working->addTransition(working,&StateClerkWorking::workingToEnd, stateEnd);
 }
@@ -85,17 +88,25 @@ void ClerkMachine::initSlackTransitions()
 void ClerkMachine::initSolicitTransitions()
 {
 	solicit->addTransition(solicit, &StateClerkSolicit::solicitToMove, move);
+	solicit->addTransition(solicit,&StateClerkSolicit::solicitToIdle,idle);
+	
+	connect(solicit, &StateClerkSolicit::solicitToRest, working, &StateClerkWorking::toRest);
+	connect(solicit, &StateClerkSolicit::solicitToSlack, working, &StateClerkWorking::toSlack);
 }
 
 void ClerkMachine::initReplenishTransitions()
 {
 	replenish->addTransition(replenish, &StateClerkReplenish::replenishToMove, move);
+
+	connect(replenish,&StateClerkReplenish::replenishToRest,working, &StateClerkWorking::toRest);
+	
 }
 
 void ClerkMachine::initIdleTransitions()
 {
 	idle->addTransition(idle, &StateClerkIdle::idleToService, service);
 	idle->addTransition(idle,&StateClerkIdle::idleToMove,move);
+	idle->addTransition(idle,&StateClerkIdle::idleToSolicit,solicit);
 }
 
 void ClerkMachine::initRestTransitions()

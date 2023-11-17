@@ -15,6 +15,9 @@ public:
 	void onEntry(QEvent *) override;
 	void onExit(QEvent *) override;
 
+	void toSlack();
+	void toRest();
+
 public slots:
 	void onInterruption() override;
 
@@ -26,13 +29,11 @@ signals:
 private:
 	Clerk *owner;
 	StoreManage* storeManage;
-	QTimer* m_workingTimer;
 	QTimer* m_slackTimer;
 
 
-	bool checkIfTimeToRest();
-	bool checkIfTimeToSlack();
+	bool checkIfStraightToRest();
+	bool checkIfStraightToSlack();
 	void toMove() override;
-	void toSlack();
-	void toRest();
+	
 };

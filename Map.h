@@ -11,6 +11,11 @@ public:
 	QVector<Cashier> cashierList;
 	QVector<MapCell> exitArea;
 	QVector<MapCell> entranceArea;
+	//还没有找
+	QVector<MapCell> solicitArea;
+
+	//还没定
+	MapCell* destroyCell;
 
 	int max_height;
 	int max_width;

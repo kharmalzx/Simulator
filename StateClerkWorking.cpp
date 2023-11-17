@@ -3,12 +3,8 @@
 StateClerkWorking::StateClerkWorking(QObject *parent)
 	: AbstractClerkState(parent)
 {
-	m_workingTimer = new QTimer(this);
-	m_workingTimer->setSingleShot(true);
-
 	m_slackTimer = new QTimer(this);
 
-	connect(m_workingTimer, &QTimer::timeout, this, &StateClerkWorking::toRest);
 	connect(m_slackTimer, &QTimer::timeout, this, &StateClerkWorking::toSlack);
 	
 }
@@ -21,8 +17,6 @@ void StateClerkWorking::setOwner(Clerk * owner)
 	this->owner = owner;
 	storeManage = owner->getStoreManage();
 	
-	m_workingTimer->setInterval(owner->getAIData()->stamina);
-
 }
 
 void StateClerkWorking::onEntry(QEvent*)
@@ -38,7 +32,7 @@ void StateClerkWorking::onEntry(QEvent*)
 
 void StateClerkWorking::onExit(QEvent*)
 {
-	m_workingTimer->stop();
+
 	m_slackTimer->stop();
 
 	owner->setWillRest(false);
@@ -46,7 +40,7 @@ void StateClerkWorking::onExit(QEvent*)
 	owner->setWorkCell(owner->locAt());
 }
 
-bool StateClerkWorking::checkIfTimeToRest()
+bool StateClerkWorking::checkIfStraightToRest()
 {
 	QList<AbstractClerkState*> states = findChildren<AbstractClerkState*>();
 	foreach (QState* s, states)
@@ -60,7 +54,7 @@ bool StateClerkWorking::checkIfTimeToRest()
 	return false;
 }
 
-bool StateClerkWorking::checkIfTimeToSlack()
+bool StateClerkWorking::checkIfStraightToSlack()
 {
 	QList<AbstractClerkState*> states = findChildren<AbstractClerkState*>();
 	foreach(QState* s, states)
@@ -81,7 +75,7 @@ void StateClerkWorking::toMove()
 void StateClerkWorking::toSlack()
 {
 	owner->setWorkAction(ClerkAction::SLACK);
-	if (checkIfTimeToSlack()) {
+	if (checkIfStraightToSlack()) {
 		emit workingToSlack();
 	}
 	else {
@@ -93,7 +87,7 @@ void StateClerkWorking::toSlack()
 void StateClerkWorking::toRest()
 {
 	owner->setWorkAction(ClerkAction::REST);
-	if (checkIfTimeToRest()) {
+	if (checkIfStraightToRest()) {
 		emit workingToRest();
 	}
 	else {

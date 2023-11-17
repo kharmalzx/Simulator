@@ -16,6 +16,7 @@ struct ClerkAIData
 	int shiftFactor;
 	int moveSpeed;
 	int loadSpeed;
+	
 };
 
 struct ReplenishInfo {

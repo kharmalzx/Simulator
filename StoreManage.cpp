@@ -1,16 +1,17 @@
 #include "StoreManage.h"
 
 
-StoreManage::StoreManage(QObject* parent, MapPanel * mapp, AStarPathfinding* as)
+StoreManage::StoreManage(QObject* parent, MapPanel * mapp, AStarPathfinding* as) : QObject(parent)
 {
-    setParent(parent);
+    m_solicitCount = 0;
+
     this->mapPanel = mapp;
     this->map = mapp->map;
     this->astar = as;
     urdata = new UserRunningData(this);
 
     //暂时放在这里，并写死一些数据
-    m_charcSetting = new CharacterSettings(this);
+    m_characSetting = new CharacterSettings(this);
     m_storeSetting = new StoreSettings(this);
     QVector<MapCell*> trashPos;
     for (int i = 0; i < m_storeSetting->getTrashCount(); i++) {
@@ -18,9 +19,14 @@ StoreManage::StoreManage(QObject* parent, MapPanel * mapp, AStarPathfinding* as)
     }
     m_storeSetting->setTrashPossiLoc(trashPos);
 
-
+    
     shelfList.resize(map->shelfList.size());
     for (int i = 0; i < shelfList.size(); i++) { shelfList[i] = &map->shelfList[i]; }
+}
+
+MapCell* StoreManage::getDestroyCell()
+{
+    return map->destroyCell;
 }
 
 
@@ -252,6 +258,16 @@ QPair<bool, bool> StoreManage::shallJoinQueue(Customer* customer, const int& fac
 	
 }
 
+void StoreManage::customerCountChange(const int& count)
+{
+    QMutexLocker(&customerCountMutex);
+
+    if(m_curCustomerCount + count >= 0)
+        m_curCustomerCount += count;
+    else
+        m_curCustomerCount = 0;
+}
+
 Facility* StoreManage::getFaciPtr(const int& facilitySn)
 {
     Facility* faci = nullptr;
@@ -372,6 +388,16 @@ void StoreManage::requestQuitQueue(Customer* owner)
 
 }
 
+void StoreManage::replenishFacility(Facility* faci)
+{
+    
+    //暂时只写货架
+	Shelf* shelf = dynamic_cast<Shelf*>(faci);
+    shelf->replenishCommodity();
+
+	alarmShelfFinishedRepl(faci->sn);
+}
+
 void StoreManage::alarmShelfFinishedRepl(const int& facilitySn)
 {
     QVector<QVector<Facility::QueueCellInfo>>* arr_qc = &getFaciPtr(facilitySn)->list_queue;
@@ -380,6 +406,18 @@ void StoreManage::alarmShelfFinishedRepl(const int& facilitySn)
         //只需要让取货口的顾客动起来
         getCustomerPtr(arr_qc->at(i)[0].customerId)->checkAfterRepl();
     }
+}
+
+Facility* StoreManage::findFacilityToRepl()
+{
+    //暂时只写货架
+    for (int i = 0; i < shelfList.size(); i++) {
+        if (shelfList[i]->cur_count <= shelfList[i]->valve()) {
+			
+			return shelfList[i];
+		}
+	}
+    return nullptr;
 }
 
 void StoreManage::customerPay(Customer* customer)
@@ -413,6 +451,14 @@ void StoreManage::cleanTrash(MapCell* c)
 			break;
 		}
 	}
+}
+
+bool StoreManage::isSolicitSussessful()
+{
+    if(m_curCustomerCount < m_storeSetting->maxCustomerCount())
+        return rand() > m_solicitCount;
+
+    return false;
 }
 
 void StoreManage::lockQueueEnd(Customer* customer, const int& facilitySn){

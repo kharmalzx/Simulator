@@ -6,7 +6,7 @@ Customer::Customer(QObject* parent)
     machine = new CustomerMachine(this,this);
     
     findCommoditySn = 0;
-    
+    m_isWatchForbidden = true;
     
 }
 
